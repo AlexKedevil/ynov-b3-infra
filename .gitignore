@@ -1,0 +1,28 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# Clés et secrets
+*.key
+*.pem
+*.crt
+secrets/
+.env
+credentials/
+passwords/
+
+# Images disques et ISO
+*.iso
+*.vmdk
+*.qcow2
+*.ova
+*.img
+
+# Environnements virtuels
+venv/
+.env/
+node_modules/
+__pycache__/
