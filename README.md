@@ -54,7 +54,7 @@ Ce projet simule la conception d'une infrastructure IT pour une startup françai
 ---
 
 ## 📁 Structure du Dépôt
-
+```
 ynov-b3-infra/
 ├── docs/ # Documentation technique (en français) 
 │ ├── architecture/ # DAT, schémas, plan d'adressage IP/VLAN 
@@ -75,7 +75,7 @@ ynov-b3-infra/
 │ └── wazuh/ # Règles de détection 
 ├── .gitignore 
 └── README.md 
-
+```
 
 ---
 
