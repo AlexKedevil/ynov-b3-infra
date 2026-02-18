@@ -56,25 +56,25 @@ Ce projet simule la conception d'une infrastructure IT pour une startup françai
 ## 📁 Structure du Dépôt
 
 ynov-b3-infra/
-├── docs/ # Documentation technique (en français)
-│ ├── architecture/ # DAT, schémas, plan d'adressage IP/VLAN
-│ ├── securite/ # Politiques firewall, IAM, Zero Trust
-│ ├── procedures/ # Guides d'installation et de maintenance
-│ ├── pca_pra/ # Plans de continuité et reprise
-│ └── gestion_projet/ # Backlog, sprints, suivi Kanban
-├── infra/ # Configurations infrastructure
-│ ├── reseau/ # Configs pfSense, VLANs, scripts réseau
-│ ├── serveurs/ # Scripts Bash, Ansible pour Ubuntu
-│ ├── docker/ # Dockerfiles, docker-compose.yml
-│ └── ansible/ # Playbooks d'automatisation
-├── cloud/ # Infrastructure Cloud
-│ ├── aws/ # Scripts et configs AWS
-│ └── terraform/ # Infrastructure as Code (optionnel)
-├── monitoring/ # Supervision et SIEM
-│ ├── grafana/ # Dashboards JSON
-│ └── wazuh/ # Règles de détection
-├── .gitignore
-└── README.md
+├── docs/ # Documentation technique (en français) 
+│ ├── architecture/ # DAT, schémas, plan d'adressage IP/VLAN 
+│ ├── securite/ # Politiques firewall, IAM, Zero Trust 
+│ ├── procedures/ # Guides d'installation et de maintenance 
+│ ├── pca_pra/ # Plans de continuité et reprise 
+│ └── gestion_projet/ # Backlog, sprints, suivi Kanban 
+├── infra/ # Configurations infrastructure 
+│ ├── reseau/ # Configs pfSense, VLANs, scripts réseau 
+│ ├── serveurs/ # Scripts Bash, Ansible pour Ubuntu 
+│ ├── docker/ # Dockerfiles, docker-compose.yml 
+│ └── ansible/ # Playbooks d'automatisation 
+├── cloud/ # Infrastructure Cloud 
+│ ├── aws/ # Scripts et configs AWS 
+│ └── terraform/ # Infrastructure as Code (optionnel) 
+├── monitoring/ # Supervision et SIEM 
+│ ├── grafana/ # Dashboards JSON 
+│ └── wazuh/ # Règles de détection 
+├── .gitignore 
+└── README.md 
 
 
 ---
