@@ -55,58 +55,34 @@ Ce projet simule la conception d'une infrastructure IT pour une startup françai
 
 ## 📁 Structure du Dépôt
 
+```text
 ynov-b3-infra/
-├── docs/ # Documentation technique (en français)
-│ ├── architecture/ # DAT, schémas, plan d'adressage IP/VLAN
-│ ├── securite/ # Politiques firewall, IAM, Zero Trust
-│ ├── procedures/ # Guides d'installation et de maintenance
-│ ├── pca_pra/ # Plans de continuité et reprise
-│ └── gestion_projet/ # Backlog, sprints, suivi Kanban
-├── infra/ # Configurations infrastructure
-│ ├── reseau/ # Configs pfSense, VLANs, scripts réseau
-│ ├── serveurs/ # Scripts Bash, Ansible pour Ubuntu
-│ ├── docker/ # Dockerfiles, docker-compose.yml
-│ └── ansible/ # Playbooks d'automatisation
-├── cloud/ # Infrastructure Cloud
-│ ├── aws/ # Scripts et configs AWS
-│ └── terraform/ # Infrastructure as Code (optionnel)
-├── monitoring/ # Supervision et SIEM
-│ ├── grafana/ # Dashboards JSON
-│ └── wazuh/ # Règles de détection
+├── docs/                   # Documentation technique (en français)
+│   ├── architecture/       # DAT, schémas, plan d'adressage IP/VLAN
+│   ├── security/           # Politiques firewall, IAM, Zero Trust
+│   ├── procedures/         # Guides d'installation et de maintenance
+│   ├── pca_pra/            # Plans de continuité et reprise (PCA/PRA)
+│   └── project_management/ # Backlog, sprints, suivi Kanban
+├── infra/                  # Configurations infrastructure
+│   ├── network/            # Configs pfSense, VLANs, scripts réseau
+│   ├── servers/            # Scripts Bash, Ansible pour Ubuntu
+│   ├── docker/             # Dockerfiles, docker-compose.yml
+│   └── ansible/            # Playbooks d'automatisation
+├── cloud/                  # Infrastructure Cloud
+│   ├── aws/                # Scripts et configs AWS
+│   └── terraform/          # Infrastructure as Code (optionnel)
+├── monitoring/             # Supervision et SIEM
+│   ├── grafana/            # Dashboards JSON
+│   └── wazuh/              # Règles de détection
 ├── .gitignore
 └── README.md
-
+```
 
 ---
 
 ## 🗺️ Architecture Réseau
 
-### Schéma Logique (Mermaid)
-```mermaid
-graph TD
-    Internet((Internet)) --- WAN[("🌐 WAN (NAT/vmnet8)")]
-    
-    subgraph "🧱 pfSense Firewall (FW-01)"
-        WAN --- FW["pfSense 2.7.2"]
-        FW --- LAN["🏠 LAN (10.20.0.1/24)"]
-    end
-
-    subgraph "🔌 Segmentation VLAN (Trunk em1)"
-        LAN --- VLAN10["🔹 VLAN 10: MGMT"]
-        LAN --- VLAN20["🏢 VLAN 20: USERS"]
-        LAN --- VLAN30["📶 VLAN 30: WIFI"]
-        LAN --- VLAN40["👤 VLAN 40: GUEST"]
-        LAN --- VLAN50["🖥️ VLAN 50: SERVERS"]
-        LAN --- VLAN60["🛡️ VLAN 60: DMZ"]
-    end
-
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px;
-    classDef fw fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
-    class FW fw;
-```
-
-### Capture d'Écran
-![Schéma Logique du Réseau](docs/architecture/screenshots/network%20diagram.png)
+![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
 
 ---
 ## 🛠️ Stack Technique (Laboratoire)
