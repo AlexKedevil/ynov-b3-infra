@@ -79,6 +79,36 @@ ynov-b3-infra/
 
 ---
 
+## 🗺️ Architecture Réseau
+
+### Schéma Logique (Mermaid)
+```mermaid
+graph TD
+    Internet((Internet)) --- WAN[("🌐 WAN (NAT/vmnet8)")]
+    
+    subgraph "🧱 pfSense Firewall (FW-01)"
+        WAN --- FW["pfSense 2.7.2"]
+        FW --- LAN["🏠 LAN (10.20.0.1/24)"]
+    end
+
+    subgraph "🔌 Segmentation VLAN (Trunk em1)"
+        LAN --- VLAN10["🔹 VLAN 10: MGMT"]
+        LAN --- VLAN20["🏢 VLAN 20: USERS"]
+        LAN --- VLAN30["📶 VLAN 30: WIFI"]
+        LAN --- VLAN40["👤 VLAN 40: GUEST"]
+        LAN --- VLAN50["🖥️ VLAN 50: SERVERS"]
+        LAN --- VLAN60["🛡️ VLAN 60: DMZ"]
+    end
+
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px;
+    classDef fw fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    class FW fw;
+```
+
+### Capture d'Écran
+![Schéma Logique du Réseau](docs/architecture/screenshots/network%20diagram.png)
+
+---
 ## 🛠️ Stack Technique (Laboratoire)
 
 | Catégorie | Outils / Technologies |
