@@ -39,6 +39,10 @@ ynov-b3-infra/
 │   └── project_management/ # Backlog, sprints, suivi Kanban
 ├── infra/                  # Configurations infrastructure
 │   ├── network/            # Configs pfSense, VLANs, scripts réseau
+│   │   ├── pfsense_initial_setup.md
+│   │   ├── pfsense_wizard_config.md
+│   │   ├── pfsense_vlan_config.md
+│   │   └── vmware_vmnet2_config.md
 │   ├── servers/            # Scripts Bash, Ansible pour Ubuntu
 │   ├── docker/             # Dockerfiles, docker-compose.yml
 │   └── ansible/            # Playbooks d'automatisation
@@ -58,7 +62,12 @@ ynov-b3-infra/
 
 ![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
 
-> 🔗 **Document de référence:** [📜 Plan d'Adressage IP & Politique VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
+> 🔗 **Documents de référence :**
+> - [📜 Plan d'Adressage IP & Politique VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
+> - [🚀 Installation Initiale pfSense](infra/network/pfsense_initial_setup.md)
+> - [⚙️ Configuration Wizard pfSense](infra/network/pfsense_wizard_config.md)
+> - [🔌 Configuration VLANs pfSense](infra/network/pfsense_vlan_config.md)
+> - [🌐 Configuration VMware (vmnet2)](infra/network/vmware_vmnet2_config.md)
 
 ---
 ## 🛠️ Stack Technique (Laboratoire)
