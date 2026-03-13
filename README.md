@@ -85,6 +85,8 @@ ynov-b3-infra/
 
 ![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
 
+> 🔗 **Document de référence:** [📜 Plan d'Adressage IP & Politique VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
+
 ---
 ## 🛠️ Stack Technique (Laboratoire)
 
@@ -104,8 +106,7 @@ ynov-b3-infra/
 
 ## 🔗 Ressources & Liens Utiles
 
-- [📚 Documentation technique](https://docs.netgate.com/pfsense/, https://docs.docker.com/)
-- []
+- [📚 Documentation pfSense](https://docs.netgate.com/pfsense/)
 
 ---
 
