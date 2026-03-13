@@ -14,7 +14,7 @@ answer VNET_2_HOSTONLY_SUBNET 10.20.0.0
 answer VNET_2_VIRTUAL_ADAPTER yes
 ```
 
-## 🖥️ Configuration sur l'Hôte (CachyOS)
+## 🖥️ Configuration sur l'Hôte
 
 Exécutez les commandes suivantes pour appliquer les changements :
 
@@ -65,6 +65,5 @@ ping 8.8.8.8                # Vérifier la sortie Internet via WAN
 
 ---
 **Informations Système :**
-- **Date :** 2026-03-11
 - **OS Hôte :** CachyOS x86_64 (Linux 6.19)
 - **VMware :** Workstation 25.0.0
