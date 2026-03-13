@@ -24,6 +24,5 @@ Cette documentation détaille la segmentation réseau (VLANs) configurée sur l'
 
 ---
 **Notes :**
-- Date de configuration : 2026-03-13
 - Les règles de firewall doivent быть appliquées individuellement sur chaque interface VLAN.
 - L'interface parenте (em1) ne doit pas avoir d'IP assignée si tout le trafic est taggué.
