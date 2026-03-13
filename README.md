@@ -19,37 +19,11 @@ Ce projet simule la conception d'une infrastructure IT pour une startup françai
 - DevOps (Containerisation, CI/CD)
 - Gestion de projet agile (Scrum, documentation)
 
-### 🚀 Ce que ce projet va implémenter
 
-#### 1. Architecture Réseau
-- [ ] Segmentation VLAN (MGMT, USERS, WIFI, SERVERS, DMZ)
-- [ ] Routage inter-VLAN via pfSense
-- [ ] Accès distant sécurisé (VPN WireGuard/OpenVPN + MFA)
-- [ ] Politiques de firewall et ACLs
+> 📊 **Accéder au Tableau de Bord :** [**b3-infra | Trello Board**](https://trello.com/b/EXl0H0QS/b3-infra)
 
-#### 2. Infrastructure Système
-- [ ] Annuaire centralisé (Samba AD ou FreeIPA)
-- [ ] Services DNS/DHCP/NTP
-- [ ] Bases de données: PostgreSQL (SQL) + MongoDB (NoSQL)
-- [ ] Stratégie de stockage et sauvegarde (3-2-1)
+---
 
-#### 3. Sécurité & Supervision
-- [ ] Pare-feu pfSense avec règles Zero Trust
-- [ ] Solution SIEM (Wazuh) pour détection de menaces
-- [ ] Tableau de bord monitoring (Grafana + Prometheus)
-- [ ] Journalisation centralisée et analyse des logs
-
-#### 4. Cloud & DevOps
-- [ ] Architecture hybride: services critiques On-Premise + backup Cloud
-- [ ] Containerisation d'une application métier (Docker)
-- [ ] Déploiement sur AWS/Azure (instance EC2 ou équivalent)
-- [ ] Analyse comparative TCO (Cloud vs On-Premise)
-
-#### 5. Gestion de Projet & Documentation
-- [ ] Dossier d'Architecture Technique (DAT) complet
-- [ ] Plan de Continuité (PCA) et Reprise d'Activité (PRA)
-- [ ] Backlog Agile et suivi de sprints (Trello/GitHub Projects)
-- [ ] Procédures d'installation et de dépannage
 
 ---
 
@@ -76,7 +50,6 @@ ynov-b3-infra/
 │   └── wazuh/              # Règles de détection
 ├── .gitignore
 └── README.md
-=======
 ```
 
 ---
