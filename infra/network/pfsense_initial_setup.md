@@ -46,30 +46,3 @@ Une fois redémarré, utilisez le menu console pour configurer les interfaces de
 7.  **LAN** : `10.20.0.1/24` (déjà configuré via console)
 8.  **Mot de passe Admin** : *À définir (consulter le coffre-fort sécurisé)*
 9.  **Reload** → **Finish**
-
-## ✅ État Actuel des Services
-
--   [x] **WAN (em0)** : DHCP (vmnet8 → Internet)
--   [x] **LAN (em1)** : Statique `10.20.0.1/24`
--   [x] **DHCP Server** : Activé (`10.20.0.100-200`)
--   [x] **WebGUI** : HTTPS accessible
--   [x] **DNS Resolver** : Activé
--   [x] **NTP** : Synchronisé
-
-## 🔄 Prochaines Étapes
-
-| Priorité | Tâche | Fichier de Configuration |
-| :---: | :--- | :--- |
-| 🔴 1 | Créer VLANs (10, 20, 30, 40, 50, 60) | `pfsense_vlan_config.md` |
-| 🔴 2 | Règles Firewall par VLAN | `pfsense_firewall_rules.md` |
-| 🟡 3 | Activer VPN WireGuard | `pfsense_vpn_config.md` |
-| 🟡 4 | Configurer NAT / Port Forwarding | `pfsense_nat_config.md` |
-
-## 📊 Capture d'Écran
-> 💡 *Ajouter une capture du dashboard pfSense dans `docs/architecture/screenshots/`*
-
----
-**Notes de Configuration :**
-- **Date :** 2026-03-11
-- **Environnement :** Laboratoire VMware (non-production)
-- **Backup :** `System` → `Configuration` → `Backups`

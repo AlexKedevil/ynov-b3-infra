@@ -43,14 +43,9 @@ curl -k https://10.20.0.1         # Accès WebGUI
 # Menu Diagnostics -> Ping -> 8.8.8.8
 ```
 
-## 🚀 Prochaines Étapes
-- [ ] Créer les VLANs (10-MGMT, 20-USERS, 30-WIFI, 40-GUEST, 50-SERVERS, 60-DMZ)
-- [ ] Configurer les règles Firewall par segment
-- [ ] Activer VPN (WireGuard) pour l'accès distant
-- [ ] Mettre en place IDS/IPS (Suricata)
+
 
 ---
 **Informations de build :**
 - **Version :** `2.7.2-RELEASE`
 - **Environnement :** VMware Workstation 25 (Laboratoire)
-- **Date :** 2026-03-11
