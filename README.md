@@ -77,13 +77,13 @@ ynov-b3-infra/
 
 | Catégorie | Outils | Statut |
 |-----------|--------|--------|
-| **Virtualisation** | VMware Workstation, Ubuntu Server | ✅ Opérationnel |
-| **Firewall / Routing** | pfSense 2.7+ (VLANs, DHCP, NAT, Firewall) | ✅ Opérationnel |
-| **Réseau** | 6 VLANs 802.1Q, adressage 10.20.0.0/16 | ✅ Opérationnel |
-| **Containerisation** | Docker, docker-compose (room-booking) | ✅ PoC fonctionnel |
-| **CI/CD** | GitHub Actions → Azure Container Registry | ✅ Workflow configuré |
-| **Cloud (doc)** | Azure ACI, Container Instances | 📄 Documenté |
-| **Gestion** | Git, GitHub, Trello, Draw.io | ✅ Actif |
+| **Virtualisation** | VMware Workstation, Ubuntu Server | |
+| **Firewall / Routing** | pfSense 2.7+ (VLANs, DHCP, NAT, Firewall) | |
+| **Réseau** | 6 VLANs 802.1Q, adressage 10.20.0.0/16 | |
+| **Containerisation** | Docker, docker-compose (room-booking) | |
+| **CI/CD** | GitHub Actions → Azure Container Registry | |
+| **Cloud (doc)** | Azure ACI, Container Instances | |
+| **Gestion** | Git, GitHub, Trello, Draw.io | |
 
 ---
 
