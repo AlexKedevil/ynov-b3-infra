@@ -75,15 +75,15 @@ ynov-b3-infra/
 ---
 ## 🛠️ Stack Technique (Laboratoire)
 
-| Catégorie | Outils | Statut |
-|-----------|--------|--------|
-| **Virtualisation** | VMware Workstation, Ubuntu Server | |
-| **Firewall / Routing** | pfSense 2.7+ (VLANs, DHCP, NAT, Firewall) | |
-| **Réseau** | 6 VLANs 802.1Q, adressage 10.20.0.0/16 | |
-| **Containerisation** | Docker, docker-compose (room-booking) | |
-| **CI/CD** | GitHub Actions → Azure Container Registry | |
-| **Cloud (doc)** | Azure ACI, Container Instances | |
-| **Gestion** | Git, GitHub, Trello, Draw.io | |
+| Catégorie | Outils |
+|-----------|--------|
+| **Virtualisation** | VMware Workstation, Ubuntu Server |
+| **Firewall / Routing** | pfSense 2.7+ (VLANs, DHCP, NAT, Firewall) |
+| **Réseau** | 6 VLANs 802.1Q, adressage 10.20.0.0/16 |
+| **Containerisation** | Docker, docker-compose (room-booking) |
+| **CI/CD** | GitHub Actions → Azure Container Registry |
+| **Cloud (doc)** | Azure ACI, Container Instances |
+| **Gestion** | Git, GitHub, Trello, Draw.io |
 
 ---
 
@@ -116,7 +116,7 @@ curl http://localhost:8080
 }
 ```
 
-> 📄 **Détails:** Voir `cloud/room-booking/README.md`
+> 📄 **Détails:** Voir [cloud/room-booking/DETAILS.md](cloud/room-booking/DETAILS.md)
 
 ---
 
