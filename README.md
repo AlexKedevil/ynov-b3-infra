@@ -1,29 +1,25 @@
-# 🎓 Ynov B3 INFRA - Projet Smart Office
+# 🎓 Ynov B3 INFRA - Projet Smart Office 2.0
 
 ## 📋 Présentation du Projet
 
-**Formation:** Ynov Informatique - Bachelor 3  
-**UF:** INFRA - Infrastructure & Réseau  
-**Sujet:** Smart Office  
-**Équipe:** []  
-**Période:** [] - []  
+**Formation:** Ynov Informatique - Bachelor 3 Infrastructure Réseau  
+**Sujet:** Smart Office 2.0 — Infrastructure Réseau Sécurisée  
+**Équipe:** Flaujat Sam, Queudeville Alexandre  
+**Période:** 2026  
 
 ### 🎯 Contexte Pédagogique
 
-Ce projet simule la conception d'une infrastructure IT pour une startup française en hyper-croissance qui emménage dans un nouveau siège de 4 étages.
+Ce projet simule la conception d'une infrastructure IT hybride pour une startup française en hyper-croissance (50 → 200 employés) emménageant dans un nouveau siège de 4 étages.
 
-**Objectif pédagogique:** Mobiliser les compétences acquises en:
-- Architecture réseau (LAN/WLAN/VLAN/VPN)
-- Sécurité (Zero Trust, Pare-feu, SIEM)
-- Cloud hybride (On-Premise + AWS/Azure)
-- DevOps (Containerisation, CI/CD)
-- Gestion de projet agile (Scrum, documentation)
+**Objectifs pédagogiques:**
+- ✅ Architecture réseau: VLANs, routage inter-VLAN, DHCP, NAT
+- ✅ Sécurité: Zero Trust, pfSense firewall, isolation GUEST
+- ✅ Virtualisation: VMware + Ubuntu Server
+- ✅ DevOps: Containerisation Docker, CI/CD avec GitHub Actions
+- ✅ Cloud hybride: Documentation de déploiement Azure (ACI)
+- ✅ Gestion de projet: Agile, Git, Trello, documentation collaborative
 
-
-> 📊 **Accéder au Tableau de Bord :** [**b3-infra | Trello Board**](https://trello.com/b/EXl0H0QS/b3-infra)
-
----
-
+> 📊 **Tableau de Bord Trello:** [b3-infra | Trello](https://trello.com/b/EXl0H0QS/b3-infra)
 
 ---
 
@@ -31,27 +27,34 @@ Ce projet simule la conception d'une infrastructure IT pour une startup françai
 
 ```text
 ynov-b3-infra/
-├── docs/                   # Documentation technique (en français)
-│   ├── architecture/       # DAT, schémas, plan d'adressage IP/VLAN
-│   ├── security/           # Politiques firewall, IAM, Zero Trust
-│   ├── procedures/         # Guides d'installation et de maintenance
-│   ├── pca_pra/            # Plans de continuité et reprise (PCA/PRA)
-│   └── project_management/ # Backlog, sprints, suivi Kanban
-├── infra/                  # Configurations infrastructure
-│   ├── network/            # Configs pfSense, VLANs, scripts réseau
+├── cloud/                    # Services cloud (IaaS/PaaS)
+│   └── room-booking/         # Service de réservation de salles (PoC)
+│       ├── Dockerfile        # Configuration Docker
+│       ├── docker-compose.yml # Orchestration locale
+│       └── src/app.py        # Application Python
+│
+├── docs/                     # Documentation technique (DAT)
+│   ├── architecture/         # Schémas, plan d'adressage IP/VLAN
+│   │   ├── Plan_Adressage_IP_VLAN.md
+│   │   ├── network diagram.xml
+│   │   └── screenshots/      # Captures pfSense, tests réseau
+│   ├── pca_pra/              # Plans de continuité/reprise
+│   ├── procedures/           # Guides d'installation
+│   ├── project_management/   # Backlog, sprints, Kanban
+│   └── security/             # Politiques firewall, Zero Trust
+│
+├── infra/                    # Configuration infrastructure on-premise
+│   ├── network/              # pfSense, VLANs, VMware
 │   │   ├── pfsense_initial_setup.md
 │   │   ├── pfsense_wizard_config.md
 │   │   ├── pfsense_vlan_config.md
 │   │   └── vmware_vmnet2_config.md
-│   ├── servers/            # Scripts Bash, Ansible pour Ubuntu
-│   ├── docker/             # Dockerfiles, docker-compose.yml
-│   └── ansible/            # Playbooks d'automatisation
-├── cloud/                  # Infrastructure Cloud
-│   ├── aws/                # Scripts et configs AWS
-│   └── terraform/          # Infrastructure as Code (optionnel)
-├── monitoring/             # Supervision et SIEM
-│   ├── grafana/            # Dashboards JSON
-│   └── wazuh/              # Règles de détection
+│   └── servers/              # Scripts Ubuntu (à venir)
+│
+├── monitoring/               # Supervision (prévu pour final)
+│   ├── grafana/              # Dashboards
+│   └── wazuh/                # Règles SIEM
+│
 ├── .gitignore
 └── README.md
 ```
@@ -72,27 +75,60 @@ ynov-b3-infra/
 ---
 ## 🛠️ Stack Technique (Laboratoire)
 
-| Catégorie | Outils / Technologies |
-|:---|:---|
-| **Virtualisation** | VMware Workstation 25, GNS3 3.0.6 |
-| **OS Serveur** | Ubuntu Server (CLI) |
-| **Firewall** | pfSense 2.7+ |
-| **Réseau** | VLANs, 802.1Q, DHCP, DNS, NAT, VPN |
-| **Conteneurs** | Docker, Docker Compose |
-| **Bases de données** | PostgreSQL 14+, MongoDB 6+ |
-| **Monitoring** | Grafana, Prometheus, Wazuh (SIEM) |
-| **Cloud** | AWS Free Tier (EC2, S3) ou Azure |
-| **Gestion** | Git, GitHub, Trello, Draw.io |
+| Catégorie | Outils | Statut |
+|-----------|--------|--------|
+| **Virtualisation** | VMware Workstation, Ubuntu Server | ✅ Opérationnel |
+| **Firewall / Routing** | pfSense 2.7+ (VLANs, DHCP, NAT, Firewall) | ✅ Opérationnel |
+| **Réseau** | 6 VLANs 802.1Q, adressage 10.20.0.0/16 | ✅ Opérationnel |
+| **Containerisation** | Docker, docker-compose (room-booking) | ✅ PoC fonctionnel |
+| **CI/CD** | GitHub Actions → Azure Container Registry | ✅ Workflow configuré |
+| **Cloud (doc)** | Azure ACI, Container Instances | 📄 Documenté |
+| **Gestion** | Git, GitHub, Trello, Draw.io | ✅ Actif |
 
 ---
 
-## 🔗 Ressources & Liens Utiles
+## 🚀 Room Booking Service (Cloud PoC)
+
+Service de démonstration pour le livrable *"Déploiement d'un service containerisé sur une plateforme Cloud"*.
+
+### Architecture cible (Azure)
+
+```
+[GitHub] → [GitHub Actions] → [Azure ACR] → [Azure ACI] → [Utilisateurs]
+```
+
+### Démarrage local
+
+```bash
+cd cloud/room-booking
+docker-compose up --build
+curl http://localhost:8080
+```
+
+### Réponse attendue
+
+```json
+{
+  "service": "room-booking",
+  "version": "1.0.0",
+  "status": "healthy",
+  "project": "Smart Office 2.0 - B3 INYOV"
+}
+```
+
+> 📄 **Détails:** Voir `cloud/room-booking/README.md`
+
+---
+
+## 🔗 Ressources
 
 - [📚 Documentation pfSense](https://docs.netgate.com/pfsense/)
+- [🐳 Docker Docs](https://docs.docker.com/)
+- [☁️ Azure Container Instances](https://learn.microsoft.com/fr-fr/azure/container-instances/)
 
 ---
 
-## 👥 Contribution & Collaboration
+## 👥 Contribution
 
 Ce projet suit une méthodologie Agile. Pour contribuer:
 
