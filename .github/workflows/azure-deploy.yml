@@ -1,0 +1,23 @@
+name: Deploy to Azure ACR
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Login to ACR
+        run: docker login ${{ secrets.ACR_LOGIN_SERVER }} -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
+      
+      - name: Build and push
+        run: |
+          docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:${{ github.sha }} cloud/room-booking/
+            
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:${{ github.sha }}
+          
+          docker tag ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:latest
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:latest
