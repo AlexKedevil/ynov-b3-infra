@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0" version="29.5.6">
+  <diagram name="Schema_Logique" id="smart-office-2024">
+    <mxGraphModel dx="1117" dy="778" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#f7f9fb" math="0" shadow="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="10" parent="1" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;shadow=1;" value="&lt;div style=&quot;font-size: 16px; font-weight: bold;&quot;&gt;☁️ INTERNET / FAI&lt;/div&gt;" vertex="1">
+          <mxGeometry height="125" width="200" x="480" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;shadow=1;spacing=10;" value="&lt;div style=&quot;font-size: 14px; font-weight: bold;&quot;&gt;🔥 pfSense Firewall&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#b85450&quot;/&gt;&lt;div style=&quot;text-align: left; font-size: 12px;&quot;&gt;&lt;b&gt;WAN:&lt;/b&gt; DHCP/PPPoE&lt;br&gt;&lt;b&gt;LAN:&lt;/b&gt; 10.20.0.1/24&lt;br&gt;&lt;b&gt;VPN:&lt;/b&gt; WireGuard (51820)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="200" x="480" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;shadow=1;" value="&lt;div style=&quot;font-size: 14px; font-weight: bold;&quot;&gt;🔀 Managed Switch&lt;/div&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;(VLAN Trunk 802.1Q)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="460" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="40" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;🔵 VLAN 10&lt;br&gt;MGMT&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#9673a6&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.10.0/24&lt;br&gt;&lt;i&gt;Switches, ILO, Admin&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="80" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="41" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;🟢 VLAN 20&lt;br&gt;USERS&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#82b366&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.20.0/24&lt;br&gt;&lt;i&gt;PC, Printers, Phones&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="250" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="42" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;📶 VLAN 30&lt;br&gt;WIFI_STAFF&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#82b366&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.30.0/24&lt;br&gt;&lt;i&gt;Employés (WPA3)&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="420" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="43" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;🟡 VLAN 40&lt;br&gt;WIFI_GUEST&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#d6b656&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.40.0/24&lt;br&gt;&lt;i&gt;Isolé (Internet Only)&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="590" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="44" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;🔴 VLAN 50&lt;br&gt;SERVERS&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#b85450&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.50.0/24&lt;br&gt;&lt;i&gt;AD, DB, App, Mon&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="760" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="45" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;🟠 VLAN 60&lt;br&gt;DMZ&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#d79b00&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.60.0/24&lt;br&gt;&lt;i&gt;Web, VPN Gateway&lt;/i&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="150" x="930" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="50" parent="1" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;shadow=1;" value="&lt;div style=&quot;font-size: 14px; font-weight: bold;&quot;&gt;☁️ AWS / Azure&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#6c8ebf&quot;/&gt;&lt;div style=&quot;font-size:11px; text-align:center;&quot;&gt;&lt;b&gt;S3:&lt;/b&gt; Immutable Bckp&lt;br&gt;&lt;b&gt;EC2:&lt;/b&gt; Disaster Recov&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="160" x="755" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="100" edge="1" parent="1" source="10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;" target="20" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="101" edge="1" parent="1" source="20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;" target="30" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="102" edge="1" parent="1" source="30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="40" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="103" edge="1" parent="1" source="30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="41" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="104" edge="1" parent="1" source="30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="42" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="105" edge="1" parent="1" source="30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="43" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="106" edge="1" parent="1" source="30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="44" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="107" edge="1" parent="1" source="30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="45" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="108" edge="1" parent="1" source="44" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1881C5;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontColor=#1881C5;" target="50" value="&lt;b&gt;Backup S3&lt;/b&gt;">
+          <mxGeometry height="50" relative="1" width="50" as="geometry" />
+        </mxCell>
+        <mxCell id="200" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;strokeWidth=2;shadow=1;align=left;verticalAlign=top;spacing=10;" value="&lt;div style=&quot;font-weight:bold; margin-bottom: 5px;&quot;&gt;📌 Légende&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#ccc&quot;/&gt;🔵 MGMT&lt;br&gt;🟢 USERS/STAFF&lt;br&gt;🟡 GUEST&lt;br&gt;🔴 SERVERS&lt;br&gt;🟠 DMZ" vertex="1">
+          <mxGeometry height="120" width="150" x="80" y="660" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

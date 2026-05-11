@@ -19,66 +19,57 @@ Ce projet simule la conception d'une infrastructure IT pour une startup françai
 - DevOps (Containerisation, CI/CD)
 - Gestion de projet agile (Scrum, documentation)
 
-### 🚀 Ce que ce projet va implémenter
 
-#### 1. Architecture Réseau
-- [ ] Segmentation VLAN (MGMT, USERS, WIFI, SERVERS, DMZ)
-- [ ] Routage inter-VLAN via pfSense
-- [ ] Accès distant sécurisé (VPN WireGuard/OpenVPN + MFA)
-- [ ] Politiques de firewall et ACLs
+> 📊 **Accéder au Tableau de Bord :** [**b3-infra | Trello Board**](https://trello.com/b/EXl0H0QS/b3-infra)
 
-#### 2. Infrastructure Système
-- [ ] Annuaire centralisé (Samba AD ou FreeIPA)
-- [ ] Services DNS/DHCP/NTP
-- [ ] Bases de données: PostgreSQL (SQL) + MongoDB (NoSQL)
-- [ ] Stratégie de stockage et sauvegarde (3-2-1)
+---
 
-#### 3. Sécurité & Supervision
-- [ ] Pare-feu pfSense avec règles Zero Trust
-- [ ] Solution SIEM (Wazuh) pour détection de menaces
-- [ ] Tableau de bord monitoring (Grafana + Prometheus)
-- [ ] Journalisation centralisée et analyse des logs
-
-#### 4. Cloud & DevOps
-- [ ] Architecture hybride: services critiques On-Premise + backup Cloud
-- [ ] Containerisation d'une application métier (Docker)
-- [ ] Déploiement sur AWS/Azure (instance EC2 ou équivalent)
-- [ ] Analyse comparative TCO (Cloud vs On-Premise)
-
-#### 5. Gestion de Projet & Documentation
-- [ ] Dossier d'Architecture Technique (DAT) complet
-- [ ] Plan de Continuité (PCA) et Reprise d'Activité (PRA)
-- [ ] Backlog Agile et suivi de sprints (Trello/GitHub Projects)
-- [ ] Procédures d'installation et de dépannage
 
 ---
 
 ## 📁 Structure du Dépôt
 
+```text
 ynov-b3-infra/
-├── docs/ # Documentation technique (en français)
-│ ├── architecture/ # DAT, schémas, plan d'adressage IP/VLAN
-│ ├── securite/ # Politiques firewall, IAM, Zero Trust
-│ ├── procedures/ # Guides d'installation et de maintenance
-│ ├── pca_pra/ # Plans de continuité et reprise
-│ └── gestion_projet/ # Backlog, sprints, suivi Kanban
-├── infra/ # Configurations infrastructure
-│ ├── reseau/ # Configs pfSense, VLANs, scripts réseau
-│ ├── serveurs/ # Scripts Bash, Ansible pour Ubuntu
-│ ├── docker/ # Dockerfiles, docker-compose.yml
-│ └── ansible/ # Playbooks d'automatisation
-├── cloud/ # Infrastructure Cloud
-│ ├── aws/ # Scripts et configs AWS
-│ └── terraform/ # Infrastructure as Code (optionnel)
-├── monitoring/ # Supervision et SIEM
-│ ├── grafana/ # Dashboards JSON
-│ └── wazuh/ # Règles de détection
+├── docs/                   # Documentation technique (en français)
+│   ├── architecture/       # DAT, schémas, plan d'adressage IP/VLAN
+│   ├── security/           # Politiques firewall, IAM, Zero Trust
+│   ├── procedures/         # Guides d'installation et de maintenance
+│   ├── pca_pra/            # Plans de continuité et reprise (PCA/PRA)
+│   └── project_management/ # Backlog, sprints, suivi Kanban
+├── infra/                  # Configurations infrastructure
+│   ├── network/            # Configs pfSense, VLANs, scripts réseau
+│   │   ├── pfsense_initial_setup.md
+│   │   ├── pfsense_wizard_config.md
+│   │   ├── pfsense_vlan_config.md
+│   │   └── vmware_vmnet2_config.md
+│   ├── servers/            # Scripts Bash, Ansible pour Ubuntu
+│   ├── docker/             # Dockerfiles, docker-compose.yml
+│   └── ansible/            # Playbooks d'automatisation
+├── cloud/                  # Infrastructure Cloud
+│   ├── aws/                # Scripts et configs AWS
+│   └── terraform/          # Infrastructure as Code (optionnel)
+├── monitoring/             # Supervision et SIEM
+│   ├── grafana/            # Dashboards JSON
+│   └── wazuh/              # Règles de détection
 ├── .gitignore
 └── README.md
-
+```
 
 ---
 
+## 🗺️ Architecture Réseau
+
+![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
+
+> 🔗 **Documents de référence :**
+> - [📜 Plan d'Adressage IP & Politique VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
+> - [🚀 Installation Initiale pfSense](infra/network/pfsense_initial_setup.md)
+> - [⚙️ Configuration Wizard pfSense](infra/network/pfsense_wizard_config.md)
+> - [🔌 Configuration VLANs pfSense](infra/network/pfsense_vlan_config.md)
+> - [🌐 Configuration VMware (vmnet2)](infra/network/vmware_vmnet2_config.md)
+
+---
 ## 🛠️ Stack Technique (Laboratoire)
 
 | Catégorie | Outils / Technologies |
@@ -97,8 +88,7 @@ ynov-b3-infra/
 
 ## 🔗 Ressources & Liens Utiles
 
-- [📚 Documentation technique](https://docs.netgate.com/pfsense/, https://docs.docker.com/)
-- []
+- [📚 Documentation pfSense](https://docs.netgate.com/pfsense/)
 
 ---
 
