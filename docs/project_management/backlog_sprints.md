@@ -67,5 +67,5 @@
 
 | Fichier | Description |
 |---------|-------------|
-| [screenshots/trello_board_overview.png](screenshots/trello_board_overview.png) | Vue complète du board (à ajouter) |
-| [screenshots/trello_card_monitoring.png](screenshots/trello_card_monitoring.png) | Détail carte Monitoring (à ajouter) |
+| [screenshots/trello_board_overview.png](screenshots/trello_board_overview.png) | Vue complète du board |
+| [screenshots/trello_card_monitoring.png](screenshots/trello_card_monitoring.png) | Détail carte Monitoring |
