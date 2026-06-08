@@ -1,7 +1,5 @@
 # Backlog et sprints — Méthodologie Agile
 
-> Statut : **Fait** — board [b3-infra](https://trello.com/b/EXl0H0QS/b3-infra) restructuré (juin 2026).
-
 ---
 
 ## Méthodologie
@@ -9,7 +7,6 @@
 - **Framework :** Scrum / Kanban hybride
 - **Outil :** [Trello — b3-infra](https://trello.com/b/EXl0H0QS/b3-infra)
 - **Équipe :** Flaujat Sam, Queudeville Alexandre
-- **Guide reconstruction board :** [trello_board_guide.md](trello_board_guide.md)
 
 ---
 

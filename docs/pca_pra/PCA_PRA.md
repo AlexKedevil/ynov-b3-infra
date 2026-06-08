@@ -1,7 +1,5 @@
 # Plan de Continuité d'Activité (PCA) et Plan de Reprise d'Activité (PRA)
 
-> Statut : **Fait**
-
 Voir aussi [BIA.md](BIA.md).
 
 ---

@@ -32,3 +32,6 @@ oral-prep/
 
 # Sujet officiel Ynov — local uniquement
 UF_INFRA_B3.pdf
+
+# Guides internes (assistant / reconstruction locale, non versionnés)
+docs/project_management/trello_board_guide.md

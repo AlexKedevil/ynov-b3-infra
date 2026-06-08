@@ -1,8 +1,6 @@
 # Supervision et détection d'anomalies
 
-> Statut : **Fait** — Grafana + Loki + Promtail, logs **pfSense VM** via syslog.
-
-Livrable PoC UF_INFRA_B3 : tableau de bord, collecte de logs, détection d'incident.
+PoC UF_INFRA_B3 : Grafana + Loki + Promtail, logs **pfSense VM** via syslog — tableau de bord, collecte de logs, détection d'incident.
 
 ---
 

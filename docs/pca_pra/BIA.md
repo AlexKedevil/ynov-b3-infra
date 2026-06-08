@@ -1,7 +1,5 @@
 # Analyse des impacts sur l'activité (BIA)
 
-> Statut : **Fait**
-
 ---
 
 ## Contexte

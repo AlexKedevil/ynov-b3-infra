@@ -11,22 +11,7 @@
 
 Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 → 200 employés, siège 4 étages, télétravail flexible).
 
-### Avancement
-
-| Domaine | Statut |
-|---------|--------|
-| Architecture réseau (VLANs, pfSense, VMware) | Fait |
-| Plan IP/VLAN, schémas, captures firewall | Fait |
-| CI/CD → Azure Container Registry | Fait |
-| room-booking (app + BDD SQL/Redis) | Fait |
-| Microsoft Entra ID (IAM / Zero Trust) | Fait (config portail requise) |
-| Déploiement Azure ACI | Fait |
-| Monitoring / détection anomalies | Fait (PoC local Grafana/Loki) |
-| DAT complet, PCA/PRA, TCO | Fait |
-| Gestion de projet (Trello + export Moodle) | Trello fait — export Moodle à faire |
-
-> **Index de tous les livrables :** [docs/README.md](docs/README.md)  
-> **Tableau Trello :** [b3-infra | Trello](https://trello.com/b/EXl0H0QS/b3-infra)
+**Index des livrables :** [docs/README.md](docs/README.md) · **Tableau Trello :** [b3-infra](https://trello.com/b/EXl0H0QS/b3-infra)
 
 ---
 
