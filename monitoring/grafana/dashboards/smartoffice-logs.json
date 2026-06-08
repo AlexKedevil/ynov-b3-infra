@@ -40,37 +40,67 @@
     },
     {
       "datasource": { "type": "loki", "uid": "loki" },
-      "fieldConfig": { "defaults": { "color": { "fixedColor": "orange", "mode": "fixed" }, "unit": "ops" }, "overrides": [] },
+      "fieldConfig": { "defaults": { "color": { "fixedColor": "green", "mode": "fixed" }, "unit": "ops" }, "overrides": [] },
       "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
-      "id": 3,
+      "id": 6,
       "options": { "legend": { "displayMode": "list", "placement": "bottom" } },
       "targets": [
         {
-          "expr": "sum(rate({job=\"pfsense\"} |~ \"(,block,|action=block)\"[1m]))",
-          "legendFormat": "blocages pfSense",
+          "expr": "sum(rate({source=\"pfsense-vm\"}[1m]))",
+          "legendFormat": "logs pfSense VM",
           "refId": "A"
         }
       ],
-      "title": "pfSense — connexions bloquées (VM ou simulateur)",
+      "title": "pfSense VM — débit de logs (syslog OK)",
       "type": "timeseries"
     },
     {
       "datasource": { "type": "loki", "uid": "loki" },
+      "fieldConfig": { "defaults": { "color": { "fixedColor": "orange", "mode": "fixed" }, "unit": "ops" }, "overrides": [] },
       "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
-      "id": 4,
-      "options": { "showLabels": false, "showTime": true, "sortOrder": "Descending" },
+      "id": 3,
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" } },
       "targets": [
         {
-          "expr": "{job=\"pfsense\",source=\"pfsense-vm\"} |~ \"(?i)(filterlog|block|deny)\"",
+          "expr": "sum(rate({source=\"pfsense-vm\"} |~ \"(?i)(,block,|match,block|action=block|filterlog)\"[1m]))",
+          "legendFormat": "blocages / filterlog",
           "refId": "A"
         }
       ],
-      "title": "Logs pfSense (VM VMware)",
+      "title": "pfSense VM — firewall (blocages)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "loki", "uid": "loki" },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 16 },
+      "id": 4,
+      "options": { "showLabels": true, "showTime": true, "sortOrder": "Descending" },
+      "targets": [
+        {
+          "expr": "{source=\"pfsense-vm\"}",
+          "refId": "A"
+        }
+      ],
+      "title": "Logs pfSense (VM VMware) — tous",
       "type": "logs"
     },
     {
       "datasource": { "type": "loki", "uid": "loki" },
-      "gridPos": { "h": 10, "w": 24, "x": 0, "y": 16 },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 24 },
+      "id": 7,
+      "options": { "showLabels": false, "showTime": true, "sortOrder": "Descending" },
+      "targets": [
+        {
+          "expr": "{source=\"pfsense-vm\"} |~ \"(?i)(filterlog|,block,|match,block)\"",
+          "refId": "A"
+        }
+      ],
+      "title": "Logs pfSense — firewall uniquement",
+      "type": "logs"
+    },
+    {
+      "datasource": { "type": "loki", "uid": "loki" },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 32 },
       "id": 5,
       "options": { "showLabels": true, "showTime": true, "sortOrder": "Descending" },
       "targets": [
@@ -87,10 +117,10 @@
   "schemaVersion": 39,
   "tags": ["smart-office", "loki"],
   "templating": { "list": [] },
-  "time": { "from": "now-15m", "to": "now" },
+  "time": { "from": "now-1h", "to": "now" },
   "timepicker": {},
   "timezone": "browser",
   "title": "Smart Office — Logs & Anomalies",
   "uid": "smartoffice-logs",
-  "version": 1
+  "version": 2
 }
