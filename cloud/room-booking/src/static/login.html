@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Office — Connexion Entra ID</title>
+  <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
+    button { padding: 0.6rem 1.2rem; margin-right: 0.5rem; cursor: pointer; }
+    pre { background: #f4f4f4; padding: 1rem; overflow-x: auto; font-size: 0.8rem; }
+    .ok { color: #0a0; }
+    .warn { color: #a60; }
+  </style>
+</head>
+<body>
+  <h1>Room Booking — Microsoft Entra ID</h1>
+  <p>Page de démo pour obtenir un jeton d'accès (Zero Trust / IAM).</p>
+  <p id="status" class="warn">Chargement de la configuration…</p>
+  <button id="loginBtn" disabled>Se connecter avec Microsoft</button>
+  <button id="logoutBtn" disabled>Se déconnecter</button>
+  <h2>Utilisateur</h2>
+  <pre id="userInfo">—</pre>
+  <h2>Access Token (pour curl / Postman)</h2>
+  <pre id="tokenBox">—</pre>
+  <h2>Exemple API</h2>
+  <pre id="curlExample">—</pre>
+
+  <script>
+    let msalInstance = null;
+    let apiScope = null;
+
+    async function loadConfig() {
+      const res = await fetch("/auth/config");
+      const cfg = await res.json();
+      const status = document.getElementById("status");
+
+      if (cfg.authDisabled) {
+        status.textContent = "AUTH_DISABLED=true — API accessible sans jeton en local.";
+        status.className = "warn";
+        return;
+      }
+
+      if (!cfg.tenantId || !cfg.clientId || !cfg.apiScope) {
+        status.textContent = "Entra ID non configuré. Voir docs/security/entra_portal_setup.md";
+        status.className = "warn";
+        return;
+      }
+
+      apiScope = cfg.apiScope;
+      msalInstance = new msal.PublicClientApplication({
+        auth: {
+          clientId: cfg.clientId,
+          authority: `https://login.microsoftonline.com/${cfg.tenantId}`,
+          redirectUri: window.location.origin + "/static/login.html",
+        },
+        cache: { cacheLocation: "sessionStorage" },
+      });
+      await msalInstance.initialize();
+      const accounts = msalInstance.getAllAccounts();
+      if (accounts.length > 0) {
+        showAccount(accounts[0]);
+      }
+      status.textContent = "Entra ID configuré. Connectez-vous pour obtenir un jeton.";
+      status.className = "ok";
+      document.getElementById("loginBtn").disabled = false;
+    }
+
+    async function login() {
+      const result = await msalInstance.loginPopup({ scopes: [apiScope] });
+      showAccount(result.account);
+      await refreshToken();
+    }
+
+    async function refreshToken() {
+      const account = msalInstance.getAllAccounts()[0];
+      const result = await msalInstance.acquireTokenSilent({
+        scopes: [apiScope],
+        account,
+      });
+      document.getElementById("tokenBox").textContent = result.accessToken;
+      document.getElementById("curlExample").textContent =
+        `curl http://localhost:8080/rooms \\\n  -H "Authorization: Bearer ${result.accessToken.substring(0, 40)}..."`;
+      document.getElementById("logoutBtn").disabled = false;
+    }
+
+    function showAccount(account) {
+      document.getElementById("userInfo").textContent = JSON.stringify({
+        username: account.username,
+        name: account.name,
+      }, null, 2);
+      document.getElementById("loginBtn").disabled = true;
+    }
+
+    async function logout() {
+      await msalInstance.logoutPopup();
+      document.getElementById("userInfo").textContent = "—";
+      document.getElementById("tokenBox").textContent = "—";
+      document.getElementById("curlExample").textContent = "—";
+      document.getElementById("loginBtn").disabled = false;
+      document.getElementById("logoutBtn").disabled = true;
+    }
+
+    document.getElementById("loginBtn").addEventListener("click", login);
+    document.getElementById("logoutBtn").addEventListener("click", logout);
+    loadConfig();
+  </script>
+</body>
+</html>

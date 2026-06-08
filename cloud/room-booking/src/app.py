@@ -2,10 +2,18 @@ import logging
 import os
 from datetime import datetime
 
-from flask import Flask, jsonify, request
+from flask import Flask, g, jsonify, redirect, request, send_from_directory
 
+from auth import require_auth
 from cache import get_availability, invalidate_availability, set_availability
-from config import APP_VERSION
+from config import (
+    APP_VERSION,
+    AUTH_DISABLED,
+    AZURE_API_AUDIENCE,
+    AZURE_CLIENT_ID,
+    AZURE_SPA_CLIENT_ID,
+    AZURE_TENANT_ID,
+)
 from db import get_connection
 
 logging.basicConfig(
@@ -13,6 +21,8 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(message)s",
 )
 logger = logging.getLogger("room-booking")
+
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
 
 
 def create_app():
@@ -25,9 +35,31 @@ def create_app():
             "version": APP_VERSION,
             "status": "healthy",
             "project": "Smart Office 2.0",
+            "auth_disabled": AUTH_DISABLED,
         })
 
+    @app.get("/auth/config")
+    def auth_config():
+        return jsonify({
+            "tenantId": AZURE_TENANT_ID,
+            "clientId": AZURE_SPA_CLIENT_ID,
+            "apiClientId": AZURE_CLIENT_ID,
+            "apiScope": f"{AZURE_API_AUDIENCE}/access_as_user"
+            if AZURE_API_AUDIENCE
+            else "",
+            "authDisabled": AUTH_DISABLED,
+        })
+
+    @app.get("/login")
+    def login_page():
+        return redirect("/static/login.html")
+
+    @app.get("/static/<path:filename>")
+    def static_files(filename):
+        return send_from_directory(STATIC_DIR, filename)
+
     @app.get("/rooms")
+    @require_auth()
     def list_rooms():
         with get_connection() as conn:
             with conn.cursor() as cur:
@@ -41,6 +73,7 @@ def create_app():
         ])
 
     @app.post("/rooms")
+    @require_auth(required_role="Admin")
     def create_room():
         data = request.get_json(silent=True) or {}
         name = data.get("name")
@@ -60,12 +93,13 @@ def create_app():
                 row = cur.fetchone()
             conn.commit()
 
-        logger.info("Room created id=%s name=%s", row[0], row[1])
+        logger.info("Room created id=%s name=%s by=%s", row[0], row[1], g.user_email)
         return jsonify({
             "id": row[0], "name": row[1], "capacity": row[2], "floor": row[3],
         }), 201
 
     @app.get("/bookings")
+    @require_auth()
     def list_bookings():
         room_id = request.args.get("room_id", type=int)
         date_str = request.args.get("date")
@@ -108,6 +142,7 @@ def create_app():
         ])
 
     @app.get("/rooms/<int:room_id>/availability")
+    @require_auth()
     def room_availability(room_id):
         date_str = request.args.get("date")
         if not date_str:
@@ -115,7 +150,10 @@ def create_app():
 
         cached = get_availability(room_id, date_str)
         if cached is not None:
-            return jsonify({"room_id": room_id, "date": date_str, "bookings": cached, "cached": True})
+            return jsonify({
+                "room_id": room_id, "date": date_str,
+                "bookings": cached, "cached": True,
+            })
 
         with get_connection() as conn:
             with conn.cursor() as cur:
@@ -135,19 +173,23 @@ def create_app():
             for r in rows
         ]
         set_availability(room_id, date_str, slots)
-        return jsonify({"room_id": room_id, "date": date_str, "bookings": slots, "cached": False})
+        return jsonify({
+            "room_id": room_id, "date": date_str,
+            "bookings": slots, "cached": False,
+        })
 
     @app.post("/bookings")
+    @require_auth()
     def create_booking():
         data = request.get_json(silent=True) or {}
         room_id = data.get("room_id")
-        user_email = data.get("user_email")
+        user_email = g.user_email
         start_time = data.get("start_time")
         end_time = data.get("end_time")
 
-        if not all([room_id, user_email, start_time, end_time]):
+        if not all([room_id, start_time, end_time]):
             return jsonify({
-                "error": "room_id, user_email, start_time and end_time are required",
+                "error": "room_id, start_time and end_time are required",
             }), 400
 
         try:
@@ -206,22 +248,29 @@ def create_app():
         }), 201
 
     @app.delete("/bookings/<int:booking_id>")
+    @require_auth()
     def delete_booking(booking_id):
         with get_connection() as conn:
             with conn.cursor() as cur:
                 cur.execute(
-                    "SELECT room_id, start_time FROM bookings WHERE id = %s",
+                    "SELECT b.room_id, b.start_time, u.email "
+                    "FROM bookings b JOIN users u ON u.id = b.user_id "
+                    "WHERE b.id = %s",
                     (booking_id,),
                 )
                 row = cur.fetchone()
                 if not row:
                     return jsonify({"error": "booking not found"}), 404
 
+                is_admin = "Admin" in g.user_roles
+                if row[2] != g.user_email and not is_admin:
+                    return jsonify({"error": "not allowed to delete this booking"}), 403
+
                 cur.execute("DELETE FROM bookings WHERE id = %s", (booking_id,))
             conn.commit()
 
         invalidate_availability(row[0], row[1].date().isoformat())
-        logger.info("Booking deleted id=%s", booking_id)
+        logger.info("Booking deleted id=%s by=%s", booking_id, g.user_email)
         return jsonify({"deleted": booking_id})
 
     @app.get("/")
