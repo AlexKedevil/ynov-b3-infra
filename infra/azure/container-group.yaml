@@ -24,7 +24,7 @@ properties:
             memoryInGB: 1.0
     - name: postgres
       properties:
-        image: postgres:16-alpine
+        image: {{ACR_SERVER}}/postgres:16-alpine
         environmentVariables:
           - name: POSTGRES_USER
             value: roombooking
@@ -38,7 +38,7 @@ properties:
             memoryInGB: 0.5
     - name: redis
       properties:
-        image: redis:7-alpine
+        image: {{ACR_SERVER}}/redis:7-alpine
         resources:
           requests:
             cpu: 0.5
