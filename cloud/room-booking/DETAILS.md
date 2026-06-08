@@ -1,59 +1,88 @@
-# 🚀 Room Booking Service (Proof of Concept)
+# Room Booking Service (Proof of Concept)
 
-Ce service est une application Python (Flask) containerisée servant de preuve de concept (PoC) pour le déploiement cloud hybride du projet Smart Office 2.0.
+Application Flask containerisée pour la réservation de salles — livrable cloud Smart Office 2.0.
 
-## 🛠️ Stack Technique
+## Stack
 
-- **Langage:** Python 3.9+
-- **Framework:** Flask
-- **Containerisation:** Docker & Docker Compose
-- **Déploiement Cible:** Azure Container Instances (ACI)
+| Composant | Technologie |
+|-----------|-------------|
+| API | Flask 3 + Gunicorn |
+| SQL | PostgreSQL 16 |
+| NoSQL | Redis 7 (cache disponibilité) |
+| Auth | Microsoft Entra ID — PR suivante `feature/entra-id-auth` |
 
-## 📁 Structure du Service
+## Structure
 
 ```text
 room-booking/
-├── Dockerfile          # Image multi-stage pour Python
-├── docker-compose.yml  # Orchestration pour le développement local
-├── DETAILS.md          # Documentation détaillée (ce fichier)
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── init.sql              # Schéma + données de démo
+├── DETAILS.md
 └── src/
-    └── app.py          # Logique de l'API
+    ├── app.py            # Routes API
+    ├── config.py
+    ├── db.py
+    └── cache.py
 ```
 
-## 🚀 Lancement Rapide
-
-### Avec Docker Compose (Recommandé)
-
-Le fichier `docker-compose.yml` permet de lancer le service avec toutes ses configurations en une seule commande :
+## Démarrage local
 
 ```bash
-docker-compose up --build
+cd cloud/room-booking
+docker compose up --build
 ```
 
-Le service sera accessible sur [http://localhost:8080](http://localhost:8080).
+## API Endpoints
 
-### Avec Docker (Manuel)
+### `GET /health`
+Statut du service.
 
-```bash
-docker build -t room-booking .
-docker run -p 8080:8080 room-booking
+### `GET /rooms`
+Liste des salles.
+
+### `POST /rooms`
+Créer une salle (auth Entra à venir).
+
+```json
+{"name": "Salle Epsilon", "capacity": 10, "floor": 2}
 ```
 
-## 📡 API Endpoints
+### `GET /bookings`
+Liste des réservations. Paramètres optionnels : `room_id`, `date` (YYYY-MM-DD).
 
-### `GET /`
-Retourne le statut du service et les informations du projet.
+### `GET /rooms/{id}/availability?date=2026-06-10`
+Créneaux occupés (cache Redis 5 min).
 
-**Exemple de réponse :**
+### `POST /bookings`
+Créer une réservation.
+
 ```json
 {
-  "service": "room-booking",
-  "version": "1.0.0",
-  "status": "healthy",
-  "project": "Smart Office 2.0 - B3 INYOV"
+  "room_id": 1,
+  "user_email": "employee@smartoffice.local",
+  "start_time": "2026-06-10T09:00:00+02:00",
+  "end_time": "2026-06-10T10:00:00+02:00"
 }
 ```
 
-## ☁️ Déploiement Azure
+### `DELETE /bookings/{id}`
+Annuler une réservation.
 
-Ce service est automatiquement déployé via GitHub Actions vers **Azure Container Registry (ACR)** puis instancié sur **Azure Container Instances (ACI)**.
+## Tests rapides
+
+```bash
+curl http://localhost:8080/health
+curl http://localhost:8080/rooms
+curl -X POST http://localhost:8080/bookings \
+  -H "Content-Type: application/json" \
+  -d '{"room_id":1,"user_email":"test@smartoffice.local","start_time":"2026-06-10T14:00:00+02:00","end_time":"2026-06-10T15:00:00+02:00"}'
+curl "http://localhost:8080/rooms/1/availability?date=2026-06-10"
+```
+
+## Déploiement Azure
+
+Pipeline : GitHub Actions → ACR `smartofficeynov` → ACI (France Central).
+
+> L'image Docker ne contient que l'app. PostgreSQL et Redis sont dans `docker-compose` pour le dev local ; le déploiement ACI multi-container sera ajouté dans `feature/azure-aci-deploy`.
