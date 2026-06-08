@@ -11,16 +11,16 @@ Portail de tous les documents requis par le sujet **UF_INFRA_B3** (Smart Office 
 
 | Livrable UF_INFRA_B3 | Fichier | Statut |
 |----------------------|---------|--------|
-| Dossier d'Architecture Technique (DAT) | [DAT.md](DAT.md) | En cours |
+| Dossier d'Architecture Technique (DAT) | [DAT.md](DAT.md) | Fait |
 | Plan d'adressage IP / VLANs | [architecture/Plan_Adressage_IP_VLAN.md](architecture/Plan_Adressage_IP_VLAN.md) | Fait |
-| Schémas architecture | [architecture/](architecture/) | Partiel |
+| Schémas architecture | [architecture/](architecture/) | Fait |
 | Politiques de sécurité / Zero Trust / IAM | [security/](security/) | Fait |
-| Stratégie stockage et sauvegarde | [DAT.md](DAT.md) § Stockage | À faire |
-| Analyse des risques (BIA) | [pca_pra/BIA.md](pca_pra/BIA.md) | À faire |
-| PCA / PRA | [pca_pra/PCA_PRA.md](pca_pra/PCA_PRA.md) | À faire |
-| Modèle base de données (Merise/UML) | [database/MCD_Merise.md](database/MCD_Merise.md) | À faire |
-| Sauvegarde / restauration BDD | [database/backup_restore.md](database/backup_restore.md) | À faire |
-| Gestion des incidents (ITSM) | [project_management/ITSM.md](project_management/ITSM.md) | À faire |
+| Stratégie stockage et sauvegarde | [DAT.md](DAT.md) §9 + [database/backup_restore.md](database/backup_restore.md) | Fait |
+| Analyse des risques (BIA) | [pca_pra/BIA.md](pca_pra/BIA.md) | Fait |
+| PCA / PRA | [pca_pra/PCA_PRA.md](pca_pra/PCA_PRA.md) | Fait |
+| Modèle base de données (Merise/UML) | [database/MCD_Merise.md](database/MCD_Merise.md) | Fait |
+| Sauvegarde / restauration BDD | [database/backup_restore.md](database/backup_restore.md) | Fait |
+| Gestion des incidents (ITSM) | [project_management/ITSM.md](project_management/ITSM.md) | En cours |
 | Backlog / sprints agile | [project_management/backlog_sprints.md](project_management/backlog_sprints.md) | À faire |
 | PoC réseau (captures) | [architecture/screenshots/](architecture/screenshots/) | Fait |
 | PoC cloud (room-booking) | [../cloud/room-booking/](../cloud/room-booking/) | Fait |
@@ -48,5 +48,6 @@ docs/
 ## Liens rapides
 
 - [Procédures réseau on-premise](../infra/network/)
+- [pfSense → Loki](../infra/network/pfsense_syslog_loki.md)
 - [Service cloud room-booking](../cloud/room-booking/DETAILS.md)
 - [Tableau Trello](https://trello.com/b/EXl0H0QS/b3-infra)
