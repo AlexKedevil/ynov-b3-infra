@@ -20,8 +20,8 @@ Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 �
 | CI/CD → Azure Container Registry | Fait |
 | room-booking (app + BDD SQL/Redis) | Fait |
 | Microsoft Entra ID (IAM / Zero Trust) | Fait (config portail requise) |
-| Déploiement Azure ACI | En cours (workflow + manifeste) |
-| Monitoring / détection anomalies | À faire |
+| Déploiement Azure ACI | Fait |
+| Monitoring / détection anomalies | Fait (PoC local Grafana/Loki) |
 | DAT complet, PCA/PRA, TCO | En cours |
 | Gestion de projet (export Trello) | À faire |
 
@@ -35,7 +35,7 @@ Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 �
 ```text
 ynov-b3-infra/
 ├── cloud/
-│   └── room-booking/         # PoC réservation de salles (en cours)
+│   └── room-booking/         # PoC réservation de salles
 ├── docs/                     # Tous les livrables UF_INFRA_B3
 │   ├── README.md             # Index et statut des documents
 │   ├── DAT.md                # Dossier d'Architecture Technique
@@ -46,7 +46,7 @@ ynov-b3-infra/
 │   ├── project_management/   # ITSM, backlog, Trello
 │   └── livrable/             # Export Moodle 18/06/2026
 ├── infra/network/            # pfSense, VMware (fait)
-├── monitoring/               # Grafana/Loki (à faire)
+├── monitoring/               # Grafana/Loki/Promtail
 └── .github/workflows/        # azure-deploy.yml → ACR
 ```
 
@@ -69,17 +69,19 @@ ynov-b3-infra/
 |-----------|--------|
 | **Réseau** | pfSense 2.7+, 6 VLANs 802.1Q, 10.20.0.0/16 |
 | **Virtualisation** | VMware Workstation |
-| **Cloud** | Azure France Central — ACR `smartofficeynov`, ACI (à déployer) |
-| **IAM** | Microsoft Entra ID (à configurer) |
+| **Cloud** | Azure France Central — ACR `smartofficeynov`, ACI déployé |
+| **IAM** | Microsoft Entra ID (code prêt, portail Ynov limité) |
 | **App** | Docker, Flask, PostgreSQL, Redis |
 | **CI/CD** | GitHub Actions → ACR |
-| **Monitoring** | Grafana, Loki (à déployer) |
+| **Monitoring** | Grafana, Loki, Promtail |
 
 ---
 
 ## Room Booking Service
 
-PoC cloud — réservation de salles. Actuellement : health-check minimal ; API complète en cours.
+PoC cloud — réservation de salles (API complète, déployée sur ACI).
+
+**URL publique :** http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080
 
 ```bash
 cd cloud/room-booking
@@ -89,7 +91,18 @@ curl http://localhost:8080
 
 Détails : [cloud/room-booking/DETAILS.md](cloud/room-booking/DETAILS.md)
 
-**Pipeline cible :** `GitHub → ACR → ACI → Utilisateurs (Entra ID)`
+**Pipeline :** `GitHub → ACR → ACI → Utilisateurs (Entra ID)`
+
+---
+
+## Monitoring (PoC local)
+
+```bash
+cd monitoring && docker compose up -d
+# Grafana http://localhost:3000 — admin / smartoffice
+```
+
+Détails et scénario d'anomalie : [monitoring/README.md](monitoring/README.md)
 
 ---
 
