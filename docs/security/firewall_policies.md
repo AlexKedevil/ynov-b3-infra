@@ -28,7 +28,21 @@ Les captures détaillées sont dans [../architecture/screenshots/](../architectu
 
 ---
 
+## VPN télétravail (WireGuard)
+
+Les clients VPN (`10.20.100.0/24`) accèdent **uniquement** à :
+
+- **VLAN 20 USERS** — postes et imprimantes bureau
+- **VLAN 50 SERVEURS** — AD, DNS, applications internes
+
+Pas d'accès MGMT (10), GUEST (40), DMZ (60) depuis le VPN.
+
+Procédure complète : [pfsense_wireguard_vpn.md](../../infra/network/pfsense_wireguard_vpn.md).
+
+---
+
 ## Procédures de configuration
 
 - [Installation pfSense](../../infra/network/pfsense_initial_setup.md)
 - [Configuration VLANs](../../infra/network/pfsense_vlan_config.md)
+- [VPN WireGuard](../../infra/network/pfsense_wireguard_vpn.md)
