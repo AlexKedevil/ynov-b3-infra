@@ -14,7 +14,7 @@ Portail de tous les documents requis par le sujet **UF_INFRA_B3** (Smart Office 
 | Dossier d'Architecture Technique (DAT) | [DAT.md](DAT.md) | En cours |
 | Plan d'adressage IP / VLANs | [architecture/Plan_Adressage_IP_VLAN.md](architecture/Plan_Adressage_IP_VLAN.md) | Fait |
 | Schémas architecture | [architecture/](architecture/) | Partiel |
-| Politiques de sécurité / Zero Trust / IAM | [security/](security/) | En cours |
+| Politiques de sécurité / Zero Trust / IAM | [security/](security/) | Fait |
 | Stratégie stockage et sauvegarde | [DAT.md](DAT.md) § Stockage | À faire |
 | Analyse des risques (BIA) | [pca_pra/BIA.md](pca_pra/BIA.md) | À faire |
 | PCA / PRA | [pca_pra/PCA_PRA.md](pca_pra/PCA_PRA.md) | À faire |
@@ -23,7 +23,7 @@ Portail de tous les documents requis par le sujet **UF_INFRA_B3** (Smart Office 
 | Gestion des incidents (ITSM) | [project_management/ITSM.md](project_management/ITSM.md) | À faire |
 | Backlog / sprints agile | [project_management/backlog_sprints.md](project_management/backlog_sprints.md) | À faire |
 | PoC réseau (captures) | [architecture/screenshots/](architecture/screenshots/) | Fait |
-| PoC cloud (room-booking) | [../cloud/room-booking/](../cloud/room-booking/) | Fait (auth Entra à venir) |
+| PoC cloud (room-booking) | [../cloud/room-booking/](../cloud/room-booking/) | Fait |
 | PoC monitoring | [../monitoring/](../monitoring/) | À faire |
 | Remise Moodle (18/06/2026) | [livrable/README.md](livrable/README.md) | À faire |
 

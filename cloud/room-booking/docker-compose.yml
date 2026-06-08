@@ -30,6 +30,11 @@ services:
       DATABASE_URL: postgresql://roombooking:roombooking@postgres:5432/roombooking
       REDIS_URL: redis://redis:6379/0
       APP_VERSION: 1.0.0-local
+      AUTH_DISABLED: "true"
+      AZURE_TENANT_ID: ${AZURE_TENANT_ID:-}
+      AZURE_CLIENT_ID: ${AZURE_CLIENT_ID:-}
+      AZURE_SPA_CLIENT_ID: ${AZURE_SPA_CLIENT_ID:-}
+      AZURE_API_AUDIENCE: ${AZURE_API_AUDIENCE:-}
     depends_on:
       postgres:
         condition: service_healthy
