@@ -1,7 +1,7 @@
 #!/bin/sh
 # Simule des logs pfSense (trafic normal + pics de blocages = anomalie)
-LOG_FILE="/var/log/pfsense/firewall.log"
-mkdir -p /var/log/pfsense
+LOG_FILE="/var/log/pfsense-sim/firewall.log"
+mkdir -p /var/log/pfsense-sim
 
 normal() {
   ts=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
