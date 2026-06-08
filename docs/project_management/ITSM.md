@@ -1,6 +1,6 @@
 # Gestion des incidents (ITSM)
 
-> Statut : **Fait**
+> Statut : **Fait** — board Trello restructuré (juin 2026).
 
 ---
 

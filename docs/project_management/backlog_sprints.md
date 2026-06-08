@@ -1,6 +1,6 @@
 # Backlog et sprints — Méthodologie Agile
 
-> Statut : **Fait** — aligné sur le board Trello et les PR GitHub.
+> Statut : **Fait** — board [b3-infra](https://trello.com/b/EXl0H0QS/b3-infra) restructuré (juin 2026).
 
 ---
 
