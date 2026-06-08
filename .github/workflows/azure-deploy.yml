@@ -30,20 +30,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Skip ACI deploy (no credentials)
-        if: ${{ secrets.AZURE_CREDENTIALS == '' }}
+      - name: Check Azure credentials
+        id: check
+        env:
+          AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
         run: |
-          echo "AZURE_CREDENTIALS not configured — image pushed to ACR only."
-          echo "See infra/azure/aci-deploy.md to enable ACI deployment."
+          if [ -n "$AZURE_CREDENTIALS" ]; then
+            echo "has_creds=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_creds=false" >> $GITHUB_OUTPUT
+            echo "AZURE_CREDENTIALS not configured — image pushed to ACR only."
+            echo "See infra/azure/aci-deploy.md to enable ACI deployment."
+          fi
 
       - name: Azure login
-        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+        if: steps.check.outputs.has_creds == 'true'
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Prepare container group manifest
-        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+        if: steps.check.outputs.has_creds == 'true'
         run: |
           sed -e "s|{{ACR_SERVER}}|${{ secrets.ACR_LOGIN_SERVER }}|g" \
               -e "s|{{ACR_USER}}|${{ secrets.ACR_USERNAME }}|g" \
@@ -51,7 +58,7 @@ jobs:
               infra/azure/container-group.yaml > /tmp/container-group.yaml
 
       - name: Deploy ACI container group
-        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+        if: steps.check.outputs.has_creds == 'true'
         run: |
           az container show --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
             --name ${{ env.ACI_CONTAINER_GROUP }} 2>/dev/null \
@@ -67,7 +74,7 @@ jobs:
             --query ipAddress.fqdn -o tsv)" >> $GITHUB_ENV
 
       - name: Health check
-        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+        if: steps.check.outputs.has_creds == 'true'
         run: |
           URL="http://${FQDN}:8080/health"
           echo "Checking $URL"
