@@ -22,7 +22,7 @@ Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 �
 | Microsoft Entra ID (IAM / Zero Trust) | Fait (config portail requise) |
 | Déploiement Azure ACI | Fait |
 | Monitoring / détection anomalies | Fait (PoC local Grafana/Loki) |
-| DAT complet, PCA/PRA, TCO | En cours |
+| DAT complet, PCA/PRA, TCO | Fait |
 | Gestion de projet (export Trello) | À faire |
 
 > **Index de tous les livrables :** [docs/README.md](docs/README.md)  
