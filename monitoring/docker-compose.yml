@@ -9,15 +9,26 @@ services:
       - loki_data:/loki
     restart: unless-stopped
 
+  syslog-ng:
+    image: balabit/syslog-ng:latest
+    ports:
+      - "1514:514/udp"
+    volumes:
+      - ./syslog-ng.conf:/etc/syslog-ng/syslog-ng.conf:ro
+      - pfsense_syslog:/var/log/pfsense
+    restart: unless-stopped
+
   promtail:
     image: grafana/promtail:2.9.4
     command: -config.file=/etc/promtail/config.yml
     volumes:
       - ./promtail-config.yml:/etc/promtail/config.yml:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - pfsense_logs:/var/log/pfsense
+      - pfsense_syslog:/var/log/pfsense:ro
+      - simulator_logs:/var/log/pfsense-sim:ro
     depends_on:
       - loki
+      - syslog-ng
     restart: unless-stopped
 
   grafana:
@@ -37,9 +48,10 @@ services:
     restart: unless-stopped
 
   pfsense-log-simulator:
+    profiles: ["simulator"]
     image: alpine:3.19
     volumes:
-      - pfsense_logs:/var/log/pfsense
+      - simulator_logs:/var/log/pfsense-sim
       - ./scripts/pfsense-log-generator.sh:/generator.sh:ro
     entrypoint: ["/bin/sh", "/generator.sh"]
     restart: unless-stopped
@@ -47,4 +59,5 @@ services:
 volumes:
   loki_data:
   grafana_data:
-  pfsense_logs:
+  pfsense_syslog:
+  simulator_logs:
