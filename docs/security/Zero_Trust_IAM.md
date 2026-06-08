@@ -32,6 +32,10 @@ Smart Office 2.0 — Microsoft Entra ID pour l'API room-booking.
 
 Configuration détaillée : [entra_portal_setup.md](entra_portal_setup.md)
 
+### Limitation tenant Ynov
+
+Le tenant **Ynov** (`ynov.com`) n'accorde pas aux étudiants les droits **Application Administrator** sur Entra ID (erreur 401). Le code IAM et la documentation sont en place ; la démo live Entra nécessite l'intervention du DSI ou un tenant personnel. En ACI/lab : `AUTH_DISABLED=true`.
+
 ---
 
 ## 3. Matrice confiance
