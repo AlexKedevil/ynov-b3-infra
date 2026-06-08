@@ -1,138 +1,101 @@
-# 🎓 Ynov B3 INFRA - Projet Smart Office 2.0
+# Ynov B3 INFRA - Projet Smart Office 2.0
 
-## 📋 Présentation du Projet
+## Présentation du Projet
 
 **Formation:** Ynov Informatique - Bachelor 3 Infrastructure Réseau  
 **Sujet:** Smart Office 2.0 — Infrastructure Réseau Sécurisée  
 **Équipe:** Flaujat Sam, Queudeville Alexandre  
 **Période:** 2026  
 
-### 🎯 Contexte Pédagogique
+### Contexte
 
-Ce projet simule la conception d'une infrastructure IT hybride pour une startup française en hyper-croissance (50 → 200 employés) emménageant dans un nouveau siège de 4 étages.
+Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 → 200 employés, siège 4 étages, télétravail flexible).
 
-**Objectifs pédagogiques:**
-- ✅ Architecture réseau: VLANs, routage inter-VLAN, DHCP, NAT
-- ✅ Sécurité: Zero Trust, pfSense firewall, isolation GUEST
-- ✅ Virtualisation: VMware + Ubuntu Server
-- ✅ DevOps: Containerisation Docker, CI/CD avec GitHub Actions
-- ✅ Cloud hybride: Documentation de déploiement Azure (ACI)
-- ✅ Gestion de projet: Agile, Git, Trello, documentation collaborative
+### Avancement
 
-> 📊 **Tableau de Bord Trello:** [b3-infra | Trello](https://trello.com/b/EXl0H0QS/b3-infra)
+| Domaine | Statut |
+|---------|--------|
+| Architecture réseau (VLANs, pfSense, VMware) | Fait |
+| Plan IP/VLAN, schémas, captures firewall | Fait |
+| CI/CD → Azure Container Registry | Fait |
+| room-booking (app + BDD + auth) | En cours |
+| Microsoft Entra ID (IAM / Zero Trust) | À faire |
+| Déploiement Azure ACI | À faire |
+| Monitoring / détection anomalies | À faire |
+| DAT complet, PCA/PRA, TCO | En cours |
+| Gestion de projet (export Trello) | À faire |
+
+> **Index de tous les livrables :** [docs/README.md](docs/README.md)  
+> **Tableau Trello :** [b3-infra | Trello](https://trello.com/b/EXl0H0QS/b3-infra)
 
 ---
 
-## 📁 Structure du Dépôt
+## Structure du Dépôt
 
 ```text
 ynov-b3-infra/
-├── cloud/                    # Services cloud (IaaS/PaaS)
-│   └── room-booking/         # Service de réservation de salles (PoC)
-│       ├── Dockerfile        # Configuration Docker
-│       ├── docker-compose.yml # Orchestration locale
-│       └── src/app.py        # Application Python
-│
-├── docs/                     # Documentation technique (DAT)
-│   ├── architecture/         # Schémas, plan d'adressage IP/VLAN
-│   │   ├── Plan_Adressage_IP_VLAN.md
-│   │   ├── network diagram.xml
-│   │   └── screenshots/      # Captures pfSense, tests réseau
-│   ├── pca_pra/              # Plans de continuité/reprise
-│   ├── procedures/           # Guides d'installation
-│   ├── project_management/   # Backlog, sprints, Kanban
-│   └── security/             # Politiques firewall, Zero Trust
-│
-├── infra/                    # Configuration infrastructure on-premise
-│   ├── network/              # pfSense, VLANs, VMware
-│   │   ├── pfsense_initial_setup.md
-│   │   ├── pfsense_wizard_config.md
-│   │   ├── pfsense_vlan_config.md
-│   │   └── vmware_vmnet2_config.md
-│   └── servers/              # Scripts Ubuntu (à venir)
-│
-├── monitoring/               # Supervision (prévu pour final)
-│   ├── grafana/              # Dashboards
-│   └── wazuh/                # Règles SIEM
-│
-├── .gitignore
-└── README.md
+├── cloud/
+│   └── room-booking/         # PoC réservation de salles (en cours)
+├── docs/                     # Tous les livrables UF_INFRA_B3
+│   ├── README.md             # Index et statut des documents
+│   ├── DAT.md                # Dossier d'Architecture Technique
+│   ├── architecture/         # Schémas, IP/VLAN, screenshots réseau
+│   ├── security/             # Zero Trust, IAM, firewall
+│   ├── database/             # Merise, backup/restore
+│   ├── pca_pra/              # BIA, PCA, PRA
+│   ├── project_management/   # ITSM, backlog, Trello
+│   └── livrable/             # Export Moodle 18/06/2026
+├── infra/network/            # pfSense, VMware (fait)
+├── monitoring/               # Grafana/Loki (à faire)
+└── .github/workflows/        # azure-deploy.yml → ACR
 ```
 
 ---
 
-## 🗺️ Architecture Réseau
+## Architecture Réseau
 
 ![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
 
-> 🔗 **Documents de référence :**
-> - [📜 Plan d'Adressage IP & Politique VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
-> - [🚀 Installation Initiale pfSense](infra/network/pfsense_initial_setup.md)
-> - [⚙️ Configuration Wizard pfSense](infra/network/pfsense_wizard_config.md)
-> - [🔌 Configuration VLANs pfSense](infra/network/pfsense_vlan_config.md)
-> - [🌐 Configuration VMware (vmnet2)](infra/network/vmware_vmnet2_config.md)
+- [Plan d'Adressage IP & VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
+- [Installation pfSense](infra/network/pfsense_initial_setup.md)
+- [Configuration VLANs](infra/network/pfsense_vlan_config.md)
+- [VMware vmnet2](infra/network/vmware_vmnet2_config.md)
 
 ---
-## 🛠️ Stack Technique (Laboratoire)
+
+## Stack Technique
 
 | Catégorie | Outils |
 |-----------|--------|
-| **Virtualisation** | VMware Workstation, Ubuntu Server |
-| **Firewall / Routing** | pfSense 2.7+ (VLANs, DHCP, NAT, Firewall) |
-| **Réseau** | 6 VLANs 802.1Q, adressage 10.20.0.0/16 |
-| **Containerisation** | Docker, docker-compose (room-booking) |
-| **CI/CD** | GitHub Actions → Azure Container Registry |
-| **Cloud (doc)** | Azure ACI, Container Instances |
-| **Gestion** | Git, GitHub, Trello, Draw.io |
+| **Réseau** | pfSense 2.7+, 6 VLANs 802.1Q, 10.20.0.0/16 |
+| **Virtualisation** | VMware Workstation |
+| **Cloud** | Azure France Central — ACR `smartofficeynov`, ACI (à déployer) |
+| **IAM** | Microsoft Entra ID (à configurer) |
+| **App** | Docker, Flask, PostgreSQL, Redis |
+| **CI/CD** | GitHub Actions → ACR |
+| **Monitoring** | Grafana, Loki (à déployer) |
 
 ---
 
-## 🚀 Room Booking Service (Cloud PoC)
+## Room Booking Service
 
-Service de démonstration pour le livrable *"Déploiement d'un service containerisé sur une plateforme Cloud"*.
-
-### Architecture cible (Azure)
-
-```
-[GitHub] → [GitHub Actions] → [Azure ACR] → [Azure ACI] → [Utilisateurs]
-```
-
-### Démarrage local
+PoC cloud — réservation de salles. Actuellement : health-check minimal ; API complète en cours.
 
 ```bash
 cd cloud/room-booking
-docker-compose up --build
+docker compose up --build
 curl http://localhost:8080
 ```
 
-### Réponse attendue
+Détails : [cloud/room-booking/DETAILS.md](cloud/room-booking/DETAILS.md)
 
-```json
-{
-  "service": "room-booking",
-  "version": "1.0.0",
-  "status": "healthy",
-  "project": "Smart Office 2.0 - B3 INYOV"
-}
-```
-
-> 📄 **Détails:** Voir [cloud/room-booking/DETAILS.md](cloud/room-booking/DETAILS.md)
+**Pipeline cible :** `GitHub → ACR → ACI → Utilisateurs (Entra ID)`
 
 ---
 
-## 🔗 Ressources
+## Contribution
 
-- [📚 Documentation pfSense](https://docs.netgate.com/pfsense/)
-- [🐳 Docker Docs](https://docs.docker.com/)
-- [☁️ Azure Container Instances](https://learn.microsoft.com/fr-fr/azure/container-instances/)
-
----
-
-## 👥 Contribution
-
-Ce projet suit une méthodologie Agile. Pour contribuer:
-
-1. Créer une branche: `git checkout -b feature/nom-fonctionnalite`
-2. Commiter les changements: `git commit -m 'feat: description claire'`
-3. Pusher la branche: `git push origin feature/nom-fonctionnalite`
-4. Ouvrir une Pull Request pour revue
+1. `git checkout -b feature/nom-descriptif`
+2. `git commit -m 'feat: description'`
+3. `git push origin feature/nom-descriptif`
+4. Ouvrir une Pull Request

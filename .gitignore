@@ -26,3 +26,9 @@ venv/
 .env/
 node_modules/
 __pycache__/
+
+# Préparation oral (local, pas pour le jury)
+oral-prep/
+
+# Sujet officiel Ynov — local uniquement
+UF_INFRA_B3.pdf
