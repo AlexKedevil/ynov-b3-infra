@@ -1,9 +1,41 @@
-version: "3.8"
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: roombooking
+      POSTGRES_PASSWORD: roombooking
+      POSTGRES_DB: roombooking
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U roombooking -d roombooking"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
   room-booking:
     build: .
     ports:
       - "8080:8080"
     environment:
-      - APP_VERSION=1.0.0-local
+      DATABASE_URL: postgresql://roombooking:roombooking@postgres:5432/roombooking
+      REDIS_URL: redis://redis:6379/0
+      APP_VERSION: 1.0.0-local
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     restart: unless-stopped
+
+volumes:
+  postgres_data:
