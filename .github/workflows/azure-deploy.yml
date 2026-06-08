@@ -1,23 +1,84 @@
-name: Deploy to Azure ACR
+name: Deploy to Azure ACR and ACI
 
 on:
   push:
     branches: [ main, master ]
+
+env:
+  AZURE_RESOURCE_GROUP: rg-smartoffice
+  ACI_CONTAINER_GROUP: smartoffice-booking
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Login to ACR
         run: docker login ${{ secrets.ACR_LOGIN_SERVER }} -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
-      
+
       - name: Build and push
         run: |
           docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:${{ github.sha }} cloud/room-booking/
-            
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:${{ github.sha }}
-          
           docker tag ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:${{ github.sha }} ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:latest
           docker push ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:latest
+
+  deploy-aci:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Skip ACI deploy (no credentials)
+        if: ${{ secrets.AZURE_CREDENTIALS == '' }}
+        run: |
+          echo "AZURE_CREDENTIALS not configured — image pushed to ACR only."
+          echo "See infra/azure/aci-deploy.md to enable ACI deployment."
+
+      - name: Azure login
+        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Prepare container group manifest
+        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+        run: |
+          sed -e "s|{{ACR_SERVER}}|${{ secrets.ACR_LOGIN_SERVER }}|g" \
+              -e "s|{{ACR_USER}}|${{ secrets.ACR_USERNAME }}|g" \
+              -e "s|{{ACR_PASS}}|${{ secrets.ACR_PASSWORD }}|g" \
+              infra/azure/container-group.yaml > /tmp/container-group.yaml
+
+      - name: Deploy ACI container group
+        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+        run: |
+          az container show --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --name ${{ env.ACI_CONTAINER_GROUP }} 2>/dev/null \
+            && az container delete --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+               --name ${{ env.ACI_CONTAINER_GROUP }} --yes
+
+          az container create \
+            --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --file /tmp/container-group.yaml
+
+          echo "FQDN=$(az container show --resource-group ${{ env.AZURE_RESOURCE_GROUP }} \
+            --name ${{ env.ACI_CONTAINER_GROUP }} \
+            --query ipAddress.fqdn -o tsv)" >> $GITHUB_ENV
+
+      - name: Health check
+        if: ${{ secrets.AZURE_CREDENTIALS != '' }}
+        run: |
+          URL="http://${FQDN}:8080/health"
+          echo "Checking $URL"
+          for i in $(seq 1 12); do
+            if curl -sf "$URL"; then
+              echo ""
+              echo "ACI deployment healthy at $URL"
+              exit 0
+            fi
+            echo "Waiting for ACI... ($i/12)"
+            sleep 10
+          done
+          echo "Health check failed (ACI may still be starting)"
+          exit 1
