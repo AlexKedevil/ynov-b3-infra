@@ -1,6 +1,6 @@
 # Analyse des impacts sur l'activité (BIA)
 
-> Statut : **À compléter** — PR `feature/dat-pca-security-docs`.
+> Statut : **Fait**
 
 ---
 
@@ -32,6 +32,32 @@ Startup biotechnologie — 200 employés cibles, activité R&D et bureautique fo
 
 ---
 
-## Dépendances
+## Chaîne de dépendances
 
-*À compléter : chaîne de dépendances entre FAI → pfSense → VLANs → services.*
+```text
+FAI (WAN)
+  └── pfSense (firewall, NAT, VPN)
+        ├── VLAN MGMT → administration switches/AP
+        ├── VLAN USERS / WIFI_STAFF → postes employés
+        ├── VLAN SERVEURS → AD, DNS, NAS sauvegardes
+        ├── VLAN DMZ → reverse proxy (cible)
+        └── VLAN WIFI_INVITES → Internet seul (isolé)
+
+Internet
+  └── Microsoft Entra ID (authentification)
+  └── Azure ACI room-booking (HTTPS)
+        ├── PostgreSQL (données réservations)
+        └── Redis (cache — non critique)
+
+Supervision
+  └── pfSense syslog → Loki → Grafana (détection anomalies)
+```
+
+**Point unique de défaillance identifié :** pfSense (mitigation : sauvegarde XML, spare config, lien 4G PCA).
+
+---
+
+## Liens
+
+- [PCA / PRA](PCA_PRA.md)
+- [DAT — § Continuité](../DAT.md#12-continuité-et-reprise-dactivité)

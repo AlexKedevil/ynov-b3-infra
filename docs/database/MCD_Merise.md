@@ -1,60 +1,87 @@
 # Modèle conceptuel de données — Room Booking
 
-> Statut : **À compléter** — sera rempli dans la PR `feature/dat-pca-security-docs`.
+> Statut : **Fait** — aligné sur [cloud/room-booking/init.sql](../../cloud/room-booking/init.sql).
 
 ---
 
-## Entités (Merise)
+## MCD (Merise)
 
-### ENTITE : SALLE
+```text
+┌─────────────┐         RESERVER          ┌──────────────┐
+│  UTILISATEUR│ (1,N) ──────────────────── (0,N) │ RESERVATION │
+│             │                              │              │
+│ id (PK)     │                              │ id (PK)      │
+│ email       │                              │ start_time   │
+│ role        │                              │ end_time     │
+└─────────────┘                              └──────┬───────┘
+                                                    │ (1,1)
+                                                    │
+                                             ┌──────▼───────┐
+                                             │    SALLE     │
+                                             │ id (PK)      │
+                                             │ name         │
+                                             │ capacity     │
+                                             │ floor        │
+                                             └──────────────┘
+```
 
-| Attribut | Type | Contrainte |
-|----------|------|------------|
-| id_salle | INT | PK |
-| nom | VARCHAR(100) | NOT NULL |
-| capacite | INT | NOT NULL |
-| etage | INT | NOT NULL |
+### ENTITE : SALLE (`rooms`)
 
-### ENTITE : UTILISATEUR
+| Attribut | Type SQL | Contrainte |
+|----------|----------|------------|
+| id | SERIAL | PK |
+| name | VARCHAR(100) | NOT NULL |
+| capacity | INT | NOT NULL, > 0 |
+| floor | INT | NOT NULL, ≥ 0 |
 
-| Attribut | Type | Contrainte |
-|----------|------|------------|
-| id_utilisateur | INT | PK |
+### ENTITE : UTILISATEUR (`users`)
+
+| Attribut | Type SQL | Contrainte |
+|----------|----------|------------|
+| id | SERIAL | PK |
 | email | VARCHAR(255) | UNIQUE, NOT NULL |
-| entra_oid | VARCHAR(255) | UNIQUE (lien Entra ID) |
-| role | ENUM | employee, admin |
+| role | VARCHAR(20) | `employee` \| `admin` |
 
-### ENTITE : RESERVATION
+> **Évolution Entra ID :** attribut `entra_oid` prévu pour lier le compte Microsoft (non requis en mode `AUTH_DISABLED`).
 
-| Attribut | Type | Contrainte |
-|----------|------|------------|
-| id_reservation | INT | PK |
-| date_debut | TIMESTAMP | NOT NULL |
-| date_fin | TIMESTAMP | NOT NULL |
-| #id_salle | INT | FK → SALLE |
-| #id_utilisateur | INT | FK → UTILISATEUR |
+### ENTITE : RESERVATION (`bookings`)
+
+| Attribut | Type SQL | Contrainte |
+|----------|----------|------------|
+| id | SERIAL | PK |
+| room_id | INT | FK → rooms, ON DELETE CASCADE |
+| user_id | INT | FK → users, ON DELETE CASCADE |
+| start_time | TIMESTAMPTZ | NOT NULL |
+| end_time | TIMESTAMPTZ | NOT NULL, > start_time |
+
+### Règles métier
+
+- Une salle ne peut pas avoir deux réservations qui se chevauchent (vérifié dans l'API Flask).
+- Index `idx_bookings_room_time` pour les requêtes de disponibilité.
 
 ---
 
-## Associations
-
-- **RESERVER** : UTILISATEUR (1,N) — (0,N) RESERVATION — (1,1) SALLE
-- Contrainte métier : pas de chevauchement de créneaux pour une même salle
-
----
-
-## Schéma relationnel (aperçu)
+## MLD (schéma relationnel implémenté)
 
 ```sql
--- À implémenter dans cloud/room-booking/init.sql
-CREATE TABLE rooms (...);
-CREATE TABLE users (...);
-CREATE TABLE bookings (...);
+rooms (id, name, capacity, floor)
+users (id, email, role)
+bookings (id, room_id → rooms.id, user_id → users.id, start_time, end_time)
 ```
 
 ---
 
-## Usage Redis (NoSQL)
+## Usage Redis (NoSQL — cache)
 
-- Clé `availability:{room_id}:{date}` — créneaux libres (cache)
-- TTL court pour rafraîchissement depuis PostgreSQL
+| Clé | Contenu | TTL |
+|-----|---------|-----|
+| `availability:{room_id}:{date}` | Créneaux occupés (JSON) | Court (invalidation à chaque booking) |
+
+Redis n'est pas source de vérité — PostgreSQL reste la BDD relationnelle principale.
+
+---
+
+## Liens
+
+- [backup_restore.md](backup_restore.md)
+- [DAT — § Services applicatifs](../DAT.md#10-services-applicatifs-et-bases-de-données)
