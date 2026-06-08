@@ -1,6 +1,6 @@
 # Modèle conceptuel de données — Room Booking
 
-> Statut : **Fait** — aligné sur [cloud/room-booking/init.sql](../../cloud/room-booking/init.sql).
+Aligné sur [cloud/room-booking/init.sql](../../cloud/room-booking/init.sql).
 
 ---
 
