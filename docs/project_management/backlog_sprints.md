@@ -1,6 +1,6 @@
 # Backlog et sprints — Méthodologie Agile
 
-> Statut : **À compléter** — export Trello dans PR `feature/project-management-docs`.
+> Statut : **Fait** — aligné sur le board Trello et les PR GitHub.
 
 ---
 
@@ -8,7 +8,8 @@
 
 - **Framework :** Scrum / Kanban hybride
 - **Outil :** [Trello — b3-infra](https://trello.com/b/EXl0H0QS/b3-infra)
-- **Équipe :** 2 développeurs (Flaujat Sam, Queudeville Alexandre)
+- **Équipe :** Flaujat Sam, Queudeville Alexandre
+- **Guide reconstruction board :** [trello_board_guide.md](trello_board_guide.md)
 
 ---
 
@@ -16,25 +17,55 @@
 
 | Colonne | Usage |
 |---------|-------|
-| Backlog | User stories à prioriser |
-| Sprint en cours | Tâches du sprint actuel |
-| En review | PR ouverte, en attente de merge |
-| Done | Livré et mergé dans `main` |
+| Backlog | Évolutions hors scope PoC (VPN Azure, HA, SIEM avancé) |
+| En cours | Livrable Moodle, captures finales |
+| Fait | Livrables mergés (réseau, cloud, IAM, monitoring, docs) |
 
 ---
 
-## Sprints (résumé)
+## Sprints
 
-*À compléter avec dates et objectifs :*
+| Sprint | Période | Objectif | Livrables |
+|--------|---------|----------|-----------|
+| **Sprint 1** | Fév. – Mars 2026 | Architecture réseau on-prem | pfSense, 6 VLANs, VMware vmnet2, plan IP, captures firewall, schéma |
+| **Sprint 2** | Mars – Avr. 2026 | PoC cloud + IAM | room-booking, PostgreSQL/Redis, Entra ID (code), docker-compose |
+| **Sprint 3** | Avr. – Mai 2026 | Azure + CI/CD | ACR, ACI, GitHub Actions, fixes deploy (memory, ACR mirror) |
+| **Sprint 4** | Mai – Juin 2026 | Supervision + docs | Grafana/Loki, syslog pfSense, DAT, BIA, PCA/PRA, Merise |
+| **Sprint 5** | Juin 2026 | Clôture projet | Trello final, export Moodle, soutenance |
 
-| Sprint | Période | Objectif |
-|--------|---------|----------|
-| Sprint 1 | — | Architecture réseau, pfSense, VLANs |
-| Sprint 2 | — | room-booking, Entra ID, Azure ACI |
-| Sprint 3 | — | Monitoring, DAT, PCA/PRA |
+---
+
+## User stories principales (Done)
+
+| ID | Story | Critère d'acceptation |
+|----|-------|----------------------|
+| US-01 | Segmenter le réseau en VLANs | 6 VLANs, règles pfSense, captures |
+| US-02 | Réserver une salle via API | CRUD rooms/bookings, cache Redis |
+| US-03 | Déployer l'app sur Azure | ACI healthy, pipeline GitHub vert |
+| US-04 | Authentifier via Entra ID | JWT + MSAL (démo AUTH_DISABLED si 401 tenant) |
+| US-05 | Superviser les anomalies | Dashboard Grafana, logs pfSense + API |
+| US-06 | Documenter l'architecture | DAT, PCA/PRA, Merise, TCO |
+
+---
+
+## Pull Requests GitHub (historique)
+
+| PR | Thème |
+|----|-------|
+| #12 | Docs prep, README, skeleton `docs/` |
+| #13 | room-booking app + PostgreSQL + Redis |
+| #14 | Entra ID auth, Zero Trust docs |
+| #15 | Azure ACI deploy + workflow |
+| #16–#18 | Fixes workflow, ACI provider, ACR sidecar images |
+| — | Monitoring stack (Grafana/Loki) |
+| — | pfSense syslog → Loki |
+| — | DAT / PCA / Merise / backup |
 
 ---
 
 ## Captures
 
-Voir [screenshots/](screenshots/) après export du board Trello.
+| Fichier | Description |
+|---------|-------------|
+| [screenshots/trello_board_overview.png](screenshots/trello_board_overview.png) | Vue complète du board (à ajouter) |
+| [screenshots/trello_card_monitoring.png](screenshots/trello_card_monitoring.png) | Détail carte Monitoring (à ajouter) |
