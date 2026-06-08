@@ -1,7 +1,5 @@
 # Sauvegarde et restauration — PostgreSQL
 
-> Statut : **Fait** — procédure validée en local (`docker compose`).
-
 ---
 
 ## Politique de sauvegarde
