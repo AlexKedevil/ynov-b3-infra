@@ -7,25 +7,25 @@ Portail de tous les documents requis par le sujet **UF_INFRA_B3** (Smart Office 
 
 ---
 
-## Livrables
+## Statut des livrables
 
-| Livrable UF_INFRA_B3 | Fichier |
-|----------------------|---------|
-| Dossier d'Architecture Technique (DAT) | [DAT.md](DAT.md) |
-| Plan d'adressage IP / VLANs | [architecture/Plan_Adressage_IP_VLAN.md](architecture/Plan_Adressage_IP_VLAN.md) |
-| Schémas architecture | [architecture/](architecture/) |
-| Politiques de sécurité / Zero Trust / IAM | [security/](security/) |
-| Stratégie stockage et sauvegarde | [DAT.md](DAT.md) §9 + [database/backup_restore.md](database/backup_restore.md) |
-| Analyse des risques (BIA) | [pca_pra/BIA.md](pca_pra/BIA.md) |
-| PCA / PRA | [pca_pra/PCA_PRA.md](pca_pra/PCA_PRA.md) |
-| Modèle base de données (Merise/UML) | [database/MCD_Merise.md](database/MCD_Merise.md) |
-| Sauvegarde / restauration BDD | [database/backup_restore.md](database/backup_restore.md) |
-| Gestion des incidents (ITSM) | [project_management/ITSM.md](project_management/ITSM.md) |
-| Backlog / sprints agile + Trello | [project_management/backlog_sprints.md](project_management/backlog_sprints.md) |
-| PoC réseau (captures) | [architecture/screenshots/](architecture/screenshots/) |
-| PoC cloud (room-booking) | [../cloud/room-booking/](../cloud/room-booking/) |
-| PoC monitoring | [../monitoring/](../monitoring/) |
-| Remise Moodle (18/06/2026) | [livrable/README.md](livrable/README.md) |
+| Livrable UF_INFRA_B3 | Fichier | Statut |
+|----------------------|---------|--------|
+| Dossier d'Architecture Technique (DAT) | [DAT.md](DAT.md) | Fait |
+| Plan d'adressage IP / VLANs | [architecture/Plan_Adressage_IP_VLAN.md](architecture/Plan_Adressage_IP_VLAN.md) | Fait |
+| Schémas architecture | [architecture/](architecture/) | Fait |
+| Politiques de sécurité / Zero Trust / IAM | [security/](security/) | Fait |
+| Stratégie stockage et sauvegarde | [DAT.md](DAT.md) §9 + [database/backup_restore.md](database/backup_restore.md) | Fait |
+| Analyse des risques (BIA) | [pca_pra/BIA.md](pca_pra/BIA.md) | Fait |
+| PCA / PRA | [pca_pra/PCA_PRA.md](pca_pra/PCA_PRA.md) | Fait |
+| Modèle base de données (Merise/UML) | [database/MCD_Merise.md](database/MCD_Merise.md) | Fait |
+| Sauvegarde / restauration BDD | [database/backup_restore.md](database/backup_restore.md) | Fait |
+| Gestion des incidents (ITSM) | [project_management/ITSM.md](project_management/ITSM.md) | En cours |
+| Backlog / sprints agile + Trello | [project_management/backlog_sprints.md](project_management/backlog_sprints.md) | À faire |
+| PoC réseau (captures) | [architecture/screenshots/](architecture/screenshots/) | Fait |
+| PoC cloud (room-booking) | [../cloud/room-booking/](../cloud/room-booking/) | Fait |
+| PoC monitoring | [../monitoring/](../monitoring/) | Fait |
+| Remise Moodle (18/06/2026) | [livrable/README.md](livrable/README.md) | À faire |
 
 ---
 
