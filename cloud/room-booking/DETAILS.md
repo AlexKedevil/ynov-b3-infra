@@ -104,4 +104,8 @@ curl "http://localhost:8080/rooms/1/availability?date=2026-06-10"
 
 Pipeline : GitHub Actions → ACR `smartofficeynov` → ACI (France Central).
 
-> L'image Docker ne contient que l'app. PostgreSQL et Redis sont dans `docker-compose` pour le dev local ; le déploiement ACI multi-container sera ajouté dans `feature/azure-aci-deploy`.
+**ACI (France Central) :** groupe multi-container (app + postgres + redis).
+
+- URL : `http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080`
+- Guide : [infra/azure/aci-deploy.md](../../infra/azure/aci-deploy.md)
+- Secret GitHub requis : `AZURE_CREDENTIALS` (Service Principal)
