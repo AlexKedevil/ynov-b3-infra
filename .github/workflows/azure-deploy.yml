@@ -17,6 +17,17 @@ jobs:
       - name: Login to ACR
         run: docker login ${{ secrets.ACR_LOGIN_SERVER }} -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
 
+      - name: Mirror sidecar images to ACR
+        run: |
+          ACR="${{ secrets.ACR_LOGIN_SERVER }}"
+          for img in postgres:16-alpine redis:7-alpine; do
+            name="${img%%:*}"
+            tag="${img##*:}"
+            docker pull "$img"
+            docker tag "$img" "$ACR/$name:$tag"
+            docker push "$ACR/$name:$tag"
+          done
+
       - name: Build and push
         run: |
           docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/room-booking:${{ github.sha }} cloud/room-booking/
