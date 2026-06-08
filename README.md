@@ -23,7 +23,7 @@ Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 �
 | Déploiement Azure ACI | Fait |
 | Monitoring / détection anomalies | Fait (PoC local Grafana/Loki) |
 | DAT complet, PCA/PRA, TCO | Fait |
-| Gestion de projet (Trello + export Moodle) | Trello fait — Moodle à faire |
+| Gestion de projet (Trello + export Moodle) | Trello fait — export Moodle à faire |
 
 > **Index de tous les livrables :** [docs/README.md](docs/README.md)  
 > **Tableau Trello :** [b3-infra | Trello](https://trello.com/b/EXl0H0QS/b3-infra)
