@@ -46,12 +46,12 @@
       "options": { "legend": { "displayMode": "list", "placement": "bottom" } },
       "targets": [
         {
-          "expr": "sum(rate({job=\"pfsense\"} |= \"action=block\"[1m]))",
+          "expr": "sum(rate({job=\"pfsense\"} |~ \"(,block,|action=block)\"[1m]))",
           "legendFormat": "blocages pfSense",
           "refId": "A"
         }
       ],
-      "title": "pfSense simulé — connexions bloquées",
+      "title": "pfSense — connexions bloquées (VM ou simulateur)",
       "type": "timeseries"
     },
     {
@@ -61,11 +61,11 @@
       "options": { "showLabels": false, "showTime": true, "sortOrder": "Descending" },
       "targets": [
         {
-          "expr": "{job=\"pfsense\"} |= \"anomaly_detected\"",
+          "expr": "{job=\"pfsense\",source=\"pfsense-vm\"} |~ \"(?i)(filterlog|block|deny)\"",
           "refId": "A"
         }
       ],
-      "title": "Alertes pfSense simulées",
+      "title": "Logs pfSense (VM VMware)",
       "type": "logs"
     },
     {
