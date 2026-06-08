@@ -20,7 +20,7 @@ Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 �
 | CI/CD → Azure Container Registry | Fait |
 | room-booking (app + BDD SQL/Redis) | Fait |
 | Microsoft Entra ID (IAM / Zero Trust) | Fait (config portail requise) |
-| Déploiement Azure ACI | À faire |
+| Déploiement Azure ACI | En cours (workflow + manifeste) |
 | Monitoring / détection anomalies | À faire |
 | DAT complet, PCA/PRA, TCO | En cours |
 | Gestion de projet (export Trello) | À faire |

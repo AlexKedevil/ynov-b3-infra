@@ -14,7 +14,7 @@ from config import (
     AZURE_SPA_CLIENT_ID,
     AZURE_TENANT_ID,
 )
-from db import get_connection
+from db import bootstrap_schema, get_connection
 
 logging.basicConfig(
     level=logging.INFO,
@@ -27,6 +27,7 @@ STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
 
 def create_app():
     app = Flask(__name__)
+    bootstrap_schema()
 
     @app.get("/health")
     def health():

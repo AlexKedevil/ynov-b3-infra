@@ -1,0 +1,58 @@
+apiVersion: 2023-05-01
+location: francecentral
+name: smartoffice-booking
+properties:
+  containers:
+    - name: room-booking
+      properties:
+        image: {{ACR_SERVER}}/room-booking:latest
+        ports:
+          - port: 8080
+            protocol: TCP
+        environmentVariables:
+          - name: DATABASE_URL
+            value: postgresql://roombooking:roombooking@127.0.0.1:5432/roombooking
+          - name: REDIS_URL
+            value: redis://127.0.0.1:6379/0
+          - name: AUTH_DISABLED
+            value: "true"
+          - name: APP_VERSION
+            value: azure-aci
+        resources:
+          requests:
+            cpu: 0.5
+            memoryInGB: 1.0
+    - name: postgres
+      properties:
+        image: postgres:16-alpine
+        environmentVariables:
+          - name: POSTGRES_USER
+            value: roombooking
+          - name: POSTGRES_PASSWORD
+            value: roombooking
+          - name: POSTGRES_DB
+            value: roombooking
+        resources:
+          requests:
+            cpu: 0.25
+            memoryInGB: 0.5
+    - name: redis
+      properties:
+        image: redis:7-alpine
+        resources:
+          requests:
+            cpu: 0.25
+            memoryInGB: 0.25
+  imageRegistryCredentials:
+    - server: {{ACR_SERVER}}
+      username: {{ACR_USER}}
+      password: {{ACR_PASS}}
+  ipAddress:
+    type: Public
+    dnsNameLabel: ynov-smartoffice-b3
+    ports:
+      - protocol: tcp
+        port: 8080
+  osType: Linux
+  restartPolicy: Always
+type: Microsoft.ContainerInstance/containerGroups
