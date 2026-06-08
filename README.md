@@ -18,7 +18,7 @@ Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 �
 | Architecture réseau (VLANs, pfSense, VMware) | Fait |
 | Plan IP/VLAN, schémas, captures firewall | Fait |
 | CI/CD → Azure Container Registry | Fait |
-| room-booking (app + BDD + auth) | En cours |
+| room-booking (app + BDD SQL/Redis) | Fait (auth Entra à venir) |
 | Microsoft Entra ID (IAM / Zero Trust) | À faire |
 | Déploiement Azure ACI | À faire |
 | Monitoring / détection anomalies | À faire |

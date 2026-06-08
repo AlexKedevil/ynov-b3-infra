@@ -23,7 +23,7 @@ Portail de tous les documents requis par le sujet **UF_INFRA_B3** (Smart Office 
 | Gestion des incidents (ITSM) | [project_management/ITSM.md](project_management/ITSM.md) | À faire |
 | Backlog / sprints agile | [project_management/backlog_sprints.md](project_management/backlog_sprints.md) | À faire |
 | PoC réseau (captures) | [architecture/screenshots/](architecture/screenshots/) | Fait |
-| PoC cloud (room-booking) | [../cloud/room-booking/](../cloud/room-booking/) | En cours |
+| PoC cloud (room-booking) | [../cloud/room-booking/](../cloud/room-booking/) | Fait (auth Entra à venir) |
 | PoC monitoring | [../monitoring/](../monitoring/) | À faire |
 | Remise Moodle (18/06/2026) | [livrable/README.md](livrable/README.md) | À faire |
 
