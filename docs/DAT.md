@@ -118,11 +118,13 @@ Filtrage : pfSense (pfBlockerNG cible), DNS filtré, logs firewall → Loki.
 ### Télétravail (cible)
 
 ```text
-Employé → IPsec VPN (pfSense) → VLAN USERS → services internes
+Employé → WireGuard (pfSense, 10.20.100.0/24) → VLAN 20 USERS + VLAN 50 SERVEURS
 Employé → HTTPS → room-booking (ACI Azure) + Entra ID
 ```
 
-VPN site-to-site vers Azure (VNet) documenté en §5 — non câblé en lab VMware.
+Guide lab : [infra/network/pfsense_wireguard_vpn.md](../infra/network/pfsense_wireguard_vpn.md).
+
+VPN site-to-site IPsec vers Azure (VNet) documenté en §5 — non câblé en lab VMware.
 
 ---
 

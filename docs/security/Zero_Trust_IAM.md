@@ -71,4 +71,4 @@ En production cible : Conditional Access exigeant MFA pour accès à l'API et VP
 ## 6. Compléments réseau
 
 - **Pare-feu** : [firewall_policies.md](firewall_policies.md)
-- **VPN télétravail** : guide WireGuard à ajouter (`infra/network/pfsense_wireguard_vpn.md`)
+- **VPN télétravail** : [WireGuard pfSense — accès VLAN20/50](../../infra/network/pfsense_wireguard_vpn.md)
