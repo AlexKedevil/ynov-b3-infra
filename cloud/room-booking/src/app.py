@@ -29,6 +29,29 @@ def create_app():
     app = Flask(__name__)
     bootstrap_schema()
 
+    @app.before_request
+    def log_request_start():
+        g._req_start = datetime.utcnow()
+
+    @app.after_request
+    def log_request_end(response):
+        duration_ms = int(
+            (datetime.utcnow() - g.get("_req_start", datetime.utcnow())).total_seconds() * 1000
+        )
+        msg = "%s %s -> %s (%sms)" % (
+            request.method,
+            request.path,
+            response.status_code,
+            duration_ms,
+        )
+        if response.status_code >= 500:
+            logger.error(msg)
+        elif response.status_code >= 400:
+            logger.warning(msg)
+        else:
+            logger.info(msg)
+        return response
+
     @app.get("/health")
     def health():
         return jsonify({
