@@ -45,6 +45,19 @@ az ad sp create-for-rbac \
 
 ---
 
+## Étape 1b — Enregistrer le provider ACI (une fois)
+
+Si le déploiement échoue avec `MissingSubscriptionRegistration` / `Microsoft.ContainerInstance` :
+
+```bash
+az account set --subscription "Azure for Students"
+az provider register --namespace Microsoft.ContainerInstance --wait
+```
+
+Attendre l'état `Registered` (1–5 min), puis relancer le workflow GitHub.
+
+---
+
 ## Étape 2 — Déploiement automatique (CI/CD)
 
 Chaque push sur `main` :
@@ -106,5 +119,6 @@ az container start --resource-group rg-smartoffice --name smartoffice-booking
 |----------|----------|
 | DNS label déjà pris | Changer `dnsNameLabel` dans `container-group.yaml` |
 | Deploy job skipped | Ajouter secret `AZURE_CREDENTIALS` |
+| `MissingSubscriptionRegistration` Microsoft.ContainerInstance | `az provider register --namespace Microsoft.ContainerInstance --wait` |
 | App 502 au démarrage | Attendre 30–60 s (postgres init) |
 | Entra 401 tenant Ynov | `AUTH_DISABLED=true` dans le manifeste ACI |
