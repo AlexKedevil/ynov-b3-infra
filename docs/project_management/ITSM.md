@@ -1,7 +1,5 @@
 # Gestion des incidents (ITSM)
 
-> Statut : **Fait** — board Trello restructuré (juin 2026).
-
 ---
 
 ## Outils
@@ -52,8 +50,6 @@ Utilisateur → L1 (helpdesk / équipe projet) → L2 (admin réseau/cloud) → 
 ## Tableau de bord projet
 
 Captures Trello : [screenshots/](screenshots/)
-
-Guide board : [trello_board_guide.md](trello_board_guide.md)
 
 ---
 
