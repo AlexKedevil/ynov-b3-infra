@@ -49,6 +49,12 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Register ACI resource provider
+        if: steps.check.outputs.has_creds == 'true'
+        run: |
+          az provider register --namespace Microsoft.ContainerInstance --wait
+          az provider show --namespace Microsoft.ContainerInstance --query registrationState -o tsv
+
       - name: Prepare container group manifest
         if: steps.check.outputs.has_creds == 'true'
         run: |
