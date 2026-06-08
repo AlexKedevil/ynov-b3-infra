@@ -34,15 +34,15 @@ properties:
             value: roombooking
         resources:
           requests:
-            cpu: 0.25
+            cpu: 0.5
             memoryInGB: 0.5
     - name: redis
       properties:
         image: redis:7-alpine
         resources:
           requests:
-            cpu: 0.25
-            memoryInGB: 0.25
+            cpu: 0.5
+            memoryInGB: 0.5
   imageRegistryCredentials:
     - server: {{ACR_SERVER}}
       username: {{ACR_USER}}
