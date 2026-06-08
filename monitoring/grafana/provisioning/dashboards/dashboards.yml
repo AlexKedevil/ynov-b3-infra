@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: Smart Office
+    orgId: 1
+    folder: Smart Office 2.0
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: /var/lib/grafana/dashboards
