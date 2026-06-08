@@ -60,6 +60,7 @@ ynov-b3-infra/
 - [Installation pfSense](infra/network/pfsense_initial_setup.md)
 - [Configuration VLANs](infra/network/pfsense_vlan_config.md)
 - [VMware vmnet2](infra/network/vmware_vmnet2_config.md)
+- [VPN WireGuard — VLAN20/50](infra/network/pfsense_wireguard_vpn.md)
 
 ---
 
