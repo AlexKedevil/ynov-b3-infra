@@ -14,8 +14,8 @@ Groupe de conteneurs multi-container (réseau partagé `127.0.0.1`) :
 | Conteneur | Image | Rôle |
 |-----------|-------|------|
 | room-booking | ACR `room-booking:latest` | API Flask |
-| postgres | `postgres:16-alpine` | SQL |
-| redis | `redis:7-alpine` | Cache NoSQL |
+| postgres | ACR `postgres:16-alpine` | SQL |
+| redis | ACR `redis:7-alpine` | Cache NoSQL |
 
 ---
 
@@ -120,5 +120,6 @@ az container start --resource-group rg-smartoffice --name smartoffice-booking
 | DNS label déjà pris | Changer `dnsNameLabel` dans `container-group.yaml` |
 | Deploy job skipped | Ajouter secret `AZURE_CREDENTIALS` |
 | `MissingSubscriptionRegistration` Microsoft.ContainerInstance | `az provider register --namespace Microsoft.ContainerInstance --wait` |
+| `RegistryErrorResponse` index.docker.io | Images sidecar servies depuis ACR (voir workflow) |
 | App 502 au démarrage | Attendre 30–60 s (postgres init) |
 | Entra 401 tenant Ynov | `AUTH_DISABLED=true` dans le manifeste ACI |
