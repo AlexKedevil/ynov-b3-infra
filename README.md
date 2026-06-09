@@ -80,9 +80,9 @@ PoC cloud — réservation de salles (API complète, déployée sur ACI).
 
 <table>
 <colgroup>
-<col style="width:28%">
 <col style="width:32%">
-<col style="width:40%">
+<col style="width:30%">
+<col style="width:38%">
 </colgroup>
 <thead>
 <tr><th>Accès</th><th>URL</th><th>Auth</th></tr>
@@ -94,7 +94,7 @@ PoC cloud — réservation de salles (API complète, déployée sur ACI).
 <td><code>AUTH_DISABLED=true</code> (HTTP — Entra SPA exige HTTPS hors localhost)</td>
 </tr>
 <tr>
-<td><strong>Local + Entra ID</strong><br>(démo&nbsp;IAM)</td>
+<td><span style="white-space:nowrap"><strong>Local&nbsp;+&nbsp;Entra&nbsp;ID</strong></span><br>(démo&nbsp;IAM)</td>
 <td>http://localhost:8080/login</td>
 <td>JWT Microsoft (tenant dev personnel)</td>
 </tr>
