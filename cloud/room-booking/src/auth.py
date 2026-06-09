@@ -42,16 +42,26 @@ def _valid_audiences():
     return list(audiences)
 
 
+def _valid_issuers():
+    tid = AZURE_TENANT_ID
+    return [
+        f"https://login.microsoftonline.com/{tid}/v2.0",
+        f"https://sts.windows.net/{tid}/",
+    ]
+
+
 def validate_token(token):
     signing_key = get_jwks_client().get_signing_key_from_jwt(token)
-    issuer = f"https://login.microsoftonline.com/{AZURE_TENANT_ID}/v2.0"
-    return jwt.decode(
+    claims = jwt.decode(
         token,
         signing_key.key,
         algorithms=["RS256"],
         audience=_valid_audiences(),
-        issuer=issuer,
+        options={"verify_iss": False},
     )
+    if claims.get("iss") not in _valid_issuers():
+        raise jwt.InvalidIssuerError("Invalid issuer")
+    return claims
 
 
 def extract_user(claims):
