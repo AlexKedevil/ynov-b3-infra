@@ -172,7 +172,7 @@ Prérequis VMware : promiscuous mode sur `vmnet2` — [vmware_vmnet2_config.md](
 | [pfsense_wireguard_tunnel.png](../../docs/architecture/screenshots/pfsense_wireguard_tunnel.png) | Preuve tunnel actif |
 | [pfsense_wireguard_firewall.png](../../docs/architecture/screenshots/pfsense_wireguard_firewall.png) | Validation acces VPN |
 
-Regenerer : `./scripts/capture-lab-proofs.sh` (VPN complet : `sudo wg-quick up credentials/wg-smartoffice.conf`).
+Captures : `wg show` + ping VLAN20/50 (tunnel `wg-smartoffice` sur l'hôte lab).
 
 ---
 

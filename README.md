@@ -28,8 +28,7 @@ ynov-b3-infra/
 │   ├── security/             # Zero Trust, IAM, firewall
 │   ├── database/             # Merise, backup/restore
 │   ├── pca_pra/              # BIA, PCA, PRA
-│   ├── project_management/   # ITSM, backlog, Trello
-│   └── livrable/             # Export Moodle 18/06/2026
+│   └── project_management/   # ITSM, backlog, Trello
 ├── infra/network/            # pfSense, VMware (fait)
 ├── monitoring/               # Grafana/Loki/Promtail
 └── .github/workflows/        # azure-deploy.yml → ACR
