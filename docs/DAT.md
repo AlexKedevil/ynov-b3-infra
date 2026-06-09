@@ -81,7 +81,6 @@ Voir [architecture/Plan_Adressage_IP_VLAN.md](architecture/Plan_Adressage_IP_VLA
 ### Schémas
 
 - Schéma logique : [architecture/screenshots/network_diagram.png](architecture/screenshots/network_diagram.png)
-- Source Draw.io : [architecture/network diagram.xml](architecture/network%20diagram.xml)
 
 ### Preuves lab (pfSense + VMware)
 

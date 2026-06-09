@@ -40,6 +40,7 @@ docker compose up -d
 | Loki | http://localhost:3100 |
 | Syslog pfSense | UDP `10.20.0.254:1514` |
 | Dashboard | **Smart Office — Logs & Anomalies** |
+| Healthchecks | `health-prober` : Loki, Grafana, Promtail, room-booking local, **ACI Azure** |
 
 ### Mode simulateur (VM arrêtée)
 
@@ -66,4 +67,4 @@ chmod +x scripts/*.sh
 - [DAT — § Supervision](../docs/DAT.md#11-supervision-et-détection)
 - [ITSM](../docs/project_management/ITSM.md)
 - [room-booking](../cloud/room-booking/)
-- Capture PoC : [grafana_dashboard_poc.png](../docs/project_management/screenshots/grafana_dashboard_poc.png)
+- Capture PoC : [grafana_dashboard.png](../docs/architecture/screenshots/grafana_dashboard.png) · [grafana_dashboard_poc.png](../docs/project_management/screenshots/grafana_dashboard_poc.png)
