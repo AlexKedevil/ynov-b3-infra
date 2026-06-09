@@ -11,7 +11,7 @@
 
 Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 → 200 employés, siège 4 étages, télétravail flexible).
 
-**Index des livrables :** [docs/README.md](docs/README.md) · **Tableau Trello :** [b3-infra](https://trello.com/b/EXl0H0QS/b3-infra)
+**Documentation complète :** [ci-dessous](#documentation) · **Tableau Trello :** [b3-infra](https://trello.com/b/EXl0H0QS/b3-infra)
 
 ---
 
@@ -121,7 +121,72 @@ cd monitoring && docker compose up -d
 # Grafana http://localhost:3000 — admin / smartoffice
 ```
 
-Détails et scénario d'anomalie : [monitoring/README.md](monitoring/README.md)
+Détails : [monitoring/README.md](monitoring/README.md) · [Scénario d'anomalie](monitoring/anomaly-scenario.md)
+
+---
+
+## Documentation
+
+Index des livrables UF_INFRA_B3 (statut **Fait**) : [docs/README.md](docs/README.md)
+
+### Architecture & DAT
+
+| Document | Description |
+|----------|-------------|
+| [DAT.md](docs/DAT.md) | Dossier d'Architecture Technique (document principal) |
+| [Plan d'adressage IP & VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md) | Segmentation `10.20.0.0/16`, 6 VLANs |
+| [Captures PoC réseau & cloud](docs/architecture/screenshots/) | Schémas PNG, Grafana, VPN, backup, ACI |
+| [Édition schéma SVG](docs/architecture/EDITING.md) | Guide mise à jour du diagramme hybride |
+
+### Sécurité & IAM
+
+| Document | Description |
+|----------|-------------|
+| [Zero Trust & IAM](docs/security/Zero_Trust_IAM.md) | Modèle Zero Trust, rôles, MFA |
+| [Configuration Entra ID](docs/security/entra_portal_setup.md) | Portail Azure, MSAL, JWT, démo locale |
+| [Politiques firewall](docs/security/firewall_policies.md) | Règles pfSense inter-VLAN et WAN |
+
+### Base de données & continuité
+
+| Document | Description |
+|----------|-------------|
+| [MCD Merise](docs/database/MCD_Merise.md) | Modèle conceptuel room-booking |
+| [Backup & restore](docs/database/backup_restore.md) | `pg_dump`, procédure de restauration |
+| [BIA](docs/pca_pra/BIA.md) | Analyse d'impact métier |
+| [PCA / PRA](docs/pca_pra/PCA_PRA.md) | Continuité et reprise d'activité |
+
+### Gestion de projet
+
+| Document | Description |
+|----------|-------------|
+| [ITSM](docs/project_management/ITSM.md) | Gestion des incidents |
+| [Backlog & sprints](docs/project_management/backlog_sprints.md) | Méthodologie agile, user stories |
+| [Captures Trello](docs/project_management/screenshots/) | Screenshots du tableau b3-infra |
+| [Trello b3-infra](https://trello.com/b/EXl0H0QS/b3-infra) | Board Kanban (lien externe) |
+
+### Réseau on-premise
+
+| Document | Description |
+|----------|-------------|
+| [Installation pfSense](infra/network/pfsense_initial_setup.md) | Première configuration |
+| [Configuration VLANs](infra/network/pfsense_vlan_config.md) | 802.1Q, interfaces, règles |
+| [VMware vmnet2](infra/network/vmware_vmnet2_config.md) | Lab LAN `10.20.0.0/16` |
+| [VPN WireGuard](infra/network/pfsense_wireguard_vpn.md) | Accès VLAN20/50 à distance |
+| [pfSense → Loki](infra/network/pfsense_syslog_loki.md) | Syslog vers monitoring |
+
+### Cloud & déploiement
+
+| Document | Description |
+|----------|-------------|
+| [Room-booking — détails](cloud/room-booking/DETAILS.md) | API, stack, endpoints, tests |
+| [Déploiement Azure ACI](infra/azure/aci-deploy.md) | ACR, container group, pipeline |
+
+### Monitoring
+
+| Document | Description |
+|----------|-------------|
+| [Stack Grafana / Loki](monitoring/README.md) | Déploiement, dashboard, health-prober |
+| [Scénario d'anomalie](monitoring/anomaly-scenario.md) | Détection incident PoC |
 
 ---
 
