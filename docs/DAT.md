@@ -247,6 +247,8 @@ Procédures : [database/backup_restore.md](database/backup_restore.md).
 
 Stack PoC : **Grafana + Loki + Promtail + syslog-ng**.
 
+> **Note SIEM :** Wazuh (ou équivalent SIEM centralisé) est prévu en **production** pour corrélation avancée et réponse aux incidents. Le PoC B3 démontre la chaîne de supervision avec Grafana/Loki : collecte syslog pfSense, dashboard, scénario d'anomalie et lien ITSM.
+
 | Source | Collecte | Anomalie détectée |
 |--------|----------|-------------------|
 | pfSense VM (réel) | Syslog UDP `10.20.0.254:1514` | Blocages firewall (`filterlog`) |

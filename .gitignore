@@ -35,3 +35,16 @@ UF_INFRA_B3.pdf
 
 # Guides internes (assistant / reconstruction locale, non versionnés)
 docs/project_management/trello_board_guide.md
+
+# Remise Moodle / outils locaux (hors dépôt projet)
+docs/livrable/
+docs/architecture/EDITING.md
+scripts/capture-lab-proofs.sh
+scripts/wg-lab-up.sh
+
+# Schémas hybrides on-prem + cloud (brouillon local, pas encore finalisés)
+docs/architecture/smart_office_hybrid.svg
+docs/architecture/smart_office_hybrid_azure_style.svg
+docs/architecture/screenshots/smart_office_hybrid.png
+docs/architecture/screenshots/smart_office_hybrid_azure_style.png
+cloud/room-booking/backup_*.sql
