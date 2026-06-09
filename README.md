@@ -53,7 +53,7 @@ Schéma source : [smart_office_hybrid.svg](docs/architecture/smart_office_hybrid
 
 ![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
 
-Schéma source : [docs/architecture/network_vlan.svg](docs/architecture/network_vlan.svg) · draw.io : [network diagram.xml](docs/architecture/network%20diagram.xml)
+Schéma source : [network_vlan.svg](docs/architecture/network_vlan.svg) — **réseau on-prem uniquement** (pfSense, 6 VLANs, VPN) · draw.io : [network diagram.xml](docs/architecture/network%20diagram.xml)
 
 - [Plan d'Adressage IP & VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
 - [Installation pfSense](infra/network/pfsense_initial_setup.md)
