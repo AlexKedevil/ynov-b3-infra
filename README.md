@@ -89,7 +89,7 @@ PoC cloud — réservation de salles (API complète, déployée sur ACI).
 </thead>
 <tbody>
 <tr>
-<td><strong>ACI public</strong> (PoC cloud)</td>
+<td><span style="white-space:nowrap"><strong>ACI&nbsp;public</strong></span><br>(PoC&nbsp;cloud)</td>
 <td>http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080</td>
 <td><code>AUTH_DISABLED=true</code> (HTTP — Entra SPA exige HTTPS hors localhost)</td>
 </tr>
