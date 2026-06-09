@@ -40,7 +40,11 @@ ynov-b3-infra/
 
 ## Architecture hybride
 
-Description textuelle : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-on-premise--cloud) (on-prem VMware + Azure France Central + CI/CD).
+![Architecture hybride — on-prem VMware + Azure](docs/architecture/screenshots/smart_office_hybrid_azure.png)
+
+On-prem (pfSense, VLANs, WireGuard, Grafana/Loki) + Azure France Central (ACI, ACR, Entra ID) + CI/CD GitHub Actions.
+
+Description détaillée : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-on-premise--cloud)
 
 ---
 
