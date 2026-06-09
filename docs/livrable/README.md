@@ -27,20 +27,29 @@ Dépôt GitHub : https://github.com/AlexKedevil/ynov-b3-infra
 
 ---
 
-## Génération PDF (exemples)
+## Génération automatique (ZIP)
 
 ```bash
-# Pandoc (si installé)
-pandoc docs/DAT.md -o docs/livrable/01_DAT.pdf
+# Captures PoC a jour (Grafana, backup, VPN, cloud)
+./scripts/capture-lab-proofs.sh
 
-# Ou : ouvrir les .md dans VS Code / GitHub → imprimer en PDF
+# ZIP Moodle (markdown + screenshots)
+./docs/livrable/build_moodle_zip.sh
+# -> docs/livrable/SmartOffice_B3_YYYYMMDD.zip
+```
+
+## Génération PDF (optionnel)
+
+```bash
+pandoc docs/DAT.md -o docs/livrable/01_DAT.pdf
+# Ou : VS Code / GitHub -> imprimer en PDF
 ```
 
 ---
 
 ## Checklist avant remise
 
-- [ ] Tous les livrables [docs/README.md](../README.md) sont à statut « Fait »
-- [ ] Screenshots PoC à jour
-- [ ] Lien GitHub valide
-- [ ] ZIP uploadé sur Moodle avant le 18/06/2026 00:00
+- [x] Tous les livrables [docs/README.md](../README.md) sont à statut « Fait »
+- [x] Screenshots PoC (`./scripts/capture-lab-proofs.sh`)
+- [x] Lien GitHub valide
+- [ ] ZIP uploadé sur Moodle avant le 18/06/2026 00:00 (`build_moodle_zip.sh`)
