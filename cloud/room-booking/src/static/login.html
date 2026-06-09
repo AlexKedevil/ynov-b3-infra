@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Office — Connexion Entra ID</title>
-  <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@azure/msal-browser@2.38.4/lib/msal-browser.min.js"></script>
   <style>
     body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; }
     button { padding: 0.6rem 1.2rem; margin-right: 0.5rem; cursor: pointer; }
@@ -30,40 +30,51 @@
     let msalInstance = null;
     let apiScope = null;
 
-    async function loadConfig() {
-      const res = await fetch("/auth/config");
-      const cfg = await res.json();
+    function setStatus(text, kind) {
       const status = document.getElementById("status");
+      status.textContent = text;
+      status.className = kind;
+    }
 
-      if (cfg.authDisabled) {
-        status.textContent = "AUTH_DISABLED=true — API accessible sans jeton en local.";
-        status.className = "warn";
-        return;
-      }
+    async function loadConfig() {
+      try {
+        if (typeof msal === "undefined") {
+          setStatus("Bibliothèque MSAL non chargée (CDN bloqué ?). Rechargez la page.", "warn");
+          return;
+        }
 
-      if (!cfg.tenantId || !cfg.clientId || !cfg.apiScope) {
-        status.textContent = "Entra ID non configuré. Voir docs/security/entra_portal_setup.md";
-        status.className = "warn";
-        return;
-      }
+        const res = await fetch("/auth/config");
+        const cfg = await res.json();
 
-      apiScope = cfg.apiScope;
-      msalInstance = new msal.PublicClientApplication({
-        auth: {
-          clientId: cfg.clientId,
-          authority: `https://login.microsoftonline.com/${cfg.tenantId}`,
-          redirectUri: window.location.origin + "/static/login.html",
-        },
-        cache: { cacheLocation: "sessionStorage" },
-      });
-      await msalInstance.initialize();
-      const accounts = msalInstance.getAllAccounts();
-      if (accounts.length > 0) {
-        showAccount(accounts[0]);
+        if (cfg.authDisabled) {
+          setStatus("AUTH_DISABLED=true — API accessible sans jeton en local.", "warn");
+          return;
+        }
+
+        if (!cfg.tenantId || !cfg.clientId || !cfg.apiScope) {
+          setStatus("Entra ID non configuré. Voir docs/security/entra_portal_setup.md", "warn");
+          return;
+        }
+
+        apiScope = cfg.apiScope;
+        msalInstance = new msal.PublicClientApplication({
+          auth: {
+            clientId: cfg.clientId,
+            authority: `https://login.microsoftonline.com/${cfg.tenantId}`,
+            redirectUri: window.location.origin + "/static/login.html",
+          },
+          cache: { cacheLocation: "sessionStorage" },
+        });
+        await msalInstance.initialize();
+        const accounts = msalInstance.getAllAccounts();
+        if (accounts.length > 0) {
+          showAccount(accounts[0]);
+        }
+        setStatus("Entra ID configuré. Connectez-vous pour obtenir un jeton.", "ok");
+        document.getElementById("loginBtn").disabled = false;
+      } catch (err) {
+        setStatus("Erreur initialisation : " + (err.message || err), "warn");
       }
-      status.textContent = "Entra ID configuré. Connectez-vous pour obtenir un jeton.";
-      status.className = "ok";
-      document.getElementById("loginBtn").disabled = false;
     }
 
     async function login() {
