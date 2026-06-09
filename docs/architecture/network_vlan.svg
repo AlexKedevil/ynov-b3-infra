@@ -25,8 +25,8 @@
 
   <rect x="450" y="155" width="200" height="90" rx="8" fill="#f8cecc" stroke="#b85450" stroke-width="2"/>
   <text x="465" y="178" class="box-title">pfSense Firewall</text>
-  <text x="465" y="196" class="text">WAN: DHCP (vmnet8)</text>
-  <text x="465" y="212" class="text">LAN: 10.20.0.1/24</text>
+  <text x="465" y="196" class="text">WAN: vmnet8 (NAT, Internet)</text>
+  <text x="465" y="212" class="text">LAN em1: vmnet2 - 10.20.0.1/24</text>
   <text x="465" y="228" class="text">WireGuard WG_VPN 10.20.100.1/24</text>
 
   <rect x="430" y="268" width="240" height="48" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
