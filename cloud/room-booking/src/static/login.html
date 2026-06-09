@@ -90,8 +90,9 @@
         account,
       });
       document.getElementById("tokenBox").textContent = result.accessToken;
+      const base = window.location.origin;
       document.getElementById("curlExample").textContent =
-        `curl http://localhost:8080/rooms \\\n  -H "Authorization: Bearer ${result.accessToken.substring(0, 40)}..."`;
+        `curl ${base}/rooms \\\n  -H "Authorization: Bearer ${result.accessToken.substring(0, 40)}..."`;
       document.getElementById("logoutBtn").disabled = false;
     }
 

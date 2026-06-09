@@ -15,7 +15,15 @@ properties:
           - name: REDIS_URL
             value: redis://127.0.0.1:6379/0
           - name: AUTH_DISABLED
-            value: "true"
+            value: "{{AUTH_DISABLED}}"
+          - name: AZURE_TENANT_ID
+            value: "{{AZURE_TENANT_ID}}"
+          - name: AZURE_CLIENT_ID
+            value: "{{AZURE_CLIENT_ID}}"
+          - name: AZURE_SPA_CLIENT_ID
+            value: "{{AZURE_SPA_CLIENT_ID}}"
+          - name: AZURE_API_AUDIENCE
+            value: "{{AZURE_API_AUDIENCE}}"
           - name: APP_VERSION
             value: azure-aci
         resources:
