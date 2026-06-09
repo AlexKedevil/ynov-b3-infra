@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Schema logique VLAN on-prem uniquement (segmentation reseau lab).
-     Distinct de smart_office_hybrid : pas de cloud, focus pfSense + 6 VLANs.
-     Source de network_diagram.png dans le README. -->
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="800" viewBox="0 0 1100 800" font-family="Segoe UI, Arial, sans-serif">
+<!-- Schema logique VLAN on-prem : pfSense, switch trunk, 6 VLANs.
+     Distinct de smart_office_hybrid (architecture complete cloud+lab). -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" font-family="Segoe UI, Arial, sans-serif">
   <defs>
     <style>
       .title { font-size: 18px; font-weight: 700; fill: #1a1a2e; }
@@ -19,87 +18,100 @@
     </marker>
   </defs>
 
-  <rect width="1100" height="800" fill="#f7f9fb"/>
+  <rect width="1100" height="720" fill="#f7f9fb"/>
   <text x="550" y="32" text-anchor="middle" class="title">Smart Office 2.0 - Schema logique reseau (VLANs)</text>
   <text x="550" y="52" text-anchor="middle" class="note">On-prem uniquement - pfSense 2.7 - Lab VMware - 10.20.0.0/16</text>
 
-  <!-- ===== Connecteurs (dessines EN PREMIER, sous les blocs) ===== -->
-  <g id="connectors" fill="none">
-    <!-- Internet -> pfSense -->
-    <line x1="550" y1="133" x2="550" y2="155" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-    <!-- pfSense -> Switch -->
-    <line x1="550" y1="250" x2="550" y2="285" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-    <!-- Bus horizontal sous le switch -->
-    <line x1="120" y1="368" x2="895" y2="368" stroke="#555" stroke-width="2"/>
-    <!-- Descentes vers chaque VLAN -->
-    <line x1="120" y1="368" x2="120" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="275" y1="368" x2="275" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="430" y1="368" x2="430" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="585" y1="368" x2="585" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="740" y1="368" x2="740" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <line x1="895" y1="368" x2="895" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
-    <!-- VLAN50 -> Azure Blob (couloir droit, sans traverser autres VLAN) -->
-    <path d="M740 488 L740 530 L960 530 L960 558" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
-    <text x="820" y="522" class="flow">Backup BDD</text>
-    <!-- WireGuard -> pfSense (couloir gauche, sans traverser blocs) -->
-    <path d="M250 600 L250 205 L450 205" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
-    <text x="255" y="420" class="flow">VPN UDP 51820</text>
-  </g>
-
-  <!-- ===== Blocs ===== -->
+  <!-- Blocs -->
   <ellipse cx="550" cy="95" rx="95" ry="38" fill="#dae8fc" stroke="#6c8ebf" stroke-width="2"/>
   <text x="550" y="100" text-anchor="middle" class="box-title">INTERNET / FAI</text>
 
-  <rect x="450" y="155" width="200" height="95" rx="8" fill="#f8cecc" stroke="#b85450" stroke-width="2"/>
+  <rect x="450" y="155" width="200" height="90" rx="8" fill="#f8cecc" stroke="#b85450" stroke-width="2"/>
   <text x="465" y="178" class="box-title">pfSense Firewall</text>
   <text x="465" y="196" class="text">WAN: DHCP (vmnet8)</text>
   <text x="465" y="212" class="text">LAN: 10.20.0.1/24</text>
-  <text x="465" y="228" class="text">VPN: WireGuard UDP 51820</text>
-  <text x="465" y="244" class="text">WG_VPN: 10.20.100.1/24</text>
+  <text x="465" y="228" class="text">WireGuard WG_VPN 10.20.100.1/24</text>
 
-  <rect x="430" y="285" width="240" height="50" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
-  <text x="550" y="315" text-anchor="middle" class="box-title">Managed Switch (VLAN Trunk 802.1Q)</text>
+  <rect x="430" y="268" width="240" height="48" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+  <text x="550" y="297" text-anchor="middle" class="box-title">Managed Switch (VLAN Trunk 802.1Q)</text>
 
-  <rect x="50" y="400" width="140" height="88" rx="6" fill="#e1d5e7" stroke="#9673a6" stroke-width="2"/>
-  <text x="62" y="422" class="box-title">VLAN 10 MGMT</text>
-  <text x="62" y="440" class="text">10.20.10.0/24</text>
-  <text x="62" y="456" class="text">Switches, ILO</text>
+  <rect x="50" y="380" width="140" height="80" rx="6" fill="#e1d5e7" stroke="#9673a6" stroke-width="2"/>
+  <text x="62" y="402" class="box-title">VLAN 10 MGMT</text>
+  <text x="62" y="420" class="text">10.20.10.0/24</text>
+  <text x="62" y="436" class="text">Switches, ILO</text>
 
-  <rect x="205" y="400" width="140" height="88" rx="6" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
-  <text x="217" y="422" class="box-title">VLAN 20 USERS</text>
-  <text x="217" y="440" class="text">10.20.20.0/24</text>
-  <text x="217" y="472" class="text">VPN: acces OK</text>
+  <rect x="205" y="380" width="140" height="80" rx="6" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+  <text x="217" y="402" class="box-title">VLAN 20 USERS</text>
+  <text x="217" y="420" class="text">10.20.20.0/24</text>
+  <text x="217" y="436" class="text">PC, imprimantes</text>
 
-  <rect x="360" y="400" width="140" height="88" rx="6" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
-  <text x="372" y="422" class="box-title">VLAN 30 WIFI_STAFF</text>
-  <text x="372" y="440" class="text">10.20.30.0/24</text>
+  <rect x="360" y="380" width="140" height="80" rx="6" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+  <text x="372" y="402" class="box-title">VLAN 30 WIFI_STAFF</text>
+  <text x="372" y="420" class="text">10.20.30.0/24</text>
 
-  <rect x="515" y="400" width="140" height="88" rx="6" fill="#fff2cc" stroke="#d6b656" stroke-width="2"/>
-  <text x="527" y="422" class="box-title">VLAN 40 GUEST</text>
-  <text x="527" y="440" class="text">10.20.40.0/24</text>
-  <text x="527" y="456" class="text">Isole (Internet)</text>
+  <rect x="515" y="380" width="140" height="80" rx="6" fill="#fff2cc" stroke="#d6b656" stroke-width="2"/>
+  <text x="527" y="402" class="box-title">VLAN 40 GUEST</text>
+  <text x="527" y="420" class="text">10.20.40.0/24</text>
+  <text x="527" y="436" class="text">Isole (Internet)</text>
 
-  <rect x="670" y="400" width="140" height="88" rx="6" fill="#f8cecc" stroke="#b85450" stroke-width="2"/>
-  <text x="682" y="422" class="box-title">VLAN 50 SERVERS</text>
-  <text x="682" y="440" class="text">10.20.50.0/24</text>
-  <text x="682" y="472" class="text">VPN: acces OK</text>
+  <rect x="670" y="380" width="140" height="80" rx="6" fill="#f8cecc" stroke="#b85450" stroke-width="2"/>
+  <text x="682" y="402" class="box-title">VLAN 50 SERVERS</text>
+  <text x="682" y="420" class="text">10.20.50.0/24</text>
+  <text x="682" y="436" class="text">AD, DB, App</text>
 
-  <rect x="825" y="400" width="140" height="88" rx="6" fill="#ffe6cc" stroke="#d79b00" stroke-width="2"/>
-  <text x="837" y="422" class="box-title">VLAN 60 DMZ</text>
-  <text x="837" y="440" class="text">10.20.60.0/24</text>
+  <rect x="825" y="380" width="140" height="80" rx="6" fill="#ffe6cc" stroke="#d79b00" stroke-width="2"/>
+  <text x="837" y="402" class="box-title">VLAN 60 DMZ</text>
+  <text x="837" y="420" class="text">10.20.60.0/24</text>
 
-  <ellipse cx="960" cy="600" rx="78" ry="42" fill="#eef4fc" stroke="#0078D4" stroke-width="2"/>
-  <text x="960" y="595" text-anchor="middle" class="box-title">Azure Blob</text>
-  <text x="960" y="612" text-anchor="middle" class="text">pg_dump (cible prod)</text>
+  <ellipse cx="960" cy="560" rx="78" ry="42" fill="#eef4fc" stroke="#0078D4" stroke-width="2"/>
+  <text x="960" y="555" text-anchor="middle" class="box-title">Azure Blob</text>
+  <text x="960" y="572" text-anchor="middle" class="text">pg_dump (cible prod)</text>
 
-  <rect x="50" y="560" width="200" height="88" rx="6" fill="#eef6ff" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <text x="65" y="582" class="box-title">Teletravail WireGuard</text>
-  <text x="65" y="600" class="text">10.20.100.0/24</text>
-  <text x="65" y="616" class="text">Acces VLAN 20 + 50</text>
-  <text x="65" y="632" class="text">Endpoint 10.20.0.1:51820</text>
+  <rect x="50" y="520" width="200" height="76" rx="6" fill="#eef6ff" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="65" y="542" class="box-title">Teletravail WireGuard</text>
+  <text x="65" y="560" class="text">10.20.100.0/24</text>
+  <text x="65" y="576" class="text">Acces VLAN 20 + 50</text>
+  <text x="65" y="592" class="text">Endpoint 10.20.0.1:51820</text>
 
-  <rect x="50" y="690" width="150" height="75" rx="6" fill="#fff" stroke="#ccc" stroke-width="1"/>
-  <text x="62" y="710" class="box-title">Legende</text>
-  <text x="62" y="728" class="text">MGMT / USERS / GUEST</text>
-  <text x="62" y="744" class="text">SERVERS / DMZ</text>
+  <!-- Connecteurs AU-DESSUS des blocs (origines visibles) -->
+  <g id="connectors" fill="none">
+    <!-- Internet -> pfSense -->
+    <line x1="550" y1="133" x2="550" y2="155" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- pfSense -> Switch (centre) -->
+    <line x1="550" y1="245" x2="550" y2="268" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="550" cy="268" r="4" fill="#555"/>
+
+    <!-- Switch -> bus trunk (depuis le bas du switch) -->
+    <line x1="550" y1="316" x2="550" y2="348" stroke="#555" stroke-width="2"/>
+    <circle cx="550" cy="316" r="4" fill="#82b366" stroke="#fff" stroke-width="1"/>
+
+    <!-- Bus horizontal relie au switch -->
+    <line x1="120" y1="348" x2="895" y2="348" stroke="#555" stroke-width="2"/>
+    <circle cx="550" cy="348" r="4" fill="#555"/>
+
+    <!-- Switch -> chaque VLAN (descente depuis le bus) -->
+    <line x1="120" y1="348" x2="120" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="120" cy="348" r="3" fill="#555"/>
+    <line x1="275" y1="348" x2="275" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="275" cy="348" r="3" fill="#555"/>
+    <line x1="430" y1="348" x2="430" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="430" cy="348" r="3" fill="#555"/>
+    <line x1="585" y1="348" x2="585" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="585" cy="348" r="3" fill="#555"/>
+    <line x1="740" y1="348" x2="740" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="740" cy="348" r="3" fill="#555"/>
+    <line x1="895" y1="348" x2="895" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="895" cy="348" r="3" fill="#555"/>
+
+    <!-- VLAN 50 -> Azure Blob (sous la ligne des VLAN, y=500) -->
+    <path d="M740 460 L740 500 L960 500 L960 518" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
+    <text x="830" y="492" class="flow">Backup BDD</text>
+
+    <!-- WireGuard -> pfSense (couloir gauche x=35, sous les VLAN) -->
+    <path d="M150 520 L35 520 L35 175 L450 175" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
+    <text x="42" y="350" class="flow">UDP 51820</text>
+    <circle cx="150" cy="520" r="4" fill="#0078D4"/>
+    <circle cx="450" cy="175" r="4" fill="#0078D4"/>
+  </g>
 </svg>
