@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="960" viewBox="0 0 1400 960" font-family="Segoe UI, Arial, sans-serif">
+<!-- Style Azure. Fleches simplifiees comme smart_office_hybrid.svg (classique).
+     Edition : Inkscape, draw.io (importer SVG), ou VS Code + preview SVG. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" font-family="Segoe UI, Arial, sans-serif">
   <defs>
     <style>
       .title { font-size: 20px; font-weight: 600; fill: #323130; }
@@ -7,20 +9,16 @@
       .zone-label { font-size: 11px; font-weight: 600; fill: #323130; }
       .icon-label { font-size: 11px; fill: #323130; }
       .icon-sublabel { font-size: 9px; fill: #605E5C; }
-      .flow-label { font-size: 10px; fill: #0078D4; font-weight: 600; }
-      .log-label { font-size: 9px; fill: #8764B8; font-weight: 600; }
-      .footer { font-size: 10px; fill: #8A8886; }
+      .flow { font-size: 10px; fill: #0078D4; font-weight: 600; }
+      .flow-gray { font-size: 10px; fill: #605E5C; font-weight: 600; }
+      .note { font-size: 10px; fill: #8A8886; font-style: italic; }
     </style>
-    <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <polygon points="0 0, 7 3.5, 0 7" fill="#605E5C"/>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#605E5C"/>
     </marker>
-    <marker id="arr-blue" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <polygon points="0 0, 7 3.5, 0 7" fill="#0078D4"/>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#0078D4"/>
     </marker>
-    <marker id="arr-purple" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <polygon points="0 0, 7 3.5, 0 7" fill="#8764B8"/>
-    </marker>
-
     <symbol id="ico-cloud" viewBox="0 0 48 48">
       <ellipse cx="24" cy="30" rx="18" ry="10" fill="#E8F4FD" stroke="#0078D4" stroke-width="1.5"/>
       <ellipse cx="16" cy="26" rx="10" ry="8" fill="#E8F4FD" stroke="#0078D4" stroke-width="1.5"/>
@@ -29,7 +27,6 @@
     <symbol id="ico-vpn" viewBox="0 0 48 48">
       <rect x="8" y="14" width="32" height="22" rx="3" fill="#FFF4CE" stroke="#FFB900" stroke-width="1.5"/>
       <path d="M14 28 L24 20 L34 28" fill="none" stroke="#FFB900" stroke-width="2"/>
-      <circle cx="24" cy="32" r="3" fill="#FFB900"/>
     </symbol>
     <symbol id="ico-firewall" viewBox="0 0 48 48">
       <path d="M24 6 L40 14 V26 C40 34 24 42 24 42 C24 42 8 34 8 26 V14 Z" fill="#FDE7E9" stroke="#D83B01" stroke-width="1.5"/>
@@ -37,217 +34,114 @@
     </symbol>
     <symbol id="ico-host" viewBox="0 0 48 48">
       <rect x="10" y="10" width="28" height="30" rx="2" fill="#E6F2E6" stroke="#107C10" stroke-width="1.5"/>
-      <rect x="14" y="16" width="20" height="4" rx="1" fill="#107C10" opacity="0.3"/>
-      <rect x="14" y="24" width="20" height="4" rx="1" fill="#107C10" opacity="0.3"/>
-      <rect x="14" y="32" width="20" height="4" rx="1" fill="#107C10" opacity="0.3"/>
     </symbol>
     <symbol id="ico-container" viewBox="0 0 48 48">
       <rect x="8" y="14" width="32" height="24" rx="2" fill="#E8F4FD" stroke="#0078D4" stroke-width="1.5"/>
-      <line x1="8" y1="22" x2="40" y2="22" stroke="#0078D4" stroke-width="1"/>
-      <rect x="14" y="26" width="8" height="8" fill="#0078D4" opacity="0.25"/>
-      <rect x="26" y="26" width="8" height="8" fill="#0078D4" opacity="0.25"/>
-    </symbol>
-    <symbol id="ico-db" viewBox="0 0 48 48">
-      <ellipse cx="24" cy="14" rx="14" ry="6" fill="#E8F4FD" stroke="#0078D4" stroke-width="1.5"/>
-      <path d="M10 14 V32 C10 36 16 38 24 38 C32 38 38 36 38 32 V14" fill="#E8F4FD" stroke="#0078D4" stroke-width="1.5"/>
-      <ellipse cx="24" cy="24" rx="14" ry="5" fill="none" stroke="#0078D4" stroke-width="1"/>
     </symbol>
     <symbol id="ico-identity" viewBox="0 0 48 48">
       <circle cx="20" cy="20" r="10" fill="#F3F2F1" stroke="#0078D4" stroke-width="1.5"/>
-      <circle cx="20" cy="18" r="4" fill="#0078D4" opacity="0.4"/>
       <path d="M28 28 L40 40" stroke="#FFB900" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="40" cy="40" r="4" fill="#FFB900"/>
     </symbol>
     <symbol id="ico-registry" viewBox="0 0 48 48">
       <rect x="10" y="12" width="28" height="26" rx="2" fill="#F3F2F1" stroke="#0078D4" stroke-width="1.5"/>
-      <rect x="16" y="18" width="16" height="4" fill="#0078D4" opacity="0.3"/>
-      <rect x="16" y="26" width="16" height="4" fill="#0078D4" opacity="0.3"/>
     </symbol>
     <symbol id="ico-blob" viewBox="0 0 48 48">
       <rect x="10" y="14" width="28" height="22" rx="2" fill="#E8F4FD" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="4,2"/>
-      <path d="M16 22 H32 M16 28 H28" stroke="#0078D4" stroke-width="1.5"/>
     </symbol>
     <symbol id="ico-monitor" viewBox="0 0 48 48">
       <rect x="8" y="12" width="32" height="22" rx="2" fill="#F4ECFF" stroke="#8764B8" stroke-width="1.5"/>
       <path d="M14 30 L22 22 L28 26 L34 18" fill="none" stroke="#8764B8" stroke-width="2"/>
-      <rect x="18" y="36" width="12" height="4" fill="#8764B8" opacity="0.4"/>
     </symbol>
     <symbol id="ico-cicd" viewBox="0 0 48 48">
       <circle cx="24" cy="24" r="16" fill="#F3F2F1" stroke="#24292F" stroke-width="1.5"/>
-      <path d="M24 14 V24 L30 30" fill="none" stroke="#24292F" stroke-width="2"/>
-    </symbol>
-    <symbol id="ico-cache" viewBox="0 0 48 48">
-      <rect x="12" y="16" width="24" height="18" rx="2" fill="#FDE7E9" stroke="#D13438" stroke-width="1.5"/>
-      <text x="24" y="29" text-anchor="middle" font-size="9" fill="#D13438" font-weight="700">Redis</text>
     </symbol>
   </defs>
 
-  <rect width="1400" height="960" fill="#FFFFFF"/>
-
-  <text x="700" y="36" text-anchor="middle" class="title">Smart Office 2.0 - Architecture hybride</text>
-  <text x="700" y="56" text-anchor="middle" class="subtitle">PoC B3 - Lab VMware on-prem + Azure France Central - Flaujat Sam, Queudeville Alexandre</text>
-
-  <rect x="30" y="75" width="1340" height="800" rx="4" fill="none" stroke="#8A8886" stroke-width="1.5" stroke-dasharray="8,5"/>
-  <text x="1340" y="860" text-anchor="end" class="zone-label">Smart Office 2.0 - PoC Infrastructure</text>
+  <rect width="1280" height="820" fill="#FFFFFF"/>
+  <text x="640" y="36" text-anchor="middle" class="title">Smart Office 2.0 - Architecture hybride</text>
+  <text x="640" y="56" text-anchor="middle" class="subtitle">PoC B3 - Lab VMware (vmnet2) + Azure France Central</text>
 
   <!-- Utilisateurs -->
-  <rect x="55" y="100" width="155" height="340" rx="4" fill="#FFFFFF" stroke="#8A8886" stroke-width="1" stroke-dasharray="6,4"/>
-  <text x="132" y="122" text-anchor="middle" class="zone-label">Utilisateurs</text>
-  <use href="#ico-cloud" x="108" y="140" width="48" height="48"/>
-  <text x="132" y="202" text-anchor="middle" class="icon-label">Internet</text>
-  <text x="132" y="216" text-anchor="middle" class="icon-sublabel">HTTPS public</text>
-  <use href="#ico-vpn" x="108" y="255" width="48" height="48"/>
-  <text x="132" y="317" text-anchor="middle" class="icon-label">WireGuard</text>
-  <text x="132" y="331" text-anchor="middle" class="icon-sublabel">10.20.100.0/24</text>
-  <rect x="78" y="385" width="108" height="42" rx="3" fill="#FAFAFA" stroke="#E1DFDD"/>
-  <text x="132" y="403" text-anchor="middle" class="icon-label">Employes</text>
-  <text x="132" y="417" text-anchor="middle" class="icon-sublabel">Teletravail / Bureau</text>
+  <rect x="40" y="80" width="200" height="320" rx="4" fill="#FFFFFF" stroke="#8A8886" stroke-dasharray="6,4"/>
+  <text x="140" y="102" text-anchor="middle" class="zone-label">Utilisateurs</text>
+  <use href="#ico-cloud" x="116" y="120" width="48" height="48"/>
+  <text x="140" y="182" text-anchor="middle" class="icon-label">Internet</text>
+  <use href="#ico-vpn" x="116" y="210" width="48" height="48"/>
+  <text x="140" y="272" text-anchor="middle" class="icon-label">WireGuard</text>
+  <text x="140" y="286" text-anchor="middle" class="icon-sublabel">10.20.100.0/24</text>
+  <rect x="70" y="310" width="140" height="48" rx="3" fill="#FAFAFA" stroke="#E1DFDD"/>
+  <text x="140" y="338" text-anchor="middle" class="icon-label">Employes</text>
 
   <!-- On-Prem -->
-  <rect x="268" y="100" width="520" height="500" rx="4" fill="#FAFAFA" stroke="#107C10" stroke-width="1.5" stroke-dasharray="8,5"/>
-  <text x="290" y="122" class="zone-label">On-Premise - Lab VMware (CachyOS)</text>
-  <text x="290" y="138" class="icon-sublabel">10.20.0.0/16 - vmnet2 promiscuous</text>
+  <rect x="260" y="80" width="520" height="420" rx="4" fill="#FAFAFA" stroke="#107C10" stroke-dasharray="8,5"/>
+  <text x="280" y="102" class="zone-label">On-Premise - Lab VMware</text>
+  <text x="280" y="118" class="icon-sublabel">vmnet2 - 10.20.0.0/16</text>
 
-  <rect x="290" y="155" width="200" height="130" rx="4" fill="#FFFFFF" stroke="#E1DFDD" stroke-dasharray="5,3"/>
-  <use href="#ico-firewall" x="366" y="168" width="48" height="48"/>
-  <text x="390" y="228" text-anchor="middle" class="icon-label">pfSense VM</text>
-  <text x="390" y="242" text-anchor="middle" class="icon-sublabel">WAN vmnet8 | LAN vmnet2</text>
-  <text x="390" y="256" text-anchor="middle" class="icon-sublabel">10.20.0.1 / WG 10.20.100.1</text>
+  <rect x="280" y="140" width="190" height="120" rx="4" fill="#FFFFFF" stroke="#E1DFDD"/>
+  <use href="#ico-firewall" x="351" y="152" width="48" height="48"/>
+  <text x="375" y="212" text-anchor="middle" class="icon-label">pfSense VM</text>
+  <text x="375" y="226" text-anchor="middle" class="icon-sublabel">WAN vmnet8 | LAN vmnet2</text>
+  <text x="375" y="240" text-anchor="middle" class="icon-sublabel">10.20.0.1</text>
 
-  <rect x="510" y="155" width="255" height="130" rx="4" fill="#FFFFFF" stroke="#E1DFDD" stroke-dasharray="5,3"/>
-  <use href="#ico-host" x="614" y="168" width="48" height="48"/>
-  <text x="638" y="228" text-anchor="middle" class="icon-label">Hote VMware</text>
-  <text x="638" y="242" text-anchor="middle" class="icon-sublabel">10.20.0.254 / vmnet2</text>
+  <rect x="490" y="140" width="270" height="120" rx="4" fill="#FFFFFF" stroke="#E1DFDD"/>
+  <use href="#ico-host" x="601" y="152" width="48" height="48"/>
+  <text x="625" y="212" text-anchor="middle" class="icon-label">Hote VMware</text>
+  <text x="625" y="226" text-anchor="middle" class="icon-sublabel">10.20.0.254</text>
 
-  <rect x="290" y="300" width="475" height="95" rx="4" fill="#FFFFFF" stroke="#E1DFDD" stroke-dasharray="5,3"/>
-  <text x="305" y="318" class="icon-label">Segmentation VLAN</text>
-  <rect x="300" y="328" width="68" height="28" rx="2" fill="#E1D5E7" stroke="#9673A6"/><text x="334" y="346" text-anchor="middle" class="icon-sublabel">V10</text>
-  <rect x="376" y="328" width="68" height="28" rx="2" fill="#D5E8D4" stroke="#82B366"/><text x="410" y="346" text-anchor="middle" class="icon-sublabel">V20</text>
-  <rect x="452" y="328" width="68" height="28" rx="2" fill="#D5E8D4" stroke="#82B366"/><text x="486" y="346" text-anchor="middle" class="icon-sublabel">V30</text>
-  <rect x="528" y="328" width="68" height="28" rx="2" fill="#FFF2CC" stroke="#D6B656"/><text x="562" y="346" text-anchor="middle" class="icon-sublabel">V40</text>
-  <rect x="604" y="328" width="68" height="28" rx="2" fill="#F8CECC" stroke="#B85450"/><text x="638" y="346" text-anchor="middle" class="icon-sublabel">V50</text>
-  <rect x="680" y="328" width="68" height="28" rx="2" fill="#FFE6CC" stroke="#D79B00"/><text x="714" y="346" text-anchor="middle" class="icon-sublabel">V60</text>
+  <rect x="280" y="280" width="480" height="70" rx="4" fill="#FFFFFF" stroke="#E1DFDD"/>
+  <text x="295" y="300" class="icon-label">6 VLAN (10-60) - voir network_vlan.svg</text>
 
-  <rect x="290" y="410" width="200" height="100" rx="4" fill="#FFFFFF" stroke="#E1DFDD" stroke-dasharray="5,3"/>
-  <use href="#ico-monitor" x="366" y="420" width="48" height="48"/>
-  <text x="390" y="480" text-anchor="middle" class="icon-label">Grafana + Loki</text>
-  <text x="390" y="494" text-anchor="middle" class="icon-sublabel">Promtail + syslog-ng</text>
+  <rect x="280" y="370" width="220" height="90" rx="4" fill="#FFFFFF" stroke="#8764B8" stroke-dasharray="5,3"/>
+  <use href="#ico-monitor" x="366" y="380" width="48" height="48"/>
+  <text x="390" y="440" text-anchor="middle" class="icon-label">Grafana + Loki</text>
+  <text x="390" y="454" text-anchor="middle" class="icon-sublabel">syslog pfSense :1514</text>
 
   <!-- Azure -->
-  <rect x="848" y="100" width="500" height="500" rx="4" fill="#F8FBFF" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="8,5"/>
-  <text x="870" y="122" class="zone-label">Azure - France Central</text>
+  <rect x="800" y="80" width="440" height="420" rx="4" fill="#F8FBFF" stroke="#0078D4" stroke-dasharray="8,5"/>
+  <text x="820" y="102" class="zone-label">Azure - France Central</text>
 
-  <use href="#ico-identity" x="880" y="160" width="48" height="48"/>
-  <text x="904" y="222" text-anchor="middle" class="icon-label">Entra ID</text>
-  <use href="#ico-registry" x="1000" y="160" width="48" height="48"/>
-  <text x="1024" y="222" text-anchor="middle" class="icon-label">ACR</text>
-  <use href="#ico-blob" x="1120" y="160" width="48" height="48"/>
-  <text x="1144" y="222" text-anchor="middle" class="icon-label">Blob Storage</text>
+  <use href="#ico-identity" x="830" y="130" width="48" height="48"/>
+  <text x="854" y="192" text-anchor="middle" class="icon-label">Entra ID</text>
+  <use href="#ico-registry" x="960" y="130" width="48" height="48"/>
+  <text x="984" y="192" text-anchor="middle" class="icon-label">ACR</text>
+  <use href="#ico-blob" x="1090" y="130" width="48" height="48"/>
+  <text x="1114" y="192" text-anchor="middle" class="icon-label">Blob</text>
 
-  <rect x="870" y="260" width="455" height="200" rx="4" fill="#FFFFFF" stroke="#0078D4" stroke-dasharray="6,4"/>
-  <text x="885" y="280" class="icon-label">Container Instances - room-booking</text>
-  <use href="#ico-container" x="900" y="295" width="48" height="48"/>
-  <text x="924" y="357" text-anchor="middle" class="icon-label">ACI</text>
-  <use href="#ico-db" x="1000" y="295" width="48" height="48"/>
-  <text x="1024" y="357" text-anchor="middle" class="icon-label">PostgreSQL</text>
-  <use href="#ico-cache" x="1100" y="295" width="48" height="48"/>
-  <text x="1124" y="357" text-anchor="middle" class="icon-label">Redis</text>
-  <text x="1097" y="420" text-anchor="middle" class="icon-sublabel">AUTH_DISABLED=true en PoC</text>
-
-  <!-- Supervision -->
-  <rect x="1180" y="100" width="175" height="340" rx="4" fill="#FFFFFF" stroke="#8764B8" stroke-width="1.5" stroke-dasharray="8,5"/>
-  <text x="1267" y="122" text-anchor="middle" class="zone-label">Supervision PoC</text>
-  <use href="#ico-monitor" x="1243" y="145" width="48" height="48"/>
-  <text x="1267" y="207" text-anchor="middle" class="icon-label">Grafana</text>
-  <rect x="1200" y="235" width="135" height="36" rx="3" fill="#F4ECFF" stroke="#8764B8"/>
-  <text x="1267" y="257" text-anchor="middle" class="icon-label">Loki</text>
-  <rect x="1200" y="285" width="135" height="36" rx="3" fill="#F4ECFF" stroke="#8764B8"/>
-  <text x="1267" y="307" text-anchor="middle" class="icon-label">Promtail</text>
-  <text x="1267" y="345" text-anchor="middle" class="icon-sublabel">SIEM Wazuh = prod</text>
-  <text x="1267" y="359" text-anchor="middle" class="icon-sublabel">PoC: Grafana/Loki</text>
+  <rect x="820" y="220" width="400" height="110" rx="4" fill="#FFFFFF" stroke="#0078D4" stroke-width="2"/>
+  <use href="#ico-container" x="840" y="235" width="48" height="48"/>
+  <text x="864" y="297" class="icon-label">ACI room-booking</text>
+  <text x="864" y="313" class="icon-sublabel">Flask + PostgreSQL + Redis :8080</text>
 
   <!-- CI/CD -->
-  <rect x="268" y="650" width="1087" height="120" rx="4" fill="#FAFAFA" stroke="#24292F" stroke-width="1" stroke-dasharray="8,5"/>
-  <text x="290" y="672" class="zone-label">DevOps / CI-CD</text>
-  <use href="#ico-cicd" x="310" y="685" width="48" height="48"/>
-  <text x="334" y="747" text-anchor="middle" class="icon-label">GitHub Actions</text>
-  <use href="#ico-registry" x="430" y="685" width="48" height="48"/>
-  <text x="454" y="747" text-anchor="middle" class="icon-label">Push ACR</text>
-  <use href="#ico-container" x="550" y="685" width="48" height="48"/>
-  <text x="574" y="747" text-anchor="middle" class="icon-label">Deploy ACI</text>
+  <rect x="40" y="530" width="1200" height="100" rx="4" fill="#FAFAFA" stroke="#24292F" stroke-dasharray="8,5"/>
+  <text x="60" y="552" class="zone-label">DevOps / CI-CD</text>
+  <use href="#ico-cicd" x="80" y="565" width="48" height="48"/>
+  <text x="104" y="615" text-anchor="middle" class="icon-label">GitHub Actions</text>
+  <use href="#ico-registry" x="280" y="565" width="48" height="48"/>
+  <text x="304" y="615" text-anchor="middle" class="icon-label">Push ACR</text>
+  <use href="#ico-container" x="480" y="565" width="48" height="48"/>
+  <text x="504" y="615" text-anchor="middle" class="icon-label">Deploy ACI</text>
 
-  <!-- ===== CONNECTEURS (au-dessus, origines visibles) ===== -->
-  <g id="connectors" fill="none">
-    <!-- Utilisateurs : flux vertical interne -->
-    <line x1="132" y1="188" x2="132" y2="255" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
-    <line x1="132" y1="303" x2="132" y2="385" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- Fleches simples (comme schema classique) -->
+  <g fill="none">
+    <line x1="240" y1="234" x2="280" y2="234" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
+    <text x="248" y="226" class="flow-gray">UDP 51820</text>
 
-    <!-- VPN WireGuard -> bord gauche pfSense (y=279) -->
-    <line x1="210" y1="279" x2="290" y2="279" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
-    <rect x="218" y="262" width="58" height="14" fill="#FFFFFF"/>
-    <text x="222" y="273" class="flow-label">UDP 51820</text>
-    <circle cx="210" cy="279" r="3.5" fill="#605E5C"/>
-    <circle cx="290" cy="279" r="3.5" fill="#605E5C"/>
+    <line x1="470" y1="200" x2="490" y2="200" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <!-- pfSense -> Hote VMware -->
-    <line x1="490" y1="220" x2="510" y2="220" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
-    <circle cx="490" cy="220" r="3.5" fill="#605E5C"/>
+    <line x1="470" y1="250" x2="390" y2="370" stroke="#8764B8" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+    <text x="400" y="300" class="flow-gray">syslog</text>
 
-    <!-- HTTPS utilisateurs -> ACI (couloir haut) -->
-    <line x1="132" y1="188" x2="132" y2="82" stroke="#0078D4" stroke-width="1.3" stroke-dasharray="6,3"/>
-    <line x1="132" y1="82" x2="924" y2="82" stroke="#0078D4" stroke-width="1.3" stroke-dasharray="6,3"/>
-    <line x1="924" y1="82" x2="924" y2="295" stroke="#0078D4" stroke-width="1.3" stroke-dasharray="6,3" marker-end="url(#arr-blue)"/>
-    <rect x="400" y="68" width="280" height="14" fill="#FFFFFF"/>
-    <text x="404" y="79" class="flow-label">HTTPS utilisateurs (PoC, pas VPN site-to-site)</text>
+    <line x1="520" y1="300" x2="820" y2="280" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr-blue)"/>
+    <text x="620" y="288" class="flow">HTTPS (utilisateurs)</text>
 
-    <!-- Lab -> Azure HTTPS (couloir entre zones, y=175) -->
-    <line x1="765" y1="220" x2="805" y2="220" stroke="#0078D4" stroke-width="1.3" stroke-dasharray="6,3"/>
-    <line x1="805" y1="220" x2="805" y2="175" stroke="#0078D4" stroke-width="1.3" stroke-dasharray="6,3"/>
-    <line x1="805" y1="175" x2="848" y2="175" stroke="#0078D4" stroke-width="1.3" stroke-dasharray="6,3" marker-end="url(#arr-blue)"/>
-    <rect x="768" y="158" width="48" height="14" fill="#FAFAFA"/>
-    <text x="772" y="169" class="flow-label">HTTPS</text>
-    <circle cx="765" cy="220" r="3.5" fill="#0078D4"/>
+    <line x1="220" y1="545" x2="280" y2="545" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
+    <line x1="420" y1="545" x2="480" y2="545" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
 
-    <!-- Entra JWT -> bord haut ACI -->
-    <line x1="904" y1="208" x2="904" y2="268" stroke="#0078D4" stroke-width="1.2" stroke-dasharray="4,3"/>
-    <line x1="904" y1="268" x2="924" y2="268" stroke="#0078D4" stroke-width="1.2" stroke-dasharray="4,3"/>
-    <line x1="924" y1="268" x2="924" y2="295" stroke="#0078D4" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr-blue)"/>
-    <rect x="858" y="252" width="28" height="14" fill="#FFFFFF"/>
-    <text x="862" y="263" class="flow-label">JWT</text>
-
-    <!-- ACI -> PostgreSQL -> Redis -->
-    <line x1="948" y1="319" x2="1000" y2="319" stroke="#0078D4" stroke-width="1.2" marker-end="url(#arr-blue)"/>
-    <line x1="1048" y1="319" x2="1100" y2="319" stroke="#0078D4" stroke-width="1.2" marker-end="url(#arr-blue)"/>
-
-    <!-- Syslog pfSense -> Grafana local (vertical) -->
-    <line x1="390" y1="285" x2="390" y2="410" stroke="#8764B8" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arr-purple)"/>
-    <rect x="398" y="340" width="42" height="14" fill="#FAFAFA"/>
-    <text x="402" y="351" class="log-label">syslog</text>
-    <circle cx="390" cy="285" r="3.5" fill="#8764B8"/>
-
-    <!-- Logs -> Supervision (couloir bas y=630) -->
-    <line x1="390" y1="510" x2="390" y2="630" stroke="#8764B8" stroke-width="1.2" stroke-dasharray="5,3"/>
-    <line x1="390" y1="630" x2="1180" y2="630" stroke="#8764B8" stroke-width="1.2" stroke-dasharray="5,3"/>
-    <line x1="1180" y1="630" x2="1180" y2="262" stroke="#8764B8" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#arr-purple)"/>
-    <line x1="1124" y1="343" x2="1124" y2="630" stroke="#8764B8" stroke-width="1" stroke-dasharray="4,3"/>
-    <rect x="620" y="622" width="130" height="14" fill="#FFFFFF"/>
-    <text x="624" y="633" class="log-label">Logs pfSense + app</text>
-
-    <!-- CI/CD chain -->
-    <line x1="358" y1="709" x2="430" y2="709" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
-    <rect x="372" y="694" width="36" height="14" fill="#FAFAFA"/>
-    <text x="376" y="705" class="flow-label">build</text>
-    <line x1="478" y1="709" x2="550" y2="709" stroke="#605E5C" stroke-width="1.5" marker-end="url(#arr)"/>
-    <rect x="492" y="694" width="40" height="14" fill="#FAFAFA"/>
-    <text x="496" y="705" class="flow-label">deploy</text>
-
-    <!-- Deploy ACI -> bord haut ACI (couloir x=255) -->
-    <line x1="598" y1="709" x2="255" y2="709" stroke="#0078D4" stroke-width="1.2" stroke-dasharray="6,3"/>
-    <line x1="255" y1="709" x2="255" y2="460" stroke="#0078D4" stroke-width="1.2" stroke-dasharray="6,3"/>
-    <line x1="255" y1="460" x2="924" y2="460" stroke="#0078D4" stroke-width="1.2" stroke-dasharray="6,3"/>
-    <line x1="924" y1="460" x2="924" y2="295" stroke="#0078D4" stroke-width="1.2" stroke-dasharray="6,3" marker-end="url(#arr-blue)"/>
-    <circle cx="598" cy="709" r="3.5" fill="#0078D4"/>
+    <line x1="1020" y1="330" x2="1020" y2="530" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arr-blue)"/>
+    <text x="1030" y="430" class="flow">HTTPS + JWT</text>
   </g>
 
-  <text x="700" y="930" text-anchor="middle" class="footer">Smart Office 2.0 hybrid PoC B3 INFRA 2026</text>
+  <text x="640" y="680" text-anchor="middle" class="note">SIEM Wazuh = cible production - PoC supervision via Grafana/Loki</text>
+  <text x="640" y="700" text-anchor="middle" class="note">Edition SVG : Inkscape, draw.io, VS Code - voir docs/architecture/EDITING.md</text>
 </svg>
