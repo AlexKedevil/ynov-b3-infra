@@ -20,18 +20,20 @@ Conception d'une infrastructure IT hybride pour une startup biotechnologie (50 �
 ```text
 ynov-b3-infra/
 ├── cloud/
-│   └── room-booking/         # PoC réservation de salles
+│   └── room-booking/         # PoC réservation de salles (Flask, PostgreSQL, Redis)
 ├── docs/                     # Tous les livrables UF_INFRA_B3
 │   ├── README.md             # Index et statut des documents
 │   ├── DAT.md                # Dossier d'Architecture Technique
-│   ├── architecture/         # Schémas, IP/VLAN, screenshots réseau
-│   ├── security/             # Zero Trust, IAM, firewall
+│   ├── architecture/         # Schémas, IP/VLAN, screenshots PoC
+│   ├── security/             # Zero Trust, IAM Entra, firewall
 │   ├── database/             # Merise, backup/restore
 │   ├── pca_pra/              # BIA, PCA, PRA
-│   └── project_management/   # ITSM, backlog, Trello
-├── infra/network/            # pfSense, VMware (fait)
-├── monitoring/               # Grafana/Loki/Promtail
-└── .github/workflows/        # azure-deploy.yml → ACR
+│   └── project_management/   # ITSM, backlog, captures Trello
+├── infra/
+│   ├── network/              # pfSense, VMware, WireGuard, syslog
+│   └── azure/                # ACI, container-group, déploiement
+├── monitoring/               # Grafana, Loki, Promtail, health-prober
+└── .github/workflows/        # azure-deploy.yml → ACR → ACI
 ```
 
 ---
@@ -61,7 +63,7 @@ Description textuelle : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-on-
 | **Réseau** | pfSense 2.7+, 6 VLANs 802.1Q, 10.20.0.0/16 |
 | **Virtualisation** | VMware Workstation |
 | **Cloud** | Azure France Central — ACR `smartofficeynov`, ACI déployé |
-| **IAM** | Microsoft Entra ID (code prêt, portail Ynov limité) |
+| **IAM** | Microsoft Entra ID (JWT + MSAL ; démo live tenant dev) |
 | **App** | Docker, Flask, PostgreSQL, Redis |
 | **CI/CD** | GitHub Actions → ACR |
 | **Monitoring** | Grafana, Loki, Promtail |
