@@ -28,8 +28,7 @@ ynov-b3-infra/
 │   ├── security/             # Zero Trust, IAM, firewall
 │   ├── database/             # Merise, backup/restore
 │   ├── pca_pra/              # BIA, PCA, PRA
-│   ├── project_management/   # ITSM, backlog, Trello
-│   └── livrable/             # Export Moodle 18/06/2026
+│   └── project_management/   # ITSM, backlog, Trello
 ├── infra/network/            # pfSense, VMware (fait)
 ├── monitoring/               # Grafana/Loki/Promtail
 └── .github/workflows/        # azure-deploy.yml → ACR
@@ -37,9 +36,17 @@ ynov-b3-infra/
 
 ---
 
-## Architecture Réseau
+## Architecture hybride
+
+Description textuelle : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-on-premise--cloud) (on-prem VMware + Azure France Central + CI/CD).
+
+---
+
+## Architecture Réseau (VLANs)
 
 ![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
+
+Schéma source : [network_vlan.svg](docs/architecture/network_vlan.svg) — **réseau on-prem uniquement** (pfSense, 6 VLANs, VPN) · draw.io : [network diagram.xml](docs/architecture/network%20diagram.xml)
 
 - [Plan d'Adressage IP & VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
 - [Installation pfSense](infra/network/pfsense_initial_setup.md)
