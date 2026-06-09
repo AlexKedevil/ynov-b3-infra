@@ -67,7 +67,7 @@ Description détaillée : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-o
 | **Réseau** | pfSense 2.7+, 6 VLANs 802.1Q, 10.20.0.0/16 |
 | **Virtualisation** | VMware Workstation |
 | **Cloud** | Azure France Central — ACR `smartofficeynov`, ACI déployé |
-| **IAM** | Microsoft Entra ID (JWT + MSAL ; démo live tenant dev) |
+| **IAM** | Microsoft Entra ID (JWT + MSAL ; démo **locale** `localhost:8080/login`) |
 | **App** | Docker, Flask, PostgreSQL, Redis |
 | **CI/CD** | GitHub Actions → ACR |
 | **Monitoring** | Grafana, Loki, Promtail |
@@ -78,17 +78,21 @@ Description détaillée : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-o
 
 PoC cloud — réservation de salles (API complète, déployée sur ACI).
 
-**URL publique :** http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080
+| Accès | URL | Auth |
+|-------|-----|------|
+| **ACI public** (PoC cloud) | http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080 | `AUTH_DISABLED=true` (HTTP — Entra SPA exige HTTPS hors localhost) |
+| **Local + Entra ID** (démo IAM) | http://localhost:8080/login | JWT Microsoft (tenant dev personnel) |
 
 ```bash
 cd cloud/room-booking
-docker compose up --build
-curl http://localhost:8080
+docker compose --env-file .env up --build   # Entra : docs/security/entra_portal_setup.md
+curl http://localhost:8080/health
+curl http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/health
 ```
 
 Détails : [cloud/room-booking/DETAILS.md](cloud/room-booking/DETAILS.md)
 
-**Pipeline :** `GitHub → ACR → ACI → Utilisateurs (Entra ID)`
+**Pipeline :** `GitHub → ACR → ACI` (cloud) · Entra ID démontré en local
 
 ---
 
