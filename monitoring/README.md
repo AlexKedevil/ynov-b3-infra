@@ -66,3 +66,4 @@ chmod +x scripts/*.sh
 - [DAT — § Supervision](../docs/DAT.md#11-supervision-et-détection)
 - [ITSM](../docs/project_management/ITSM.md)
 - [room-booking](../cloud/room-booking/)
+- Capture PoC : [grafana_dashboard_poc.png](../docs/project_management/screenshots/grafana_dashboard_poc.png) (`./scripts/capture-lab-proofs.sh`)

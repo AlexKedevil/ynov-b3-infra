@@ -15,7 +15,7 @@
 | Colonne | Usage |
 |---------|-------|
 | Backlog | Évolutions hors scope PoC (VPN Azure, HA, SIEM avancé) |
-| En cours | Livrable Moodle, captures finales |
+| En cours | Upload ZIP Moodle (18/06/2026) |
 | Fait | Livrables mergés (réseau, cloud, IAM, monitoring, docs) |
 
 ---

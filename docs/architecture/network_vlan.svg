@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="780" viewBox="0 0 1100 780" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 18px; font-weight: 700; fill: #1a1a2e; }
+      .box-title { font-size: 12px; font-weight: 700; fill: #222; }
+      .text { font-size: 11px; fill: #444; }
+      .note { font-size: 10px; fill: #666; font-style: italic; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#555"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="780" fill="#f7f9fb"/>
+  <text x="550" y="32" text-anchor="middle" class="title">Smart Office 2.0 - Schema logique reseau (VLANs)</text>
+  <text x="550" y="52" text-anchor="middle" class="note">pfSense 2.7 - Lab VMware - 10.20.0.0/16</text>
+
+  <ellipse cx="550" cy="95" rx="95" ry="38" fill="#dae8fc" stroke="#6c8ebf" stroke-width="2"/>
+  <text x="550" y="100" text-anchor="middle" class="box-title">INTERNET / FAI</text>
+
+  <rect x="450" y="155" width="200" height="95" rx="8" fill="#f8cecc" stroke="#b85450" stroke-width="2"/>
+  <text x="465" y="178" class="box-title">pfSense Firewall</text>
+  <text x="465" y="196" class="text">WAN: DHCP (vmnet8)</text>
+  <text x="465" y="212" class="text">LAN: 10.20.0.1/24</text>
+  <text x="465" y="228" class="text">VPN: WireGuard UDP 51820</text>
+  <text x="465" y="244" class="text">WG_VPN: 10.20.100.1/24</text>
+
+  <line x1="550" y1="133" x2="550" y2="155" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="430" y="285" width="240" height="50" rx="8" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+  <text x="550" y="315" text-anchor="middle" class="box-title">Managed Switch (VLAN Trunk 802.1Q)</text>
+  <line x1="550" y1="250" x2="550" y2="285" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="50" y="400" width="140" height="88" rx="6" fill="#e1d5e7" stroke="#9673a6" stroke-width="2"/>
+  <text x="62" y="422" class="box-title">VLAN 10 MGMT</text>
+  <text x="62" y="440" class="text">10.20.10.0/24</text>
+  <text x="62" y="456" class="text">Switches, ILO</text>
+  <text x="62" y="472" class="text">Admin reseau</text>
+
+  <rect x="205" y="400" width="140" height="88" rx="6" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+  <text x="217" y="422" class="box-title">VLAN 20 USERS</text>
+  <text x="217" y="440" class="text">10.20.20.0/24</text>
+  <text x="217" y="456" class="text">PC, imprimantes</text>
+  <text x="217" y="472" class="text">VPN: acces OK</text>
+
+  <rect x="360" y="400" width="140" height="88" rx="6" fill="#d5e8d4" stroke="#82b366" stroke-width="2"/>
+  <text x="372" y="422" class="box-title">VLAN 30 WIFI_STAFF</text>
+  <text x="372" y="440" class="text">10.20.30.0/24</text>
+  <text x="372" y="456" class="text">Employes WPA3</text>
+
+  <rect x="515" y="400" width="140" height="88" rx="6" fill="#fff2cc" stroke="#d6b656" stroke-width="2"/>
+  <text x="527" y="422" class="box-title">VLAN 40 GUEST</text>
+  <text x="527" y="440" class="text">10.20.40.0/24</text>
+  <text x="527" y="456" class="text">Isole (Internet)</text>
+
+  <rect x="670" y="400" width="140" height="88" rx="6" fill="#f8cecc" stroke="#b85450" stroke-width="2"/>
+  <text x="682" y="422" class="box-title">VLAN 50 SERVERS</text>
+  <text x="682" y="440" class="text">10.20.50.0/24</text>
+  <text x="682" y="456" class="text">AD, DB, App</text>
+  <text x="682" y="472" class="text">VPN: acces OK</text>
+
+  <rect x="825" y="400" width="140" height="88" rx="6" fill="#ffe6cc" stroke="#d79b00" stroke-width="2"/>
+  <text x="837" y="422" class="box-title">VLAN 60 DMZ</text>
+  <text x="837" y="440" class="text">10.20.60.0/24</text>
+  <text x="837" y="456" class="text">Web, services</text>
+  <text x="837" y="472" class="text">exposes</text>
+
+  <line x1="120" y1="335" x2="120" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="275" y1="335" x2="275" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="430" y1="335" x2="430" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="585" y1="335" x2="585" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="740" y1="335" x2="740" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="895" y1="335" x2="895" y2="400" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <ellipse cx="740" cy="600" rx="78" ry="42" fill="#eef4fc" stroke="#0078D4" stroke-width="2"/>
+  <text x="740" y="595" text-anchor="middle" class="box-title">Azure Blob</text>
+  <text x="740" y="612" text-anchor="middle" class="text">pg_dump backups</text>
+  <line x1="740" y1="488" x2="740" y2="558" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow)"/>
+  <text x="755" y="530" class="text" fill="#0078D4">Backup BDD</text>
+
+  <rect x="50" y="560" width="200" height="100" rx="6" fill="#eef6ff" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="65" y="582" class="box-title">Teletravail WireGuard</text>
+  <text x="65" y="600" class="text">10.20.100.0/24</text>
+  <text x="65" y="616" class="text">-&gt; VLAN 20, 50 uniquement</text>
+  <text x="65" y="632" class="text">Endpoint: 10.20.0.1:51820</text>
+  <line x1="250" y1="610" x2="450" y2="220" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrow)"/>
+
+  <rect x="50" y="680" width="150" height="75" rx="6" fill="#fff" stroke="#ccc" stroke-width="1"/>
+  <text x="62" y="700" class="box-title">Legende</text>
+  <text x="62" y="718" class="text">MGMT / USERS / GUEST</text>
+  <text x="62" y="734" class="text">SERVERS / DMZ</text>
+</svg>
