@@ -26,27 +26,3 @@ venv/
 .env/
 node_modules/
 __pycache__/
-
-# Préparation oral (local, pas pour le jury)
-oral-prep/
-
-# Sujet officiel Ynov — local uniquement
-UF_INFRA_B3.pdf
-
-# Guides internes (assistant / reconstruction locale, non versionnés)
-docs/project_management/trello_board_guide.md
-
-# Remise Moodle / outils locaux (hors dépôt projet)
-docs/livrable/
-docs/architecture/EDITING.md
-scripts/capture-lab-proofs.sh
-scripts/wg-lab-up.sh
-
-# Sources schéma réseau (édition locale — livrable = network_diagram.png uniquement)
-docs/architecture/network_vlan.svg
-docs/architecture/network diagram.xml
-
-# Brouillons schémas hybrides (Inkscape non finalisés)
-docs/architecture/smart_office_hybrid_*_edit*.svg
-docs/architecture/smart_office_hybrid_azure_style*.svg
-cloud/room-booking/backup_*.sql
