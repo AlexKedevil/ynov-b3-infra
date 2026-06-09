@@ -11,8 +11,8 @@
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
       <path d="M0,0 L6,3 L0,6 Z" fill="#555"/>
     </marker>
-    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6 Z" fill="#0078D4"/>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#0078D4"/>
     </marker>
   </defs>
 
@@ -20,7 +20,6 @@
   <text x="550" y="32" text-anchor="middle" class="title">Smart Office 2.0 - Schema logique reseau (VLANs)</text>
   <text x="550" y="52" text-anchor="middle" class="note">On-prem uniquement - pfSense 2.7 - Lab VMware - 10.20.0.0/16</text>
 
-  <!-- Blocs VLAN : positions et tailles d'origine -->
   <ellipse cx="550" cy="95" rx="95" ry="38" fill="#dae8fc" stroke="#6c8ebf" stroke-width="2"/>
   <text x="550" y="100" text-anchor="middle" class="box-title">INTERNET / FAI</text>
 
@@ -61,17 +60,18 @@
   <text x="837" y="402" class="box-title">VLAN 60 DMZ</text>
   <text x="837" y="420" class="text">10.20.60.0/24</text>
 
-  <ellipse cx="960" cy="560" rx="78" ry="42" fill="#eef4fc" stroke="#0078D4" stroke-width="2"/>
-  <text x="960" y="552" text-anchor="middle" class="box-title">Sauvegardes cloud</text>
-  <text x="960" y="568" text-anchor="middle" class="text">Azure Blob</text>
-  <text x="960" y="584" text-anchor="middle" class="text">fichiers pg_dump</text>
+  <!-- Sauvegardes alignees sous VLAN 50 (ligne droite) -->
+  <ellipse cx="740" cy="565" rx="78" ry="42" fill="#eef4fc" stroke="#0078D4" stroke-width="2"/>
+  <text x="740" y="557" text-anchor="middle" class="box-title">Sauvegardes cloud</text>
+  <text x="740" y="573" text-anchor="middle" class="text">Azure Blob</text>
+  <text x="740" y="589" text-anchor="middle" class="text">fichiers pg_dump</text>
 
-  <!-- WireGuard : entre VLAN 10 et 20 (sous la ligne VLAN, pas de decalage des VLAN) -->
-  <rect x="168" y="510" width="58" height="88" rx="6" fill="#eef6ff" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <text x="197" y="530" text-anchor="middle" class="box-title">WireGuard</text>
-  <text x="197" y="546" text-anchor="middle" class="text">10.20.100.0/24</text>
-  <text x="197" y="562" text-anchor="middle" class="text">VLAN 20+50</text>
-  <text x="197" y="578" text-anchor="middle" class="text">:51820</text>
+  <!-- WireGuard : taille normale, entre VLAN 10 et 20 -->
+  <rect x="97" y="510" width="200" height="76" rx="6" fill="#eef6ff" stroke="#0078D4" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="112" y="532" class="box-title">Teletravail WireGuard</text>
+  <text x="112" y="548" class="text">10.20.100.0/24</text>
+  <text x="112" y="564" class="text">Acces VLAN 20 + 50</text>
+  <text x="112" y="580" class="text">Endpoint 10.20.0.1:51820</text>
 
   <g id="connectors" fill="none">
     <line x1="550" y1="133" x2="550" y2="155" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
@@ -83,25 +83,20 @@
     <circle cx="550" cy="348" r="4" fill="#555"/>
 
     <line x1="120" y1="348" x2="120" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-    <circle cx="120" cy="348" r="3" fill="#555"/>
     <line x1="275" y1="348" x2="275" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-    <circle cx="275" cy="348" r="3" fill="#555"/>
     <line x1="430" y1="348" x2="430" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-    <circle cx="430" cy="348" r="3" fill="#555"/>
     <line x1="585" y1="348" x2="585" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-    <circle cx="585" cy="348" r="3" fill="#555"/>
     <line x1="740" y1="348" x2="740" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-    <circle cx="740" cy="348" r="3" fill="#555"/>
     <line x1="895" y1="348" x2="895" y2="380" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-    <circle cx="895" cy="348" r="3" fill="#555"/>
 
-    <!-- Ligne droite entre VLAN 10 et 20 (x=197) -->
-    <line x1="197" y1="510" x2="197" y2="245" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
-    <line x1="197" y1="245" x2="450" y2="245" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
-    <text x="300" y="238" class="flow">UDP 51820</text>
+    <!-- WireGuard -> centre pfSense : une fleche seulement a l'arrivee -->
+    <line x1="197" y1="510" x2="197" y2="200" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3"/>
+    <line x1="197" y1="200" x2="550" y2="200" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
+    <text x="210" y="350" class="flow">UDP 51820</text>
     <circle cx="197" cy="510" r="4" fill="#0078D4"/>
 
-    <path d="M740 460 L740 500 L960 500 L960 518" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
-    <text x="830" y="492" class="flow">Backup BDD</text>
+    <!-- VLAN 50 -> sauvegardes : ligne droite verticale -->
+    <line x1="740" y1="460" x2="740" y2="523" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
+    <text x="752" y="495" class="flow">Backup BDD</text>
   </g>
 </svg>
