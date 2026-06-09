@@ -46,9 +46,7 @@ scripts/wg-lab-up.sh
 docs/architecture/network_vlan.svg
 docs/architecture/network diagram.xml
 
-# Schémas hybrides on-prem + cloud (brouillon local, pas encore finalisés)
-docs/architecture/smart_office_hybrid.svg
-docs/architecture/smart_office_hybrid_azure_style.svg
-docs/architecture/screenshots/smart_office_hybrid.png
-docs/architecture/screenshots/smart_office_hybrid_azure_style.png
+# Brouillons schémas hybrides (Inkscape non finalisés)
+docs/architecture/smart_office_hybrid_*_edit*.svg
+docs/architecture/smart_office_hybrid_azure_style*.svg
 cloud/room-booking/backup_*.sql
