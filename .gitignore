@@ -41,4 +41,10 @@ docs/livrable/
 docs/architecture/EDITING.md
 scripts/capture-lab-proofs.sh
 scripts/wg-lab-up.sh
+
+# Schémas hybrides on-prem + cloud (brouillon local, pas encore finalisés)
+docs/architecture/smart_office_hybrid.svg
+docs/architecture/smart_office_hybrid_azure_style.svg
+docs/architecture/screenshots/smart_office_hybrid.png
+docs/architecture/screenshots/smart_office_hybrid_azure_style.png
 cloud/room-booking/backup_*.sql
