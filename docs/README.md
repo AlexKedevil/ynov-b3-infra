@@ -25,7 +25,7 @@ Portail de tous les documents requis par le sujet **UF_INFRA_B3** (Smart Office 
 | PoC réseau (captures) | [architecture/screenshots/](architecture/screenshots/) | Fait |
 | PoC cloud (room-booking) | [../cloud/room-booking/](../cloud/room-booking/) | Fait |
 | PoC monitoring | [../monitoring/](../monitoring/) | Fait |
-| Remise Moodle (18/06/2026) | [livrable/README.md](livrable/README.md) | À faire |
+| Remise Moodle (18/06/2026) | [livrable/README.md](livrable/README.md) | En cours (ZIP via `build_moodle_zip.sh`) |
 
 ---
 
