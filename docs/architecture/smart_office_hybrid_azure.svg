@@ -1,0 +1,1365 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1360"
+   height="800"
+   viewBox="0 0 1360 800"
+   font-family="Segoe UI, Arial, sans-serif"
+   version="1.1"
+   id="svg94"
+   sodipodi:docname="smart_office_hybrid_azure.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview94"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.0975"
+     inkscape:cx="863.32574"
+     inkscape:cy="367.19818"
+     inkscape:window-width="1920"
+     inkscape:window-height="1131"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg94" />
+  <defs
+     id="defs22">
+    <style
+       id="style1">
+      .title { font-size: 20px; font-weight: 600; fill: #323130; }
+      .subtitle { font-size: 12px; fill: #605E5C; }
+      .zone-label { font-size: 11px; font-weight: 600; fill: #323130; }
+      .icon-label { font-size: 11px; fill: #323130; }
+      .icon-sublabel { font-size: 9px; fill: #605E5C; }
+      .net-label { font-size: 9px; fill: #605E5C; font-weight: 600; }
+      .flow-label { font-size: 9px; fill: #0078D4; font-weight: 600; }
+      .log-label { font-size: 9px; fill: #8764B8; font-weight: 600; }
+      .footer { font-size: 10px; fill: #8A8886; }
+    </style>
+    <marker
+       id="arr"
+       markerWidth="7"
+       markerHeight="7"
+       refX="5"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="0 0, 7 3.5, 0 7"
+         fill="#605E5C"
+         id="polygon1" />
+    </marker>
+    <marker
+       id="arr-blue"
+       markerWidth="7"
+       markerHeight="7"
+       refX="5"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="0 0, 7 3.5, 0 7"
+         fill="#0078D4"
+         id="polygon2" />
+    </marker>
+    <marker
+       id="arr-purple"
+       markerWidth="7"
+       markerHeight="7"
+       refX="5"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="0 0, 7 3.5, 0 7"
+         fill="#8764B8"
+         id="polygon3" />
+    </marker>
+    <!-- Icon: Internet cloud -->
+    <symbol
+       id="ico-cloud"
+       viewBox="0 0 48 48">
+      <ellipse
+         cx="24"
+         cy="30"
+         rx="18"
+         ry="10"
+         fill="#E8F4FD"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="ellipse3" />
+      <ellipse
+         cx="16"
+         cy="26"
+         rx="10"
+         ry="8"
+         fill="#E8F4FD"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="ellipse4" />
+      <ellipse
+         cx="32"
+         cy="26"
+         rx="10"
+         ry="8"
+         fill="#E8F4FD"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="ellipse5" />
+    </symbol>
+    <!-- Icon: VPN / tunnel -->
+    <symbol
+       id="ico-vpn"
+       viewBox="0 0 48 48">
+      <rect
+         x="8"
+         y="14"
+         width="32"
+         height="22"
+         rx="3"
+         fill="#FFF4CE"
+         stroke="#FFB900"
+         stroke-width="1.5"
+         id="rect5" />
+      <path
+         d="M14 28 L24 20 L34 28"
+         fill="none"
+         stroke="#FFB900"
+         stroke-width="2"
+         id="path5" />
+      <circle
+         cx="24"
+         cy="32"
+         r="3"
+         fill="#FFB900"
+         id="circle5" />
+    </symbol>
+    <!-- Icon: Firewall -->
+    <symbol
+       id="ico-firewall"
+       viewBox="0 0 48 48">
+      <path
+         d="M24 6 L40 14 V26 C40 34 24 42 24 42 C24 42 8 34 8 26 V14 Z"
+         fill="#FDE7E9"
+         stroke="#D83B01"
+         stroke-width="1.5"
+         id="path6" />
+      <path
+         d="M24 16 L30 22 L24 28 L18 22 Z"
+         fill="#D83B01"
+         id="path7" />
+    </symbol>
+    <!-- Icon: VMware host -->
+    <symbol
+       id="ico-host"
+       viewBox="0 0 48 48">
+      <rect
+         x="10"
+         y="10"
+         width="28"
+         height="30"
+         rx="2"
+         fill="#E6F2E6"
+         stroke="#107C10"
+         stroke-width="1.5"
+         id="rect7" />
+      <rect
+         x="14"
+         y="16"
+         width="20"
+         height="4"
+         rx="1"
+         fill="#107C10"
+         opacity="0.3"
+         id="rect8" />
+      <rect
+         x="14"
+         y="24"
+         width="20"
+         height="4"
+         rx="1"
+         fill="#107C10"
+         opacity="0.3"
+         id="rect9" />
+      <rect
+         x="14"
+         y="32"
+         width="20"
+         height="4"
+         rx="1"
+         fill="#107C10"
+         opacity="0.3"
+         id="rect10" />
+    </symbol>
+    <!-- Icon: Container / ACI -->
+    <symbol
+       id="ico-container"
+       viewBox="0 0 48 48">
+      <rect
+         x="8"
+         y="14"
+         width="32"
+         height="24"
+         rx="2"
+         fill="#E8F4FD"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="rect11" />
+      <line
+         x1="8"
+         y1="22"
+         x2="40"
+         y2="22"
+         stroke="#0078D4"
+         stroke-width="1"
+         id="line11" />
+      <rect
+         x="14"
+         y="26"
+         width="8"
+         height="8"
+         fill="#0078D4"
+         opacity="0.25"
+         id="rect12" />
+      <rect
+         x="26"
+         y="26"
+         width="8"
+         height="8"
+         fill="#0078D4"
+         opacity="0.25"
+         id="rect13" />
+    </symbol>
+    <!-- Icon: Database -->
+    <symbol
+       id="ico-db"
+       viewBox="0 0 48 48">
+      <ellipse
+         cx="24"
+         cy="14"
+         rx="14"
+         ry="6"
+         fill="#E8F4FD"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="ellipse13" />
+      <path
+         d="M10 14 V32 C10 36 16 38 24 38 C32 38 38 36 38 32 V14"
+         fill="#E8F4FD"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="path13" />
+      <ellipse
+         cx="24"
+         cy="24"
+         rx="14"
+         ry="5"
+         fill="none"
+         stroke="#0078D4"
+         stroke-width="1"
+         id="ellipse14" />
+    </symbol>
+    <!-- Icon: Key / Entra ID -->
+    <symbol
+       id="ico-identity"
+       viewBox="0 0 48 48">
+      <circle
+         cx="20"
+         cy="20"
+         r="10"
+         fill="#F3F2F1"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="circle14" />
+      <circle
+         cx="20"
+         cy="18"
+         r="4"
+         fill="#0078D4"
+         opacity="0.4"
+         id="circle15" />
+      <path
+         d="M28 28 L40 40"
+         stroke="#FFB900"
+         stroke-width="3"
+         stroke-linecap="round"
+         id="path15" />
+      <circle
+         cx="40"
+         cy="40"
+         r="4"
+         fill="#FFB900"
+         id="circle16" />
+    </symbol>
+    <!-- Icon: Registry ACR -->
+    <symbol
+       id="ico-registry"
+       viewBox="0 0 48 48">
+      <rect
+         x="10"
+         y="12"
+         width="28"
+         height="26"
+         rx="2"
+         fill="#F3F2F1"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="rect16" />
+      <rect
+         x="16"
+         y="18"
+         width="16"
+         height="4"
+         fill="#0078D4"
+         opacity="0.3"
+         id="rect17" />
+      <rect
+         x="16"
+         y="26"
+         width="16"
+         height="4"
+         fill="#0078D4"
+         opacity="0.3"
+         id="rect18" />
+    </symbol>
+    <!-- Icon: Blob storage -->
+    <symbol
+       id="ico-blob"
+       viewBox="0 0 48 48">
+      <rect
+         x="10"
+         y="14"
+         width="28"
+         height="22"
+         rx="2"
+         fill="#E8F4FD"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         stroke-dasharray="4,2"
+         id="rect19" />
+      <path
+         d="M16 22 H32 M16 28 H28"
+         stroke="#0078D4"
+         stroke-width="1.5"
+         id="path19" />
+    </symbol>
+    <!-- Icon: Grafana monitor -->
+    <symbol
+       id="ico-monitor"
+       viewBox="0 0 48 48">
+      <rect
+         x="8"
+         y="12"
+         width="32"
+         height="22"
+         rx="2"
+         fill="#F4ECFF"
+         stroke="#8764B8"
+         stroke-width="1.5"
+         id="rect20" />
+      <path
+         d="M14 30 L22 22 L28 26 L34 18"
+         fill="none"
+         stroke="#8764B8"
+         stroke-width="2"
+         id="path20" />
+      <rect
+         x="18"
+         y="36"
+         width="12"
+         height="4"
+         fill="#8764B8"
+         opacity="0.4"
+         id="rect21" />
+    </symbol>
+    <!-- Icon: GitHub Actions -->
+    <symbol
+       id="ico-cicd"
+       viewBox="0 0 48 48">
+      <circle
+         cx="24"
+         cy="24"
+         r="16"
+         fill="#F3F2F1"
+         stroke="#24292F"
+         stroke-width="1.5"
+         id="circle21" />
+      <path
+         d="M24 14 V24 L30 30"
+         fill="none"
+         stroke="#24292F"
+         stroke-width="2"
+         id="path21" />
+    </symbol>
+    <!-- Icon: Redis cache -->
+    <symbol
+       id="ico-cache"
+       viewBox="0 0 48 48">
+      <rect
+         x="12"
+         y="16"
+         width="24"
+         height="18"
+         rx="2"
+         fill="#FDE7E9"
+         stroke="#D13438"
+         stroke-width="1.5"
+         id="rect22" />
+      <text
+         x="24"
+         y="29"
+         text-anchor="middle"
+         font-size="9"
+         fill="#D13438"
+         font-weight="700"
+         id="text22">Redis</text>
+    </symbol>
+    <marker
+       id="arr-blue-3"
+       markerWidth="7"
+       markerHeight="7"
+       refX="5"
+       refY="3.5"
+       orient="auto">
+      <polygon
+         points="7,3.5 0,7 0,0 "
+         fill="#0078d4"
+         id="polygon2-5" />
+    </marker>
+  </defs>
+  <!-- Background -->
+  <rect
+     width="1360"
+     height="800"
+     fill="#FFFFFF"
+     id="rect23" />
+  <!-- Title -->
+  <text
+     x="680"
+     y="22.788155"
+     text-anchor="middle"
+     class="title"
+     id="text23">Smart Office 2.0 - Architecture hybride</text>
+  <text
+     x="680"
+     y="42.788155"
+     text-anchor="middle"
+     class="subtitle"
+     id="text24">PoC B3 - Lab VMware on-prem + Azure France Central - Flaujat Sam, Queudeville Alexandre</text>
+  <!-- Outer boundary -->
+  <rect
+     x="30"
+     y="55.143505"
+     width="1300"
+     height="706.44287"
+     rx="4"
+     fill="none"
+     stroke="#8a8886"
+     stroke-width="1.5"
+     stroke-dasharray="8, 5"
+     id="rect24" />
+  <text
+     x="1320"
+     y="754.80786"
+     text-anchor="end"
+     class="zone-label"
+     id="text25">Smart Office 2.0 - PoC Infrastructure</text>
+  <!-- ===== ZONE A : Utilisateurs ===== -->
+  <rect
+     x="50"
+     y="93.143517"
+     width="165"
+     height="360"
+     rx="4"
+     fill="none"
+     stroke="#8a8886"
+     stroke-width="1"
+     stroke-dasharray="6, 4"
+     id="rect25" />
+  <text
+     x="132"
+     y="115.14352"
+     text-anchor="middle"
+     class="zone-label"
+     id="text26">Utilisateurs</text>
+  <g
+     id="internet"
+     transform="translate(0,-40.091116)">
+    <use
+       href="#ico-cloud"
+       x="108"
+       y="150"
+       width="48"
+       height="48"
+       id="use26" />
+    <text
+       x="132"
+       y="212"
+       text-anchor="middle"
+       class="icon-label"
+       id="text27">Internet</text>
+    <text
+       x="132"
+       y="226"
+       text-anchor="middle"
+       class="icon-sublabel"
+       id="text28">HTTPS public</text>
+  </g>
+  <g
+     id="wireguard"
+     transform="translate(0,-35.307517)">
+    <use
+       href="#ico-vpn"
+       x="108"
+       y="262"
+       width="48"
+       height="48"
+       id="use28" />
+    <text
+       x="132"
+       y="324"
+       text-anchor="middle"
+       class="icon-label"
+       id="text29">WireGuard</text>
+    <text
+       x="132"
+       y="338"
+       text-anchor="middle"
+       class="icon-sublabel"
+       id="text30">10.20.100.0/24</text>
+    <text
+       x="132"
+       y="352"
+       text-anchor="middle"
+       class="icon-sublabel"
+       id="text31">UDP :51820</text>
+  </g>
+  <g
+     id="employes"
+     transform="translate(0,-16.856492)">
+    <rect
+       x="78"
+       y="400"
+       width="108"
+       height="46"
+       rx="3"
+       fill="#fafafa"
+       stroke="#e1dfdd"
+       id="rect31" />
+    <text
+       x="132"
+       y="420"
+       text-anchor="middle"
+       class="icon-label"
+       id="text32">Employes</text>
+    <text
+       x="132"
+       y="434"
+       text-anchor="middle"
+       class="icon-sublabel"
+       id="text33">Teletravail / Bureau</text>
+  </g>
+  <!-- ===== ZONE B : On-Prem VMware ===== -->
+  <rect
+     x="241.30211"
+     y="93.143517"
+     width="583.69788"
+     height="520"
+     rx="4"
+     fill="#fafafa"
+     stroke="#107c10"
+     stroke-width="1.5"
+     stroke-dasharray="8, 5"
+     id="rect33" />
+  <text
+     x="270"
+     y="115.14352"
+     class="zone-label"
+     id="text34">On-Premise - Lab VMware (CachyOS)</text>
+  <text
+     x="270"
+     y="131.14349"
+     class="icon-sublabel"
+     id="text35">10.20.0.0/16 - vmnet2 promiscuous</text>
+  <!-- pfSense -->
+  <rect
+     x="275"
+     y="148.14349"
+     width="205"
+     height="130"
+     rx="4"
+     fill="#ffffff"
+     stroke="#e1dfdd"
+     stroke-dasharray="5, 3"
+     id="pfsense" />
+  <use
+     href="#ico-firewall"
+     x="353"
+     y="172"
+     width="48"
+     height="48"
+     id="use35"
+     transform="translate(0,-16.856492)" />
+  <text
+     x="377"
+     y="221.14349"
+     text-anchor="middle"
+     class="icon-label"
+     id="text36">pfSense VM</text>
+  <text
+     x="377"
+     y="235.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text37">WAN vmnet8 | LAN vmnet2</text>
+  <text
+     x="377"
+     y="249.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text38">WireGuard 10.20.100.1/24</text>
+  <text
+     x="377"
+     y="263.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text39">6 VLAN 802.1Q</text>
+  <!-- VMware host -->
+  <rect
+     x="515"
+     y="148.14349"
+     width="270"
+     height="130"
+     rx="4"
+     fill="#ffffff"
+     stroke="#e1dfdd"
+     stroke-dasharray="5, 3"
+     id="host-vmware" />
+  <use
+     href="#ico-host"
+     x="626"
+     y="172"
+     width="48"
+     height="48"
+     id="use39"
+     transform="translate(0,-16.856492)" />
+  <text
+     x="650"
+     y="221.14349"
+     text-anchor="middle"
+     class="icon-label"
+     id="text40">Hote VMware</text>
+  <text
+     x="650"
+     y="235.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text41">10.20.0.254 / vmnet2</text>
+  <text
+     x="650"
+     y="249.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text42">Docker: room-booking + backup.sh</text>
+  <!-- VLANs sub-box -->
+  <rect
+     x="275"
+     y="308.14349"
+     width="510"
+     height="95"
+     rx="4"
+     fill="#ffffff"
+     stroke="#e1dfdd"
+     stroke-dasharray="5, 3"
+     id="vlans" />
+  <text
+     x="290"
+     y="326.14349"
+     class="icon-label"
+     id="text43">Segmentation VLAN</text>
+  <rect
+     x="285"
+     y="335.14349"
+     width="70"
+     height="28"
+     rx="2"
+     fill="#e1d5e7"
+     stroke="#9673a6"
+     id="rect43" />
+  <text
+     x="320"
+     y="353.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text44">V10 MGMT</text>
+  <rect
+     x="368"
+     y="335.14349"
+     width="70"
+     height="28"
+     rx="2"
+     fill="#d5e8d4"
+     stroke="#82b366"
+     id="rect44" />
+  <text
+     x="403"
+     y="353.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text45">V20 USERS</text>
+  <rect
+     x="451"
+     y="335.14349"
+     width="70"
+     height="28"
+     rx="2"
+     fill="#d5e8d4"
+     stroke="#82b366"
+     id="rect45" />
+  <text
+     x="486"
+     y="353.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text46">V30 WIFI</text>
+  <rect
+     x="534"
+     y="335.14349"
+     width="70"
+     height="28"
+     rx="2"
+     fill="#fff2cc"
+     stroke="#d6b656"
+     id="rect46" />
+  <text
+     x="569"
+     y="353.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text47">V40 GUEST</text>
+  <rect
+     x="617"
+     y="335.14349"
+     width="70"
+     height="28"
+     rx="2"
+     fill="#f8cecc"
+     stroke="#b85450"
+     id="vlan50" />
+  <text
+     x="652"
+     y="353.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text48">V50 SERV</text>
+  <rect
+     x="700"
+     y="335.14349"
+     width="70"
+     height="28"
+     rx="2"
+     fill="#ffe6cc"
+     stroke="#d79b00"
+     id="rect48" />
+  <text
+     x="735"
+     y="353.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text49">V60 DMZ</text>
+  <text
+     x="530"
+     y="385.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text50">VPN acces: VLAN 20 + 50 uniquement</text>
+  <!-- Supervision (stack unique on-prem) -->
+  <rect
+     x="275"
+     y="423.14349"
+     width="280"
+     height="110"
+     rx="4"
+     fill="#ffffff"
+     stroke="#8764b8"
+     stroke-dasharray="5, 3"
+     id="grafana-loki" />
+  <use
+     href="#ico-monitor"
+     x="353"
+     y="448"
+     width="48"
+     height="48"
+     id="use50"
+     transform="translate(0,-16.856492)" />
+  <text
+     x="377"
+     y="491.14349"
+     text-anchor="middle"
+     class="icon-label"
+     id="text51">Grafana + Loki</text>
+  <text
+     x="377"
+     y="505.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text52">Promtail + syslog-ng</text>
+  <text
+     x="470"
+     y="453.14349"
+     class="icon-sublabel"
+     id="text53">Observabilite</text>
+  <text
+     x="470"
+     y="467.14349"
+     class="icon-sublabel"
+     id="text54">centralisee (PoC)</text>
+  <!-- ===== ZONE C : Azure ===== -->
+  <rect
+     x="855"
+     y="93.143517"
+     width="455"
+     height="520"
+     rx="4"
+     fill="#f8fbff"
+     stroke="#0078d4"
+     stroke-width="1.5"
+     stroke-dasharray="8, 5"
+     id="rect56" />
+  <text
+     x="875"
+     y="115.14352"
+     class="zone-label"
+     id="text57">Azure - France Central</text>
+  <text
+     x="865.33569"
+     y="127.92205"
+     class="icon-sublabel"
+     id="text58">rg-smartoffice - smartofficeynov ACR</text>
+  <!-- Row 1: Identity / Registry / Blob -->
+  <use
+     href="#ico-identity"
+     x="878"
+     y="165"
+     width="48"
+     height="48"
+     id="entra"
+     transform="translate(11.845103,-16.856492)" />
+  <text
+     x="913.84509"
+     y="205.95561"
+     text-anchor="middle"
+     class="icon-label"
+     id="text59">Entra ID</text>
+  <text
+     x="913.84509"
+     y="219.95561"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text60">JWT demo local PoC</text>
+  <use
+     href="#ico-registry"
+     x="998"
+     y="165"
+     width="48"
+     height="48"
+     id="acr-azure"
+     transform="translate(8.2004556,-16.856492)" />
+  <text
+     x="1030.2004"
+     y="205.95561"
+     text-anchor="middle"
+     class="icon-label"
+     id="text61">ACR</text>
+  <text
+     x="1030.2004"
+     y="219.95561"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text62">smartofficeynov</text>
+  <use
+     href="#ico-blob"
+     x="1128"
+     y="165"
+     width="48"
+     height="48"
+     id="blob"
+     transform="translate(0,-16.856492)" />
+  <text
+     x="1152"
+     y="205.95561"
+     text-anchor="middle"
+     class="icon-label"
+     id="text63">Blob Storage</text>
+  <text
+     x="1152"
+     y="219.95561"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text64">pg_dump (cible)</text>
+  <!-- Container Instances box -->
+  <rect
+     x="872"
+     y="248.14349"
+     width="400.51703"
+     height="200"
+     fill="#ffffff"
+     stroke="#0078d4"
+     stroke-dasharray="6, 4"
+     id="rect64"
+     ry="4"
+     rx="4" />
+  <text
+     x="1156.4009"
+     y="262.49884"
+     text-anchor="end"
+     class="icon-label"
+     id="text65">Container Instances</text>
+  <use
+     href="#ico-container"
+     x="902"
+     y="300"
+     width="48"
+     height="48"
+     id="aci"
+     transform="translate(0,-16.856492)" />
+  <text
+     x="926"
+     y="345.14349"
+     text-anchor="middle"
+     class="icon-label"
+     id="text66">ACI</text>
+  <text
+     x="926"
+     y="359.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text67">Flask API :8080</text>
+  <text
+     x="926"
+     y="373.14349"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text68">FQDN public</text>
+  <text
+     x="1170.4054"
+     y="272.63553"
+     text-anchor="end"
+     class="icon-sublabel"
+     id="text68b">smartoffice-booking · 127.0.0.1</text>
+  <use
+     href="#ico-db"
+     x="1002"
+     y="300"
+     width="48"
+     height="48"
+     id="postgresql"
+     transform="translate(99.316629,-16.856492)" />
+  <text
+     x="1125.3167"
+     y="336.03189"
+     text-anchor="middle"
+     class="icon-label"
+     id="text69">PostgreSQL</text>
+  <text
+     x="1125.3167"
+     y="350.03189"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text70">sidecar · 127.0.0.1:5432</text>
+  <use
+     href="#ico-cache"
+     x="1102"
+     y="300"
+     width="48"
+     height="48"
+     id="redis"
+     transform="translate(0,43.280182)" />
+  <text
+     x="1126"
+     y="396.16858"
+     text-anchor="middle"
+     class="icon-label"
+     id="text71">Redis</text>
+  <text
+     x="1126"
+     y="410.16858"
+     text-anchor="middle"
+     class="icon-sublabel"
+     id="text72">sidecar · 127.0.0.1:6379</text>
+  <text
+     x="955"
+     y="441.14349"
+     class="icon-sublabel"
+     id="text73">AUTH_DISABLED=true (PoC)</text>
+  <!-- ===== ZONE E : CI/CD ===== -->
+  <rect
+     x="250"
+     y="648.16632"
+     width="1060"
+     height="89.977219"
+     fill="#fafafa"
+     stroke="#24292f"
+     stroke-width="1"
+     stroke-dasharray="8, 5"
+     id="rect73"
+     rx="4" />
+  <text
+     x="270"
+     y="665.94214"
+     class="zone-label"
+     id="text74">DevOps / CI-CD</text>
+  <use
+     href="#ico-cicd"
+     x="300"
+     y="685"
+     width="48"
+     height="48"
+     id="github-actions"
+     transform="translate(0,-16.856492)" />
+  <text
+     x="324"
+     y="730.14355"
+     text-anchor="middle"
+     class="icon-label"
+     id="text75">GitHub Actions</text>
+  <use
+     href="#ico-registry"
+     x="430"
+     y="685"
+     width="48"
+     height="48"
+     id="push-acr"
+     transform="translate(0,-16.856492)" />
+  <text
+     x="454"
+     y="730.14355"
+     text-anchor="middle"
+     class="icon-label"
+     id="text76">Push ACR</text>
+  <use
+     href="#ico-container"
+     x="560"
+     y="685"
+     width="48"
+     height="48"
+     id="deploy-aci"
+     transform="translate(0,-16.856492)" />
+  <text
+     x="584"
+     y="730.14355"
+     text-anchor="middle"
+     class="icon-label"
+     id="text77">Deploy ACI</text>
+  <!--
+    16 connecteurs (version simplifiee). Voies de routage :
+      lane haute  y=92   (au-dessus des zones)   -> Internet public
+      couloir     x=840  (gap On-Prem / Azure)
+      bus bas     y=540 (backup) / y=585 (logs)
+      gap CI/CD   y=645
+    Connecteurs (source -> cible, ancre depart -> ancre arrivee) :
+      1  Internet(132,198)    -> WireGuard(132,262)        acces WAN
+      2  WireGuard(132,310)   -> Employes(132,400)         tunnel VPN
+      3  WireGuard(156,286)   -> pfSense(275,250)          UDP 51820
+      4  pfSense(480,225)     -> Hote VMware(515,225)      LAN vmnet2
+      5  pfSense(377,295)     -> VLAN(377,325)             802.1Q
+      6  pfSense(275,275)     -> Grafana+Loki(275,474)     syslog 1514
+      7  Internet(132,150)    -> ACI left(902,324)         HTTPS public FQDN
+      8  Entra ID(902,213)    -> ACI top(912,300)          JWT
+      9  ACR(1030,213)        -> ACI top(938,300)          pull image
+     10  ACI(950,324)         -> PostgreSQL(1002,324)      SQL 127.0.0.1
+     11  ACI(950,336)         -> Redis(1102,336)           cache 127.0.0.1
+     12  Hote VMware(650,295) -> Blob(1176,189)            pg_dump cible Blob
+     13  Hote VMware(650,295) -> Grafana+Loki(555,490)     logs app Promtail
+     14  ACI(926,348)         -> Grafana+Loki(555,505)     healthcheck ACI
+     15  GitHub Actions(372,709) -> Push ACR(430,709)      build
+     16  Push ACR(478,709)    -> Deploy ACI(560,709)       deploy
+     17  Deploy ACI(584,685)  -> ACI bottom(914,348)       push image + deploy
+  -->
+  <g
+     id="connectors"
+     fill="none"
+     transform="translate(0,-16.856492)">
+    <!-- 1 Internet -> WireGuard -->
+    <line
+       x1="132"
+       y1="209.14717"
+       x2="132"
+       y2="250.59021"
+       stroke="#605e5c"
+       stroke-width="1.30929"
+       marker-end="url(#arr)"
+       id="line77" />
+    <text
+       x="138.14055"
+       y="231.78981"
+       class="net-label"
+       id="text78">acces WAN</text>
+    <!-- 2 WireGuard -> Employes -->
+    <line
+       x1="132"
+       y1="340.28159"
+       x2="132"
+       y2="393.64978"
+       stroke="#605e5c"
+       stroke-width="1.30043"
+       marker-end="url(#arr)"
+       id="line78" />
+    <text
+       x="138.31781"
+       y="370.59067"
+       class="net-label"
+       id="text79">tunnel VPN</text>
+    <!-- 3 WireGuard -> pfSense -->
+    <path
+       d="M 150.89328,267.80166 H 271.13427"
+       stroke="#605e5c"
+       stroke-width="1.5"
+       marker-end="url(#arr)"
+       id="path79"
+       sodipodi:nodetypes="cc" />
+    <text
+       x="165.38277"
+       y="263.97293"
+       class="net-label"
+       id="text80">UDP 51820</text>
+    <!-- 4 pfSense -> Hote VMware -->
+    <line
+       x1="480"
+       y1="225"
+       x2="515"
+       y2="225"
+       stroke="#605e5c"
+       stroke-width="1.2"
+       marker-end="url(#arr)"
+       id="line80" />
+    <text
+       x="497.24802"
+       y="205.20523"
+       text-anchor="middle"
+       class="net-label"
+       id="text81"><tspan
+         sodipodi:role="line"
+         id="tspan95"
+         x="497.24802"
+         y="205.20523">LAN</tspan><tspan
+         sodipodi:role="line"
+         x="497.24802"
+         y="216.45523"
+         id="tspan96">vmnet2</tspan></text>
+    <!-- 5 pfSense -> VLAN -->
+    <line
+       x1="377"
+       y1="295"
+       x2="377"
+       y2="322.01718"
+       stroke="#605e5c"
+       stroke-width="1.2"
+       stroke-dasharray="4, 3"
+       marker-end="url(#arr)"
+       id="line81" />
+    <text
+       x="381.77856"
+       y="309.97321"
+       class="net-label"
+       id="text82">802.1Q</text>
+    <!-- 6 pfSense -> Grafana+Loki -->
+    <path
+       d="m 275,278.86573 h -19.73146 v 215.42936 h 16.51002"
+       stroke="#8764b8"
+       stroke-width="1.2"
+       stroke-dasharray="5, 3"
+       marker-end="url(#arr-purple)"
+       id="path82"
+       sodipodi:nodetypes="cccc" />
+    <text
+       x="300"
+       y="434"
+       class="log-label"
+       id="text83">syslog 1514</text>
+    <!-- 7 Internet -> ACI (public) -->
+    <path
+       d="M 132,121.32916 V 92 h 708 v 232 h 62"
+       stroke="#0078d4"
+       stroke-width="1.2"
+       stroke-dasharray="6, 3"
+       marker-end="url(#arr-blue)"
+       id="path83"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       x="430"
+       y="86"
+       class="flow-label"
+       id="text84">HTTPS public (FQDN)</text>
+    <!-- 8 Entra ID -> ACI -->
+    <path
+       d="m 912,242.44862 v 57.41254"
+       stroke="#0078d4"
+       stroke-width="1.03413"
+       stroke-dasharray="4, 3"
+       marker-end="url(#arr-blue)"
+       id="path84"
+       sodipodi:nodetypes="cc" />
+    <text
+       x="891.76764"
+       y="255.82771"
+       class="flow-label"
+       id="text85">JWT (cible ACI)</text>
+    <!-- 9 ACR -> ACI -->
+    <path
+       d="M 1030,242.27442 V 282 h -92 v 18"
+       stroke="#0078d4"
+       stroke-width="1"
+       stroke-dasharray="4, 3"
+       marker-end="url(#arr-blue)"
+       id="path85"
+       sodipodi:nodetypes="cccc" />
+    <text
+       x="960.46014"
+       y="277"
+       class="flow-label"
+       id="text86">pull 3 images</text>
+    <!-- 10 ACI -> PostgreSQL -->
+    <text
+       x="1033.825"
+       y="320.0134"
+       text-anchor="middle"
+       class="flow-label"
+       id="text87">SQL</text>
+    <!-- 11 ACI -> Redis (app cache, not via PostgreSQL) -->
+    <path
+       d="m 961.61731,324.28187 v 60.91382 m -11.111,-61.16438 155.56509,-0.0325"
+       stroke="#0078d4"
+       stroke-width="1.2"
+       fill="none"
+       marker-end="url(#arr-blue)"
+       id="line87"
+       sodipodi:nodetypes="cccc" />
+    <path
+       d="m 961.04596,384.60239 147.51144,-0.0325"
+       stroke="#0078d4"
+       stroke-width="1.2"
+       fill="none"
+       marker-end="url(#arr-blue-3)"
+       id="line87-2"
+       sodipodi:nodetypes="cc"
+       style="marker-end:url(#arr-blue-3)" />
+    <text
+       x="1033.0573"
+       y="379.89127"
+       text-anchor="middle"
+       class="flow-label"
+       id="text88">cache</text>
+    <!-- 12 Hote VMware -> Blob (backup cible) : entree Blob par la droite -->
+    <path
+       d="m 649.8861,177.00456 v -18.78133 h 502.8702 l -0.1048,16.53987"
+       stroke="#0078d4"
+       stroke-width="1"
+       stroke-dasharray="5, 3"
+       marker-end="url(#arr-blue)"
+       id="path88"
+       sodipodi:nodetypes="cccc" />
+    <text
+       x="740.30475"
+       y="151.13678"
+       text-anchor="middle"
+       class="flow-label"
+       id="text89"
+       inkscape:transform-center-x="21.905814">pg_dump backup (cible Blob)</text>
+    <!-- 13 Hote VMware -> Grafana+Loki (logs app local via Promtail) -->
+    <path
+       d="m 786.21868,197.96128 h 17.00455 V 467.63126 H 559.55581"
+       stroke="#8764b8"
+       stroke-width="1.2"
+       stroke-dasharray="5, 3"
+       marker-end="url(#arr-purple)"
+       id="path89-host"
+       sodipodi:nodetypes="cccc" />
+    <text
+       x="720"
+       y="460.63126"
+       text-anchor="middle"
+       class="log-label"
+       id="text90-host">logs app (Promtail)</text>
+    <!-- 14 ACI -> Grafana+Loki (sonde healthcheck) -->
+    <path
+       d="M 916.88838,397.61023 916.68565,505 H 559.55581"
+       stroke="#8764b8"
+       stroke-width="1.2"
+       stroke-dasharray="5, 3"
+       marker-end="url(#arr-purple)"
+       id="path89"
+       sodipodi:nodetypes="ccc" />
+    <text
+       x="724.78357"
+       y="498.41003"
+       text-anchor="middle"
+       class="log-label"
+       id="text90">sonde healthcheck ACI</text>
+    <!-- 14 GitHub Actions -> Push ACR -->
+    <line
+       x1="346.22845"
+       y1="709"
+       x2="428.73254"
+       y2="709"
+       stroke="#605e5c"
+       stroke-width="1.5"
+       marker-end="url(#arr)"
+       id="line90" />
+    <text
+       x="385.53708"
+       y="703"
+       text-anchor="middle"
+       class="net-label"
+       id="text91">build</text>
+    <!-- 15 Push ACR -> Deploy ACI -->
+    <line
+       x1="478"
+       y1="709"
+       x2="560"
+       y2="709"
+       stroke="#605e5c"
+       stroke-width="1.5"
+       marker-end="url(#arr)"
+       id="line91" />
+    <text
+       x="515.13428"
+       y="703"
+       text-anchor="middle"
+       class="net-label"
+       id="text92">deploy</text>
+    <!-- 16 CI/CD -> Azure (push image + deploy, fusion ACR + ACI) -->
+    <path
+       d="M 584,690.7986 V 651.37813 H 930.40091 V 398.8988"
+       stroke="#0078d4"
+       stroke-width="1.2"
+       stroke-dasharray="6, 3"
+       marker-end="url(#arr-blue)"
+       id="path92"
+       sodipodi:nodetypes="cccc" />
+    <text
+       x="749"
+       y="644.92255"
+       text-anchor="middle"
+       class="flow-label"
+       id="text93">push image + deploy</text>
+  </g>
+  <!-- Footer -->
+  <text
+     x="680"
+     y="778"
+     text-anchor="middle"
+     class="footer"
+     id="text94">PoC B3 : lab VMware et Azure non relies par VPN site-to-site — acces cloud via HTTPS public</text>
+  <text
+     x="680"
+     y="792"
+     text-anchor="middle"
+     class="footer"
+     id="text95">Entra JWT = demo locale · Blob auto / Wazuh SIEM = cible production (DAT §5, §11)</text>
+</svg>
