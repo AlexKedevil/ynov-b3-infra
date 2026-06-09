@@ -48,7 +48,7 @@ Notez dès le début :
 3. Single tenant
 4. Redirect URI : **Single-page application (SPA)** :
    - `http://localhost:8080/static/login.html`
-   - (Ajouter l'URL ACI plus tard : `https://<dns>.francecentral.azurecontainer.io/static/login.html`)
+   - `http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/static/login.html` (ACI public)
 
 5. Noter le **Application (client) ID** → `AZURE_SPA_CLIENT_ID`
 
@@ -97,6 +97,36 @@ docker compose --env-file .env up --build
 ```
 
 Ouvrir [http://localhost:8080/login](http://localhost:8080/login) → connexion Microsoft → copier le token.
+
+---
+
+## Étape 5b — Entra sur ACI (URL publique)
+
+1. Vérifier les **redirect URI** SPA (étape 2) : localhost **et** FQDN ACI `:8080/static/login.html`.
+2. GitHub → repo → **Settings** → **Secrets** → ajouter (valeurs du tenant de démo personnel) :
+   - `AZURE_TENANT_ID`
+   - `AZURE_CLIENT_ID` (API app)
+   - `AZURE_SPA_CLIENT_ID` (SPA app)
+   - `AZURE_API_AUDIENCE` (ex. `api://55dc0e92-...`)
+3. Push sur `main` → workflow déploie ACI avec `AUTH_DISABLED=false` si les 4 secrets sont présents.
+
+Déploiement manuel depuis `cloud/room-booking/.env` :
+
+```bash
+./infra/azure/deploy-aci.sh
+```
+
+Vérification :
+
+```bash
+curl http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/health
+# auth_disabled doit être false
+
+curl http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/rooms
+# → 401 sans jeton
+
+# Navigateur : .../login → Microsoft → curl /rooms avec Bearer
+```
 
 ---
 
