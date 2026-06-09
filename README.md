@@ -46,7 +46,7 @@ Description textuelle : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-on-
 
 ![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
 
-Schéma source : [network_vlan.svg](docs/architecture/network_vlan.svg) — **réseau on-prem uniquement** (pfSense, 6 VLANs, VPN) · draw.io : [network diagram.xml](docs/architecture/network%20diagram.xml)
+Schéma affiché : [network_diagram.png](docs/architecture/screenshots/network_diagram.png) · sources éditables : [network_vlan.svg](docs/architecture/network_vlan.svg) (**réseau on-prem uniquement** — pfSense, 6 VLANs, VPN) · [draw.io — network diagram.xml](docs/architecture/network%20diagram.xml)
 
 - [Plan d'Adressage IP & VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
 - [Installation pfSense](infra/network/pfsense_initial_setup.md)
