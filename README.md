@@ -78,10 +78,28 @@ Description détaillée : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-o
 
 PoC cloud — réservation de salles (API complète, déployée sur ACI).
 
-| Accès | URL | Auth |
-|-----------------------------------|-----|------|
-| **ACI public**<br>(PoC cloud) | http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080 | `AUTH_DISABLED=true` (HTTP — Entra SPA exige HTTPS hors localhost) |
-| **Local + Entra ID**<br>(démo IAM) | http://localhost:8080/login | JWT Microsoft (tenant dev personnel) |
+<table>
+<colgroup>
+<col style="width:28%">
+<col style="width:32%">
+<col style="width:40%">
+</colgroup>
+<thead>
+<tr><th>Accès</th><th>URL</th><th>Auth</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACI public</strong> (PoC cloud)</td>
+<td>http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080</td>
+<td><code>AUTH_DISABLED=true</code> (HTTP — Entra SPA exige HTTPS hors localhost)</td>
+</tr>
+<tr>
+<td><strong>Local + Entra ID</strong> (démo IAM)</td>
+<td>http://localhost:8080/login</td>
+<td>JWT Microsoft (tenant dev personnel)</td>
+</tr>
+</tbody>
+</table>
 
 ```bash
 cd cloud/room-booking
