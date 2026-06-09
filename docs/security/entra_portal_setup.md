@@ -47,8 +47,11 @@ Notez dès le début :
 2. Name : `room-booking-client`
 3. Single tenant
 4. Redirect URI : **Single-page application (SPA)** :
-   - `http://localhost:8080/static/login.html`
-   - `http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/static/login.html` (ACI public)
+   - `http://localhost:8080/static/login.html` uniquement
+
+   > **ACI public (HTTP) :** Entra refuse les redirect URI SPA en `http://` hors `localhost`
+   > (*Must start with HTTPS or http://localhost*). L'ACI PoC reste `AUTH_DISABLED=true` ;
+   > démo Entra en **local**. HTTPS sur l'URL publique = Front Door / App Service (hors scope PoC).
 
 5. Noter le **Application (client) ID** → `AZURE_SPA_CLIENT_ID`
 
@@ -100,36 +103,6 @@ Ouvrir [http://localhost:8080/login](http://localhost:8080/login) → connexion 
 
 ---
 
-## Étape 5b — Entra sur ACI (URL publique)
-
-1. Vérifier les **redirect URI** SPA (étape 2) : localhost **et** FQDN ACI `:8080/static/login.html`.
-2. GitHub → repo → **Settings** → **Secrets** → ajouter (valeurs du tenant de démo personnel) :
-   - `AZURE_TENANT_ID`
-   - `AZURE_CLIENT_ID` (API app)
-   - `AZURE_SPA_CLIENT_ID` (SPA app)
-   - `AZURE_API_AUDIENCE` (ex. `api://55dc0e92-...`)
-3. Push sur `main` → workflow déploie ACI avec `AUTH_DISABLED=false` si les 4 secrets sont présents.
-
-Déploiement manuel depuis `cloud/room-booking/.env` :
-
-```bash
-./infra/azure/deploy-aci.sh
-```
-
-Vérification :
-
-```bash
-curl http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/health
-# auth_disabled doit être false
-
-curl http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/rooms
-# → 401 sans jeton
-
-# Navigateur : .../login → Microsoft → curl /rooms avec Bearer
-```
-
----
-
 ## Étape 6 — Tester l'API avec jeton
 
 ```bash
@@ -150,7 +123,8 @@ curl http://localhost:8080/rooms
 
 | Erreur | Solution |
 |--------|----------|
-| `AADSTS50011` redirect URI | Ajouter l'URI exact dans SPA registration |
+| `AADSTS50011` redirect URI | URI exact dans SPA ; redirect localhost seul pour ce PoC |
+| *Must start with HTTPS* (portail) | FQDN ACI en HTTP refusé — démo Entra sur localhost |
 | `invalid audience` | Vérifier `AZURE_API_AUDIENCE` = Application ID URI |
 | `insufficient permissions` | Assigner rôle Admin/Employee dans Enterprise applications |
 | `invalid token` | Token expiré — se reconnecter via /login |
