@@ -127,44 +127,52 @@ Détails : [monitoring/README.md](monitoring/README.md) · [Scénario d'anomalie
 
 ## Documentation
 
-Tous les livrables UF_INFRA_B3 — statut **Fait** ([index détaillé](docs/README.md)).
+Index des livrables UF_INFRA_B3 (statut **Fait**) : [docs/README.md](docs/README.md)
 
-<table>
-<colgroup>
-<col style="width:22%">
-<col style="width:30%">
-<col style="width:48%">
-</colgroup>
-<thead>
-<tr><th>Catégorie</th><th>Document</th><th>Description</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Architecture</strong></td><td><a href="docs/DAT.md">DAT.md</a></td><td>Dossier d'Architecture Technique</td></tr>
-<tr><td></td><td><a href="docs/architecture/Plan_Adressage_IP_VLAN.md">Plan IP & VLAN</a></td><td>Segmentation <code>10.20.0.0/16</code></td></tr>
-<tr><td></td><td><a href="docs/architecture/screenshots/">Captures PoC</a></td><td>Schémas, Grafana, VPN, ACI</td></tr>
-<tr><td></td><td><a href="docs/architecture/EDITING.md">Édition SVG</a></td><td>Diagramme hybride</td></tr>
-<tr><td><strong>Sécurité</strong></td><td><a href="docs/security/Zero_Trust_IAM.md">Zero Trust & IAM</a></td><td>Modèle Zero Trust, rôles, MFA</td></tr>
-<tr><td></td><td><a href="docs/security/entra_portal_setup.md">Entra ID</a></td><td>Portail Azure, MSAL, JWT</td></tr>
-<tr><td></td><td><a href="docs/security/firewall_policies.md">Firewall</a></td><td>Règles pfSense inter-VLAN</td></tr>
-<tr><td><strong>BDD & PCA</strong></td><td><a href="docs/database/MCD_Merise.md">MCD Merise</a></td><td>Modèle room-booking</td></tr>
-<tr><td></td><td><a href="docs/database/backup_restore.md">Backup & restore</a></td><td><code>pg_dump</code>, restauration</td></tr>
-<tr><td></td><td><a href="docs/pca_pra/BIA.md">BIA</a></td><td>Analyse d'impact métier</td></tr>
-<tr><td></td><td><a href="docs/pca_pra/PCA_PRA.md">PCA / PRA</a></td><td>Continuité et reprise</td></tr>
-<tr><td><strong>Projet</strong></td><td><a href="docs/project_management/ITSM.md">ITSM</a></td><td>Gestion des incidents</td></tr>
-<tr><td></td><td><a href="docs/project_management/backlog_sprints.md">Backlog & sprints</a></td><td>Agile, user stories</td></tr>
-<tr><td></td><td><a href="docs/project_management/screenshots/">Captures Trello</a></td><td>Screenshots b3-infra</td></tr>
-<tr><td></td><td><a href="https://trello.com/b/EXl0H0QS/b3-infra">Trello b3-infra</a></td><td>Board Kanban</td></tr>
-<tr><td><strong>Réseau</strong></td><td><a href="infra/network/pfsense_initial_setup.md">pfSense — install</a></td><td>Première configuration</td></tr>
-<tr><td></td><td><a href="infra/network/pfsense_vlan_config.md">pfSense — VLANs</a></td><td>802.1Q, interfaces</td></tr>
-<tr><td></td><td><a href="infra/network/vmware_vmnet2_config.md">VMware vmnet2</a></td><td>Lab LAN</td></tr>
-<tr><td></td><td><a href="infra/network/pfsense_wireguard_vpn.md">WireGuard VPN</a></td><td>Accès VLAN20/50</td></tr>
-<tr><td></td><td><a href="infra/network/pfsense_syslog_loki.md">pfSense → Loki</a></td><td>Syslog monitoring</td></tr>
-<tr><td><strong>Cloud</strong></td><td><a href="cloud/room-booking/DETAILS.md">Room-booking</a></td><td>API, endpoints, tests</td></tr>
-<tr><td></td><td><a href="infra/azure/aci-deploy.md">Azure ACI</a></td><td>ACR, pipeline, déploiement</td></tr>
-<tr><td><strong>Monitoring</strong></td><td><a href="monitoring/README.md">Grafana / Loki</a></td><td>Stack, dashboard</td></tr>
-<tr><td></td><td><a href="monitoring/anomaly-scenario.md">Anomalie</a></td><td>Scénario de détection</td></tr>
-</tbody>
-</table>
+### Architecture & DAT
+
+- [DAT.md](docs/DAT.md) — Dossier d'Architecture Technique (document principal)
+- [Plan d'adressage IP & VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md) — Segmentation `10.20.0.0/16`, 6 VLANs
+- [Captures PoC réseau & cloud](docs/architecture/screenshots/) — Schémas PNG, Grafana, VPN, backup, ACI
+- [Édition schéma SVG](docs/architecture/EDITING.md) — Guide mise à jour du diagramme hybride
+
+### Sécurité & IAM
+
+- [Zero Trust & IAM](docs/security/Zero_Trust_IAM.md) — Modèle Zero Trust, rôles, MFA
+- [Configuration Entra ID](docs/security/entra_portal_setup.md) — Portail Azure, MSAL, JWT, démo locale
+- [Politiques firewall](docs/security/firewall_policies.md) — Règles pfSense inter-VLAN et WAN
+
+### Base de données & continuité
+
+- [MCD Merise](docs/database/MCD_Merise.md) — Modèle conceptuel room-booking
+- [Backup & restore](docs/database/backup_restore.md) — `pg_dump`, procédure de restauration
+- [BIA](docs/pca_pra/BIA.md) — Analyse d'impact métier
+- [PCA / PRA](docs/pca_pra/PCA_PRA.md) — Continuité et reprise d'activité
+
+### Gestion de projet
+
+- [ITSM](docs/project_management/ITSM.md) — Gestion des incidents
+- [Backlog & sprints](docs/project_management/backlog_sprints.md) — Méthodologie agile, user stories
+- [Captures Trello](docs/project_management/screenshots/) — Screenshots du tableau b3-infra
+- [Trello b3-infra](https://trello.com/b/EXl0H0QS/b3-infra) — Board Kanban (lien externe)
+
+### Réseau on-premise
+
+- [Installation pfSense](infra/network/pfsense_initial_setup.md) — Première configuration
+- [Configuration VLANs](infra/network/pfsense_vlan_config.md) — 802.1Q, interfaces, règles
+- [VMware vmnet2](infra/network/vmware_vmnet2_config.md) — Lab LAN `10.20.0.0/16`
+- [VPN WireGuard](infra/network/pfsense_wireguard_vpn.md) — Accès VLAN20/50 à distance
+- [pfSense → Loki](infra/network/pfsense_syslog_loki.md) — Syslog vers monitoring
+
+### Cloud & déploiement
+
+- [Room-booking — détails](cloud/room-booking/DETAILS.md) — API, stack, endpoints, tests
+- [Déploiement Azure ACI](infra/azure/aci-deploy.md) — ACR, container group, pipeline
+
+### Monitoring
+
+- [Stack Grafana / Loki](monitoring/README.md) — Déploiement, dashboard, health-prober
+- [Scénario d'anomalie](monitoring/anomaly-scenario.md) — Détection incident PoC
 
 ---
 
