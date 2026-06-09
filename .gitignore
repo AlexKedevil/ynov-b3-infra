@@ -42,6 +42,10 @@ docs/architecture/EDITING.md
 scripts/capture-lab-proofs.sh
 scripts/wg-lab-up.sh
 
+# Sources schéma réseau (édition locale — livrable = network_diagram.png uniquement)
+docs/architecture/network_vlan.svg
+docs/architecture/network diagram.xml
+
 # Schémas hybrides on-prem + cloud (brouillon local, pas encore finalisés)
 docs/architecture/smart_office_hybrid.svg
 docs/architecture/smart_office_hybrid_azure_style.svg
