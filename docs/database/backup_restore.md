@@ -17,6 +17,8 @@
 
 ```bash
 cd cloud/room-booking
+./scripts/backup.sh
+# ou manuellement :
 docker compose exec -T postgres pg_dump -U roombooking roombooking \
   > backup_$(date +%Y%m%d_%H%M).sql
 ```
@@ -33,15 +35,12 @@ head -5 backup_*.sql   # doit contenir CREATE TABLE / COPY
 
 ```bash
 cd cloud/room-booking
-# Arrêter l'app pour éviter les écritures concurrentes
+./scripts/restore.sh backup_YYYYMMDD_HHMM.sql
+# ou manuellement :
 docker compose stop room-booking
-
 docker compose exec -T postgres psql -U roombooking -d roombooking \
   -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;"
-
-docker compose exec -T postgres psql -U roombooking roombooking \
-  < backup_YYYYMMDD_HHMM.sql
-
+docker compose exec -T postgres psql -U roombooking roombooking < backup_YYYYMMDD_HHMM.sql
 docker compose start room-booking
 curl -s http://localhost:8080/rooms | head -c 200
 ```

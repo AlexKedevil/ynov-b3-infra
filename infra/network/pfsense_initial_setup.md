@@ -39,10 +39,17 @@ Une fois redémarré, utilisez le menu console pour configurer les interfaces de
 
 1.  Accéder à l'URL : [https://10.20.0.1](https://10.20.0.1)
 2.  Identifiants par défaut : `admin` / `pfsense`
-3.  **Général** : Hostname `pfsense`, Domain `smartoffice.lan`
-4.  **DNS** : `1.1.1.1` et `8.8.8.8`
-5.  **Timezone** : `Europe/Paris`
-6.  **WAN** : DHCP (via NAT vmnet8)
-7.  **LAN** : `10.20.0.1/24` (déjà configuré via console)
-8.  **Mot de passe Admin** : *À définir (consulter le coffre-fort sécurisé)*
-9.  **Reload** → **Finish**
+3.  **Général** : Hostname `pfsense`, Domain `smartoffice.lan`, timezone `Europe/Paris`
+4.  **DNS** : primaire `1.1.1.1`, secondaire `9.9.9.9`, *Override DNS* activé
+5.  **WAN** : DHCP (NAT vmnet8), MTU 1500, *Block RFC1918* et *Block Bogon* activés
+6.  **LAN** : `10.20.0.1/24`, DHCP `10.20.0.100`–`10.20.0.200` (déjà partiellement configuré via console)
+7.  **Mot de passe Admin** : *À définir (consulter le coffre-fort sécurisé)*
+8.  **Reload** → **Finish**
+
+### Vérifications post-wizard
+
+```bash
+ping 10.20.0.1
+curl -k https://10.20.0.1
+# Diagnostics → Ping → 8.8.8.8 depuis la WebGUI
+```

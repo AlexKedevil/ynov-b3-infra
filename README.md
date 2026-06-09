@@ -37,7 +37,17 @@ ynov-b3-infra/
 
 ---
 
-## Architecture Réseau
+## Architecture hybride
+
+![Architecture hybride Smart Office 2.0](docs/architecture/screenshots/smart_office_hybrid.png)
+
+Schéma source (éditable) : [docs/architecture/smart_office_hybrid.svg](docs/architecture/smart_office_hybrid.svg)
+
+**Zones :** télétravail (WireGuard) · lab VMware (pfSense, 6 VLANs, Grafana/Loki) · Azure (ACR, ACI, Entra ID, Blob) · CI/CD GitHub Actions.
+
+---
+
+## Architecture Réseau (VLANs)
 
 ![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
 
