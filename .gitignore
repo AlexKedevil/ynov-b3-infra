@@ -35,3 +35,8 @@ UF_INFRA_B3.pdf
 
 # Guides internes (assistant / reconstruction locale, non versionnés)
 docs/project_management/trello_board_guide.md
+
+# Export Moodle (généré localement)
+docs/livrable/*.pdf
+docs/livrable/*.zip
+cloud/room-booking/backup_*.sql

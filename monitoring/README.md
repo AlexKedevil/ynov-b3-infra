@@ -2,6 +2,8 @@
 
 PoC UF_INFRA_B3 : Grafana + Loki + Promtail, logs **pfSense VM** via syslog — tableau de bord, collecte de logs, détection d'incident.
 
+> **SIEM :** un déploiement Wazuh complet est une **cible production** (voir [DAT §11](../docs/DAT.md#11-supervision-et-détection)). Pour le PoC B3, la supervision et la détection d'anomalies sont couvertes par **Grafana + Loki** (logs firewall pfSense, application room-booking, alertes LogQL).
+
 ---
 
 ## Stack

@@ -41,6 +41,20 @@ Non autorisé par défaut : VLAN 10 MGMT, 40 GUEST, 60 DMZ
    - **Interface Addresses :** `10.20.100.1/24`
 3. **Save** puis **Apply Changes**
 
+### Étape 1b — Assigner l'interface WG_VPN (critique en lab)
+
+Le package crée le tunnel `tun_wg0`, mais **sans IP sur l'interface assignée le routage VPN ne fonctionne pas** (handshake OK, ping VLAN échoue).
+
+1. **Interfaces → Assignments** → **WG_VPN** (`opt7` / `tun_wg0`)
+2. **Enable interface**
+3. **IPv4 Configuration Type :** Static IPv4
+4. **Address :** `10.20.100.1/24`
+5. **Save** → **Apply Changes**
+
+Vérifier en shell pfSense : `ifconfig tun_wg0` doit afficher `inet 10.20.100.1`.
+
+> Ne pas créer de règle sur le groupe **WireGuard** avec l'alias `WIREGUARD__NETWORK` (macro non définie — bloque le chargement du firewall). Utiliser l'interface **WG_VPN** (`opt7`) uniquement.
+
 ---
 
 ## Étape 2 — Ajouter un peer (client télétravail)
@@ -59,15 +73,15 @@ Répéter pour chaque appareil (`10.20.100.3/32`, …).
 
 ---
 
-## Étape 3 — Règles firewall (interface WireGuard)
+## Étape 3 — Règles firewall (interface WG_VPN / opt7)
 
-**Firewall → Rules → WireGuard** (onglet `WireGuard`)
+**Firewall → Rules → WG_VPN** (pas le groupe « WireGuard »)
 
 | # | Action | Source | Destination | Description |
 |---|--------|--------|-------------|-------------|
-| 1 | Pass | `WireGuard net` | `VLAN20 net` | VPN → USERS (bureaux) |
-| 2 | Pass | `WireGuard net` | `VLAN50 net` | VPN → SERVEURS |
-| 3 | Block | `WireGuard net` | `any` | Default deny (log) |
+| 1 | Pass | `10.20.100.0/24` | any | ICMP (tests) |
+| 2 | Pass | `10.20.100.0/24` | `VLAN20 net` | VPN → USERS (bureaux) |
+| 3 | Pass | `10.20.100.0/24` | `VLAN50 net` | VPN → SERVEURS |
 
 > Les réponses sont gérées par l'état **stateful** pfSense. Pas de règle entrante sur VLAN20/50 nécessaire pour le retour.
 
@@ -92,6 +106,8 @@ DNS = 10.20.50.10
 [Peer]
 PublicKey = <CLE_PUBLIQUE_PFSENSE>
 Endpoint = <IP_PUBLIQUE_WAN>:51820
+# Lab VMware (hôte sur vmnet2) :
+# Endpoint = 10.20.0.1:51820
 AllowedIPs = 10.20.20.0/24, 10.20.50.0/24, 10.20.100.0/24
 PersistentKeepalive = 25
 ```
@@ -102,6 +118,9 @@ PersistentKeepalive = 25
 
 ```bash
 wg genkey | tee privatekey | wg pubkey > publickey
+sudo pacman -S wireguard-tools   # CachyOS / Arch
+sudo cp credentials/wg-smartoffice.conf /etc/wireguard/
+sudo wg-quick up wg-smartoffice   # nom interface ≤ 15 caractères
 ```
 
 ---
@@ -139,7 +158,9 @@ Voir [docs/security/Zero_Trust_IAM.md](../../docs/security/Zero_Trust_IAM.md).
 | Accès Azure (ACI) | Via **HTTPS public**, pas via VPN site-to-site | IPsec vers VNet (Backlog Trello) |
 | Test client réel | Nécessite IP WAN joignable ou test depuis vmnet | FAI fixe / DynDNS |
 
-Pour une démo locale sans WAN public : tester le tunnel entre **deux VMs** sur vmnet2 ou depuis l'hôte vers pfSense LAN (lab uniquement).
+**Lab validé :** client sur l'hôte CachyOS (`vmnet2`), endpoint `10.20.0.1:51820`, ping `10.20.20.1` et `10.20.50.1` OK après assignation IP `10.20.100.1/24` sur WG_VPN.
+
+Prérequis VMware : promiscuous mode sur `vmnet2` — [vmware_vmnet2_config.md](vmware_vmnet2_config.md).
 
 ---
 

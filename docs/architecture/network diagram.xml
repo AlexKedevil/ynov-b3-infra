@@ -28,10 +28,10 @@
         <mxCell id="44" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;🔴 VLAN 50&lt;br&gt;SERVERS&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#b85450&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.50.0/24&lt;br&gt;&lt;i&gt;AD, DB, App, Mon&lt;/i&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="100" width="150" x="760" y="480" as="geometry" />
         </mxCell>
-        <mxCell id="45" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;🟠 VLAN 60&lt;br&gt;DMZ&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#d79b00&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.60.0/24&lt;br&gt;&lt;i&gt;Web, VPN Gateway&lt;/i&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="45" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;strokeWidth=2;shadow=1;spacingTop=5;" value="&lt;div style=&quot;font-weight:bold;font-size:13px;&quot;&gt;VLAN 60&lt;br&gt;DMZ&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#d79b00&quot;/&gt;&lt;div style=&quot;font-size:11px;&quot;&gt;10.20.60.0/24&lt;br&gt;&lt;i&gt;Web, services exposés&lt;/i&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="100" width="150" x="930" y="480" as="geometry" />
         </mxCell>
-        <mxCell id="50" parent="1" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;shadow=1;" value="&lt;div style=&quot;font-size: 14px; font-weight: bold;&quot;&gt;☁️ AWS / Azure&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#6c8ebf&quot;/&gt;&lt;div style=&quot;font-size:11px; text-align:center;&quot;&gt;&lt;b&gt;S3:&lt;/b&gt; Immutable Bckp&lt;br&gt;&lt;b&gt;EC2:&lt;/b&gt; Disaster Recov&lt;/div&gt;" vertex="1">
+        <mxCell id="50" parent="1" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#0078D4;strokeWidth=2;shadow=1;" value="&lt;div style=&quot;font-size: 14px; font-weight: bold;&quot;&gt;Azure Blob&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#0078D4&quot;/&gt;&lt;div style=&quot;font-size:11px; text-align:center;&quot;&gt;pg_dump backups&lt;br&gt;(cible production)&lt;/div&gt;" vertex="1">
           <mxGeometry height="110" width="160" x="755" y="660" as="geometry" />
         </mxCell>
         <mxCell id="100" edge="1" parent="1" source="10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;" target="20" value="">
@@ -58,7 +58,7 @@
         <mxCell id="107" edge="1" parent="1" source="30" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#555555;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="45" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry" />
         </mxCell>
-        <mxCell id="108" edge="1" parent="1" source="44" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#1881C5;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontColor=#1881C5;" target="50" value="&lt;b&gt;Backup S3&lt;/b&gt;">
+        <mxCell id="108" edge="1" parent="1" source="44" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0078D4;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;fontColor=#0078D4;" target="50" value="&lt;b&gt;Backup BDD&lt;/b&gt;">
           <mxGeometry height="50" relative="1" width="50" as="geometry" />
         </mxCell>
         <mxCell id="200" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;strokeWidth=2;shadow=1;align=left;verticalAlign=top;spacing=10;" value="&lt;div style=&quot;font-weight:bold; margin-bottom: 5px;&quot;&gt;📌 Légende&lt;/div&gt;&lt;hr size=&quot;1&quot; color=&quot;#ccc&quot;/&gt;🔵 MGMT&lt;br&gt;🟢 USERS/STAFF&lt;br&gt;🟡 GUEST&lt;br&gt;🔴 SERVERS&lt;br&gt;🟠 DMZ" vertex="1">
