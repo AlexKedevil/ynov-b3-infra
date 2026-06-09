@@ -82,21 +82,10 @@ curl http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/rooms
 
 ```bash
 az login
-az account set --subscription "Azure for Students"
-
 export ACR_SERVER=smartofficeynov.azurecr.io
-export ACR_USER=<admin-user-acr>
-export ACR_PASS=<admin-password-acr>
-
-sed -e "s|{{ACR_SERVER}}|$ACR_SERVER|g" \
-    -e "s|{{ACR_USER}}|$ACR_USER|g" \
-    -e "s|{{ACR_PASS}}|$ACR_PASS|g" \
-    infra/azure/container-group.yaml > /tmp/cg.yaml
-
-az container delete --resource-group rg-smartoffice --name smartoffice-booking --yes
-az container create --resource-group rg-smartoffice --file /tmp/cg.yaml
-az container show --resource-group rg-smartoffice --name smartoffice-booking \
-  --query ipAddress.fqdn -o tsv
+# Remplir cloud/room-booking/.env (Entra + AUTH_DISABLED=false)
+chmod +x infra/azure/deploy-aci.sh
+./infra/azure/deploy-aci.sh
 ```
 
 ---
@@ -122,4 +111,6 @@ az container start --resource-group rg-smartoffice --name smartoffice-booking
 | `MissingSubscriptionRegistration` Microsoft.ContainerInstance | `az provider register --namespace Microsoft.ContainerInstance --wait` |
 | `RegistryErrorResponse` index.docker.io | Images sidecar servies depuis ACR (voir workflow) |
 | App 502 au démarrage | Attendre 30–60 s (postgres init) |
-| Entra 401 tenant Ynov | `AUTH_DISABLED=true` dans le manifeste ACI |
+| Entra 401 tenant Ynov | Tenant personnel + secrets GitHub ou `deploy-aci.sh` + `.env` |
+| `AADSTS50011` sur ACI | Redirect URI SPA : `http://<fqdn>:8080/static/login.html` |
+| `/health` → `auth_disabled: true` | Secrets Entra manquants dans le workflow ou `AUTH_DISABLED=true` dans `.env` |
