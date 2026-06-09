@@ -26,6 +26,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - pfsense_syslog:/var/log/pfsense:ro
       - simulator_logs:/var/log/pfsense-sim:ro
+      - healthcheck_logs:/var/log/healthcheck:ro
     depends_on:
       - loki
       - syslog-ng
@@ -47,6 +48,23 @@ services:
       - loki
     restart: unless-stopped
 
+  health-prober:
+    image: curlimages/curl:8.5.0
+    container_name: monitoring-health-prober
+    user: "0:0"
+    environment:
+      ACI_HEALTH_URL: ${ACI_HEALTH_URL:-http://ynov-smartoffice-b3.francecentral.azurecontainer.io:8080/health}
+    volumes:
+      - ./scripts/health-prober.sh:/probe.sh:ro
+      - healthcheck_logs:/var/log/healthcheck
+    entrypoint: ["/bin/sh", "/probe.sh"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - loki
+      - grafana
+    restart: unless-stopped
+
   pfsense-log-simulator:
     profiles: ["simulator"]
     image: alpine:3.19
@@ -61,3 +79,4 @@ volumes:
   grafana_data:
   pfsense_syslog:
   simulator_logs:
+  healthcheck_logs:
