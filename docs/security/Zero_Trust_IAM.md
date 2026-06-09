@@ -34,7 +34,7 @@ Configuration détaillée : [entra_portal_setup.md](entra_portal_setup.md)
 
 ### Limitation tenant Ynov
 
-Le tenant **Ynov** (`ynov.com`) n'accorde pas aux étudiants les droits **Application Administrator** sur Entra ID (erreur 401). La démo live Entra utilise un **tenant personnel** (Azure Free). Sur ACI : activer via secrets GitHub ou `infra/azure/deploy-aci.sh` + redirect URI SPA sur le FQDN public ; sinon `AUTH_DISABLED=true`.
+Le tenant **Ynov** (`ynov.com`) n'accorde pas aux étudiants les droits **Application Administrator** sur Entra ID (erreur 401). Le code IAM et la documentation sont en place ; la démo live Entra nécessite l'intervention du DSI ou un tenant personnel. En ACI/lab : `AUTH_DISABLED=true`.
 
 ---
 

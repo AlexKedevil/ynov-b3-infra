@@ -62,27 +62,10 @@ jobs:
 
       - name: Prepare container group manifest
         if: steps.check.outputs.has_creds == 'true'
-        env:
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_SPA_CLIENT_ID: ${{ secrets.AZURE_SPA_CLIENT_ID }}
-          AZURE_API_AUDIENCE: ${{ secrets.AZURE_API_AUDIENCE }}
         run: |
-          if [ -n "$AZURE_TENANT_ID" ] && [ -n "$AZURE_CLIENT_ID" ] && \
-             [ -n "$AZURE_SPA_CLIENT_ID" ] && [ -n "$AZURE_API_AUDIENCE" ]; then
-            AUTH_DISABLED=false
-          else
-            AUTH_DISABLED=true
-            echo "Entra secrets missing — ACI deployed with AUTH_DISABLED=true"
-          fi
           sed -e "s|{{ACR_SERVER}}|${{ secrets.ACR_LOGIN_SERVER }}|g" \
               -e "s|{{ACR_USER}}|${{ secrets.ACR_USERNAME }}|g" \
               -e "s|{{ACR_PASS}}|${{ secrets.ACR_PASSWORD }}|g" \
-              -e "s|{{AUTH_DISABLED}}|$AUTH_DISABLED|g" \
-              -e "s|{{AZURE_TENANT_ID}}|${AZURE_TENANT_ID:-}|g" \
-              -e "s|{{AZURE_CLIENT_ID}}|${AZURE_CLIENT_ID:-}|g" \
-              -e "s|{{AZURE_SPA_CLIENT_ID}}|${AZURE_SPA_CLIENT_ID:-}|g" \
-              -e "s|{{AZURE_API_AUDIENCE}}|${AZURE_API_AUDIENCE:-}|g" \
               infra/azure/container-group.yaml > /tmp/container-group.yaml
 
       - name: Deploy ACI container group
