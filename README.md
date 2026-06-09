@@ -41,9 +41,9 @@ ynov-b3-infra/
 
 ![Architecture hybride Smart Office 2.0](docs/architecture/screenshots/smart_office_hybrid.png)
 
-Schéma source (éditable) : [docs/architecture/smart_office_hybrid.svg](docs/architecture/smart_office_hybrid.svg)
+Schéma source (éditable) : [docs/architecture/smart_office_hybrid.svg](docs/architecture/smart_office_hybrid.svg) — style [Azure Architecture](https://creately.com/diagram/example/qgi8kB6F7y8/azure-architecture-basic-web-app) (zones en pointillés, flux gauche→droite).
 
-**Zones :** télétravail (WireGuard) · lab VMware (pfSense, 6 VLANs, Grafana/Loki) · Azure (ACR, ACI, Entra ID, Blob) · CI/CD GitHub Actions.
+**Zones :** utilisateurs / WireGuard · on-prem VMware (pfSense, VLANs, Grafana/Loki) · Azure France Central (Entra ID, ACR, ACI, Blob) · supervision · CI/CD.
 
 ---
 
