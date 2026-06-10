@@ -40,7 +40,7 @@ ynov-b3-infra/
 
 ## Architecture hybride
 
-![Architecture hybride — on-prem VMware + Azure](docs/architecture/screenshots/smart_office_hybrid_azure.png)
+![Architecture hybride — on-prem VMware + Azure](docs/architecture/smart_office_hybrid_azure.svg)
 
 On-prem (pfSense, VLANs, WireGuard, Grafana/Loki) + Azure France Central (ACI, ACR, Entra ID) + CI/CD GitHub Actions.
 
@@ -50,7 +50,7 @@ Description détaillée : [docs/DAT.md §5](docs/DAT.md#5-architecture-hybride-o
 
 ## Architecture Réseau (VLANs)
 
-![Schéma Logique du Réseau](docs/architecture/screenshots/network_diagram.png)
+![Schéma logique du réseau — VLANs](docs/architecture/network_vlan.svg)
 
 - [Plan d'Adressage IP & VLAN](docs/architecture/Plan_Adressage_IP_VLAN.md)
 - [Installation pfSense](infra/network/pfsense_initial_setup.md)
