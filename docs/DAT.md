@@ -80,7 +80,7 @@ Voir [architecture/Plan_Adressage_IP_VLAN.md](architecture/Plan_Adressage_IP_VLA
 
 ### Schémas
 
-- Schéma logique : [architecture/screenshots/network_diagram.png](architecture/screenshots/network_diagram.png)
+- Schéma logique : [architecture/network_vlan.svg](architecture/network_vlan.svg)
 
 ### Preuves lab (pfSense + VMware)
 
