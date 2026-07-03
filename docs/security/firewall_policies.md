@@ -28,6 +28,30 @@ Les captures détaillées sont dans [../architecture/screenshots/](../architectu
 
 ---
 
+## Cas particulier de la DMZ
+
+Dans l'implémentation actuelle, la DMZ n'est pas physiquement séparée du reste du LAN : elle est réalisée sous la forme d'un VLAN (60) filtré par pfSense, au même
+titre que les autres segments. L'approche retenue au départ consistait à s'appuyer uniquement sur une segmentation VLAN stricte, en considérant que le cloisonnement logique et un jeu de règles *default deny* suffisaient à isoler les services exposés.
+
+Cette approche présente toutefois une limite : les services accessibles depuis
+Internet partagent alors la même infrastructure de commutation que les ressources internes. En cas de compromission d'un service exposé, la surface d'attaque vers le LAN reste plus large que souhaitable, la séparation ne reposant que sur la configuration du pare-feu.
+
+L'architecture cible corrige ce point en traitant la DMZ comme une zone à part
+entière, dédiée exclusivement aux services exposés :
+
+| Flux | Politique |
+|------|-----------|
+| Internet → DMZ | Autorisé, limité aux ports publics (HTTPS 443) |
+| DMZ → SERVEURS (50) | Restreint aux seuls ports applicatifs nécessaires (ex. BDD) |
+| DMZ → LAN interne | Interdit |
+| LAN interne → DMZ | Autorisé (administration, publication de contenu) |
+
+Le principe directeur est qu'aucune connexion ne doit pouvoir être initiée depuis la DMZ vers le réseau interne : un service exposé compromis reste ainsi confiné à sa zone. 
+En production, cette DMZ hébergerait un reverse proxy en frontal de
+l'application (room-booking), la publication du service métier étant assurée en PoC par l'hébergement cloud (Azure ACI), qui remplit ce rôle d'isolation vis-à-vis du réseau du siège.
+
+---
+
 ## VPN télétravail (WireGuard)
 
 Les clients VPN (`10.20.100.0/24`) accèdent **uniquement** à :

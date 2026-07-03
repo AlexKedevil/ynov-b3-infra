@@ -147,6 +147,7 @@ Index des livrables UF_INFRA_B3 (statut **Fait**) : [docs/README.md](docs/README
 <tr><td><a href="docs/security/Zero_Trust_IAM.md">Zero Trust & IAM</a></td><td>Modèle Zero Trust, rôles, MFA</td></tr>
 <tr><td><a href="docs/security/entra_portal_setup.md">Configuration Entra ID</a></td><td>Portail Azure, MSAL, JWT, démo locale</td></tr>
 <tr><td><a href="docs/security/firewall_policies.md">Politiques firewall</a></td><td>Règles pfSense inter-VLAN et WAN</td></tr>
+<tr><td><a href="docs/security/upgrade_real_DMZ.md">Évolution DMZ isolée</a></td><td>Passage DMZ-VLAN → zone dédiée, config pfSense cible</td></tr>
 <tr><td colspan="2"><strong>Base de données & continuité</strong></td></tr>
 <tr><td><a href="docs/database/MCD_Merise.md">MCD Merise</a></td><td>Modèle conceptuel room-booking</td></tr>
 <tr><td><a href="docs/database/backup_restore.md">Backup & restore</a></td><td><code>pg_dump</code>, procédure de restauration</td></tr>
