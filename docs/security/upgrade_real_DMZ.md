@@ -76,6 +76,32 @@ sa zone.
 
 ---
 
+## Pour aller plus loin — niveaux de maturité d'une DMZ
+
+Une DMZ peut être réalisée selon plusieurs modèles, du plus simple au plus robuste :
+
+| Niveau | Modèle | Principe | Limite |
+|--------|--------|----------|--------|
+| 1 | **DMZ-VLAN** | Segment (VLAN 60) filtré par le pare-feu, sur la même infrastructure que le LAN. Séparation purement logique. | La frontière ne repose que sur la configuration du pare-feu. |
+| 2 | **DMZ « three-legged »** | Interface physique dédiée sur pfSense (WAN / LAN / DMZ). Le trafic DMZ↔LAN traverse obligatoirement le pare-feu. | Un seul pare-feu : sa compromission expose tout. |
+| 3 | **DMZ « back-to-back » (screened subnet)** | Deux pare-feux encadrent la DMZ : `Internet → FW externe → DMZ → FW interne → LAN`, idéalement de marques différentes. | Coût et complexité (deux équipements à administrer). |
+
+```text
+Niveau 3 — back-to-back :
+
+Internet ──► [ Firewall externe ] ──► DMZ ──► [ Firewall interne ] ──► LAN interne
+```
+
+**Choix retenu :** le niveau **2 (three-legged)** constitue la cible de ce projet.
+Il fournit une isolation réelle — le trafic entre la DMZ et le LAN est contraint de
+traverser le pare-feu — tout en restant réaliste à déployer avec un unique pfSense
+en lab. Le niveau 3, référence en grande entreprise, est mentionné comme évolution
+possible : il apporte une défense en profondeur (deux pare-feux distincts) au prix
+d'une complexité et d'un coût supérieurs, non justifiés à l'échelle du siège
+considéré.
+
+---
+
 ## Statut
 
 En PoC, la publication du service métier est assurée par l'hébergement cloud
